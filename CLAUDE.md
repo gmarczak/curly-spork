@@ -9,10 +9,12 @@
 - Listy punktowane zamiast akapitów. Tabele tylko gdy porównujesz ≥ 3 pozycje.
 - Nie opisuj, co zamierzasz zrobić — zrób i podaj efekt.
 - Niepewność zaznaczaj wprost: „do weryfikacji", „szacunek".
-- Pytaj tylko, gdy decyzja należy do wspólników i blokuje pracę.
+- Pytaj tylko, gdy decyzja należy do właściciela i blokuje pracę.
 
 ## Kontekst projektu
 
+- **Biznes jednoosobowy z AI:** jeden właściciel decyduje i zatwierdza, agenci AI wykonują pracę operacyjną.
+- **Firma dopiero po pierwszym kliencie:** start jako działalność nierejestrowana; JDG po pierwszych sprzedażach lub przed przekroczeniem limitu przychodu.
 - Fabryka e-commerce AI: wiele sklepów jednoproduktowych na wspólnym silniku. Mapa dokumentów: `README.md`.
 - Repo to na razie dokumentacja (Markdown). Kod: `04_KOD_I_INFRASTRUKTURA/` (jeszcze pusty).
 - Stack: `00_STRATEGIA/Architektura_Systemu/ADR_001_Stack_Techniczny.md`.

@@ -24,7 +24,7 @@ Panel do podglądu i sterowania agentami AI. Status: **prototyp na danych przyk�
 ## Technologia
 
 - Next.js (ten sam stack co storefront), osobna aplikacja w tym folderze.
-- Dostęp tylko dla wspólników (logowanie Supabase Auth).
+- Dostęp tylko dla właściciela (logowanie Supabase Auth, 2FA).
 - Aktualizacje na żywo: Server-Sent Events z serwisu agentów.
 - Wszystkie akcje sterujące idą przez API serwisu agentów — panel nie ma kluczy do Medusy ani modeli AI.
 

@@ -112,13 +112,13 @@ button.x{font:inherit;font-weight:600;border:1px solid var(--line);background:va
   <header class="top">
     <div>
       <h1>Biuro Agentów</h1>
-      <p class="sub">Stan na <b>25.09.2026, 12:05</b> · realni agenci tej sesji Claude Code, realny plan i decyzje</p>
+      <p class="sub">Biznes jednoosobowy + AI · stan na <b>25.09.2026, 12:20</b> · realni agenci tej sesji Claude Code, realny plan i decyzje</p>
     </div>
     <div class="stats">
       <div class="stat"><span class="lbl">Agenci dziś</span><b>6</b></div>
       <div class="stat"><span class="lbl">Zadania zrobione</span><b id="sDone">–</b></div>
       <div class="stat"><span class="lbl">Tokeny agentów</span><b>408 285</b></div>
-      <div class="stat"><span class="lbl">Commity</span><b>10</b></div>
+      <div class="stat"><span class="lbl">Commity</span><b>12</b></div>
       <div class="stat hot"><span class="lbl">Czeka na Ciebie</span><b id="sWait">–</b></div>
     </div>
   </header>
@@ -157,7 +157,7 @@ button.x{font:inherit;font-weight:600;border:1px solid var(--line);background:va
 <script>
 const ST={run:["pracuje","s-run"],done:["zakończył","s-done"],off:["jeszcze nie uruchomiony","s-off"]};
 const team=[
- {id:"main",ini:"CL",name:"Claude — koordynator",st:"run",task:"Przebudowa panelu na realny stan",say:"Układam biuro bez zakładek: zespół, plan, dziennik i decyzje na jednej stronie.",meta:["sesja główna","od 23:47"],
+ {id:"main",ini:"CL",name:"Claude — koordynator",st:"run",task:"Dokumenty: model jednoosobowy, firma po 1. kliencie",say:"Zmieniłem formę prawną: działalność nierejestrowana do pierwszego klienta, potem JDG.",meta:["sesja główna","od 23:47"],
   out:["Uruchomił 5 agentów i złożył ich wyniki.","Wprowadził poprawki 1–5 w dokumentacji (9 commitów).","Otworzył PR #1 i utworzył CLAUDE.md.","Zbudował panel Biuro Agentów."],next:"Czeka na Twoją decyzję: scalenie PR #1 albo kolejne zadanie."},
  {id:"s",ini:"ST",name:"Analityk strategii",st:"done",task:"Przegląd 00_STRATEGIA i README",say:"Stack „potwierdzony”, a w dokumentach wciąż pary X/Y.",meta:["73 s","73 236 tok."],stats:["73 s","73 236","4"],
   out:["Stack nierozstrzygnięty mimo statusu „potwierdzony”.","Sprzeczne progi wygaszania (marża < CAC vs 100–150%).","Budżet liczony na 1 kandydata zamiast 3–5.","Odsyłacze w kółko: brak tabeli decyzji logistycznej.","Nieaktualne modele AI (GPT-4o-mini, Claude 3.5)."],next:"Wszystko naprawione w commitach 6fc262b i 89dc6d3."},
@@ -175,19 +175,18 @@ const team=[
  {id:"x4",ini:"FU",name:"Agent Fulfillmentu",st:"off",task:"zamówienia do dostawcy",empty:true},
 ];
 const plan={
- done:["Przegląd dokumentacji (4 agentów)","Sekrety: .gitignore i zasady backupu","ADR-001: stack techniczny","Prawo i podatki 2026","Progi go/no-go, budżet, P001","Shortlista + research 12 kandydatów","CLAUDE.md: styl odpowiedzi","ADR i cele przyjęte (wspólnik 1)","Prototyp panelu Biuro Agentów"],
- doing:[["Panel: realny stan biura","CL"]],
- wait:[["Scal PR #1 na GitHubie","Ty"],["Akceptacja ADR-001 i celów","Wspólnik 2"]],
- todo:[["Sprint dz. 1–2: ceny Allegro, CJ/AliExpress, Ads Library","Wspólnicy"],["Sprint dz. 3: punktacja osobno","Wspólnicy"],["Sprint dz. 4: 3 kandydatów, próbki","Wspólnicy"],["Sprint dz. 5: kandydat nr 1","Wspólnicy"],["Księgowa: VAT, VAT-UE, PKWiU","Ty"],["Prawnik: regulamin, GPSR, zwroty","Ty"],["Umowa wspólników, s.c., PCC-3","Wspólnicy"],["Konto firmowe i Stripe","Ty"],["Szkielet kodu: Medusa, Next.js, agenci","CL"]],
+ done:["Przegląd dokumentacji (4 agentów)","Sekrety: .gitignore i zasady backupu","ADR-001: stack techniczny","Prawo i podatki 2026","Progi go/no-go, budżet, P001","Shortlista + research 12 kandydatów","CLAUDE.md: styl odpowiedzi","ADR i cele przyjęte","Prototyp panelu Biuro Agentów","Panel: realny stan biura","Model jednoosobowy, firma po 1. kliencie"],
+ doing:[["Czeka na kolejne polecenie","CL"]],
+ wait:[["Scal PR #1 na GitHubie","Ty"]],
+ todo:[["Sprint dz. 1–2: ceny Allegro, CJ/AliExpress, Ads Library","Ty + AI"],["Sprint dz. 3: punktacja (Ty + druga ocena AI)","Ty + AI"],["Sprint dz. 4: 3 kandydatów, próbki","Ty"],["Sprint dz. 5: kandydat nr 1","Ty"],["Konsultacja z księgową: VAT-UE, PKWiU, limit","Ty"],["Prawnik: regulamin, GPSR, zwroty","Ty"],["Ewidencja sprzedaży + konto Stripe (osoba fizyczna)","Ty"],["Rejestracja JDG — po pierwszym kliencie","Ty"],["Szkielet kodu: Medusa, Next.js, agenci","CL"]],
 };
 const inbox=[
- {id:"pr",t:"Scal PR #1",m:"10 commitów z dzisiejszą pracą",o:"Ty",link:"https://github.com/gmarczak/curly-spork/pull/1"},
- {id:"w2",t:"Akceptacja ADR-001 i celów",m:"Pola wspólnika 2 w ADR i Business Planie",o:"Wspólnik 2"},
- {id:"sp",t:"Start sprintu wyboru produktu",m:"Dni 1–2: ręczna weryfikacja 12 kandydatów",o:"Wspólnicy"},
- {id:"ks",t:"Umówić księgową",m:"Lista pytań: Zasady_Ksiegowe_i_VAT.md, sekcja 6",o:"Ty"},
+ {id:"pr",t:"Scal PR #1",m:"12 commitów z dzisiejszą pracą",o:"Ty",link:"https://github.com/gmarczak/curly-spork/pull/1"},
+  {id:"sp",t:"Start sprintu wyboru produktu",m:"Dni 1–2: ręczna weryfikacja 12 kandydatów",o:"Ty + AI"},
+ {id:"ks",t:"Konsultacja z księgową",m:"Jednorazowo: VAT-UE przy reklamach, PKWiU, limit przychodu",o:"Ty"},
  {id:"pw",t:"Umówić prawnika",m:"Lista pytań: Wzorce_Regulaminow_i_Polityk.md, sekcja 6",o:"Ty"},
 ];
-const feed=[["12:05","—","Panel: realny stan biura (w toku)"],["11:59","4e3ab6b","Prototyp panelu Biuro Agentów"],["09:33","7113659","ADR-001 i cele przyjęte (wspólnik 1)"],["09:29","0d08d67","Shortlista: wyniki researchu"],["09:27","242fa77","CLAUDE.md"],["09:18","ccb2573","Arkusz shortlisty, README"],["09:17","89dc6d3","Progi go/no-go, budżet, P001"],["09:14","5bb8001","Prawo i podatki 2026"],["09:13","6fc262b","ADR-001: stack"],["09:11","9572a1e",".gitignore i sekrety"],["23:47","511d389","Dokumentacja startowa (24.09)"]];
+const feed=[["12:20","—","Model jednoosobowy; firma po 1. kliencie"],["12:07","43f0634","Panel: realny stan biura"],["11:59","4e3ab6b","Prototyp panelu Biuro Agentów","Panel: realny stan biura","Model jednoosobowy, firma po 1. kliencie"],["09:33","7113659","ADR-001 i cele przyjęte"],["09:29","0d08d67","Shortlista: wyniki researchu"],["09:27","242fa77","CLAUDE.md"],["09:18","ccb2573","Arkusz shortlisty, README"],["09:17","89dc6d3","Progi go/no-go, budżet, P001"],["09:14","5bb8001","Prawo i podatki 2026"],["09:13","6fc262b","ADR-001: stack"],["09:11","9572a1e",".gitignore i sekrety"],["23:47","511d389","Dokumentacja startowa (24.09)"]];
 
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 let checked={}; try{checked=JSON.parse(localStorage.getItem("biuro-inbox")||"{}")}catch(e){}

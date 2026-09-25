@@ -28,7 +28,7 @@ Jeden centralny system e-commerce i jeden zespół agentów AI, który pozwala b
    * **pgvector:** Baza wektorowa do wyszukiwania semantycznego (RAG) – wiedza produktowa i baza FAQ dla bota obsługi. (Qdrant odrzucony w ADR_001 — pgvector wystarczy na tę skalę.)
 
 ### Główne role agentów
-*Research kandydatów produktowych robią wspólnicy (`00_STRATEGIA/Proces_Wyboru_Produktu.md`), wspomagani doraźnie modelem z poziomu analitycznego — nie ma osobnego „agenta badacza rynku”. Uprawnienia każdego agenta: ADR_001.*
+*Research kandydatów produktowych robi właściciel z agentem researchu (`00_STRATEGIA/Proces_Wyboru_Produktu.md`), wspomagani doraźnie modelem z poziomu analitycznego — nie ma osobnego „agenta badacza rynku”. Uprawnienia każdego agenta: ADR_001.*
 
 * **Agent Onboardingu / Brandingu:** Generuje markę, landing page, opisy SEO, dobiera styl wizualny i zakłada produkt w Medusie jako szkic (publikuje człowiek).
 * **Agent Wsparcia (Support):** Doradca live-chat dla klienta; odpowiada wyłącznie w kontekście kupowanego przedmiotu i domyka koszyk.

@@ -14,7 +14,7 @@
 
 ## 2. Kluczowe klauzule — Regulamin
 
-- Dane sprzedawcy: nazwa podmiotu, adres, NIP, dane kontaktowe (e-mail, telefon).
+- Dane sprzedawcy: do pierwszego klienta — **osoba fizyczna w działalności nierejestrowanej** (imię, nazwisko, adres do korespondencji, e-mail, telefon; bez NIP firmy); po rejestracji JDG — firma z CEIDG, adres, NIP. ⚠️ Adres do doręczeń — rozważyć skrytkę/wirtualne biuro zamiast adresu domowego.
 - Sposób składania i realizacji zamówień, moment zawarcia umowy.
 - Ceny — informacja, że są cenami brutto (z VAT) lub netto + VAT, w zależności od statusu VAT operatora.
 - Metody i koszty dostawy — zgodne z aktualnym modelem logistyki danego produktu.

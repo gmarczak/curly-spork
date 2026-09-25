@@ -2,6 +2,12 @@
 
 *Aktualizacja: 2026-09-25. To nie jest porada podatkowa — każdy punkt oznaczony ⚠️ potwierdzić z biurem rachunkowym przed pierwszą sprzedażą (lista pytań w sekcji 6).*
 
+## 0. Faza bez firmy (działalność nierejestrowana — do pierwszego klienta)
+
+- Biuro rachunkowe niepotrzebne na stałe — wystarczy **jednorazowa konsultacja** (VAT-UE przy reklamach, PKWiU produktów, limit przychodu).
+- Uproszczona ewidencja sprzedaży zamiast KPiR; przychód wykazywany w rocznym PIT-36 ⚠️.
+- Limit przychodu i obowiązek rejestracji: `01_FINANSE_I_PRAWO/Rejestracja_i_Umowy/Forma_Prawna_i_Rejestracja.md`, sekcja 3.
+
 ## 1. VAT — progi i zasady
 
 - **Limit zwolnienia podmiotowego z VAT (art. 113 ustawy o VAT):** **240 000 zł** obrotu rocznie od 1.01.2026 (wcześniej 200 000 zł). ⚠️ W pierwszym roku limit liczy się proporcjonalnie do okresu działalności.
@@ -23,7 +29,7 @@
 
 ## 4. Rekomendacja obsługi księgowej
 
-Na fazę startową: **zewnętrzne biuro rachunkowe** (ok. 200–500 zł/mc przy małej działalności; więcej przy VAT i imporcie usług). Samoobsługa (inFakt/Fakturownia) ma sens tylko przy bardzo małej liczbie transakcji — przy imporcie usług, OSS/IOSS i wielu domenach ryzyko błędu jest za duże.
+Od rejestracji JDG: **zewnętrzne biuro rachunkowe** (ok. 200–500 zł/mc przy małej działalności; więcej przy VAT i imporcie usług). Samoobsługa (inFakt/Fakturownia) ma sens tylko przy bardzo małej liczbie transakcji — przy imporcie usług, OSS/IOSS i wielu domenach ryzyko błędu jest za duże.
 
 ## 5. Ewidencja kosztów specyficznych dla tego modelu
 
@@ -35,7 +41,7 @@ Na fazę startową: **zewnętrzne biuro rachunkowe** (ok. 200–500 zł/mc przy 
 
 ## 6. Pytania do biura rachunkowego (przed pierwszą sprzedażą)
 
-- [ ] Forma opodatkowania (skala / liniowy / ryczałt — jaka stawka ryczałtu dla handlu) przy spółce cywilnej
+- [ ] Forma opodatkowania (skala / liniowy / ryczałt — jaka stawka ryczałtu dla handlu) przy JDG (po fazie działalności nierejestrowanej)
 - [ ] Zwolnienie z VAT czy od razu czynny VAT? (import usług reklamowych, odliczenie VAT od kosztów, wymogi Stripe/dostawców, wyłączenia z art. 113 ust. 13 dla planowanych kategorii)
 - [ ] Rejestracja VAT-UE przed pierwszą fakturą od Meta/TikTok — kto i kiedy składa VAT-R
 - [ ] Dropshipping z Chin: IOSS czy DDP po stronie dostawcy; kto jest importerem; zmiany w zwolnieniu celnym 150 EUR

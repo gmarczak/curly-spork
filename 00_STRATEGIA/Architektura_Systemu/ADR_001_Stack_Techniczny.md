@@ -3,7 +3,7 @@
 | Pole | Wartość |
 |---|---|
 | Data | 2026-09-25 |
-| Status | **PRZYJĘTA — 2026-09-25** (akceptacja: wspólnik 1 / gmarczak; wspólnik 2 — do potwierdzenia) |
+| Status | **PRZYJĘTA — 2026-09-25** (akceptacja: właściciel / gmarczak) |
 | Zastępuje | „Status stacku" w `Infrastruktura.md`, Część 4 (tam nadal zostawały pary „X / Y") |
 
 ## Kontekst
@@ -28,7 +28,7 @@ Dokumenty architektury opisywały stack jako „potwierdzony", ale zostawiały o
 | DNS / domeny | **Cloudflare** jako DNS dla wszystkich domen; proxy (WAF) włączone dla API na Hetzner; dla domen na Vercel **tryb DNS-only** | proxy Cloudflare przed Vercel | Vercel odradza proxowanie przez Cloudflare (konflikty cache/certyfikatów); Vercel ma własny firewall |
 | Backend + agenci | **Hetzner VPS** (Docker Compose: Medusa, worker agentów, LiteLLM, Redis) | — | Bez zmian |
 | Płatności | **Stripe** (karty, BLIK, Apple/Google Pay); Przelewy24 dopiero jako test A/B po pierwszym GO | PayU | Jedna integracja; dostępność BLIK potwierdzić przy aktywacji konta Stripe |
-| Panel „Biuro Agentów” | **Własna aplikacja Next.js** (`04_KOD_I_INFRASTRUKTURA/panel-biuro/`): podgląd myśli, plan, sterowanie, akceptacje; dane z Langfuse, LangGraph, Redis | tylko Langfuse / LangGraph Studio | Gotowe narzędzia pokazują logi, ale nie dają sterowania ani kolejki akceptacji dla wspólników. Dodane 2026-09-25 |
+| Panel „Biuro Agentów” | **Własna aplikacja Next.js** (`04_KOD_I_INFRASTRUKTURA/panel-biuro/`): podgląd myśli, plan, sterowanie, akceptacje; dane z Langfuse, LangGraph, Redis | tylko Langfuse / LangGraph Studio | Gotowe narzędzia pokazują logi, ale nie dają sterowania ani kolejki akceptacji dla właściciela. Dodane 2026-09-25 |
 | Automatyzacje no-code (n8n) | **Nie w MVP** | — | Wraca do rozważenia, gdy pojawi się powtarzalny przepływ, którego nie opłaca się kodować |
 | Repozytorium | **Monorepo** (to repo): `04_KOD_I_INFRASTRUKTURA/medusa-backend`, `storefront-nextjs`, `ai-agents-langgraph` | 3 osobne repo / submoduły | Jedna historia zmian, prostsza praca z Claude Code |
 | CI | GitHub Actions: lint + testy + **gitleaks** (skan sekretów) na każdym PR | — | Tania, automatyczna ochrona przed wyciekiem kluczy |
@@ -68,5 +68,4 @@ Nazwy i ceny modeli zmieniają się co kilka miesięcy — **przed wdrożeniem s
 
 ## Do zatwierdzenia
 
-- [x] Wspólnik 1 (gmarczak): akceptuję — 2026-09-25
-- [ ] Wspólnik 2: akceptuję / uwagi: ___
+- [x] Właściciel (gmarczak): akceptuję — 2026-09-25

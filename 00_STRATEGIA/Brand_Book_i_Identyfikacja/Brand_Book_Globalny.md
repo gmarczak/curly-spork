@@ -4,7 +4,7 @@
 
 ## 1. Dwa poziomy marki
 
-* **Meta-marka (fabryka):** niewidoczna dla klienta końcowego. To nazwa spółki/operatora widoczna tylko w dokumentach prawnych, na fakturze, w danych rejestrowych regulaminu.
+* **Meta-marka (fabryka):** niewidoczna dla klienta końcowego. To dane operatora (na starcie: właściciel jako osoba fizyczna, potem firma JDG) widoczne tylko w dokumentach prawnych, na fakturze, w danych rejestrowych regulaminu.
 * **Marka produktowa (per sklep):** widoczna dla klienta — nazwa, logo, kolorystyka, ton głosu dopasowane do konkretnej niszy. Generowana per produkt, nie musi mieć nic wspólnego z meta-marką.
 
 ## 2. Niezmienne standardy zaufania (obowiązują każdy sklep)

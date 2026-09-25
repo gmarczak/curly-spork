@@ -13,46 +13,47 @@ Twarde zabezpieczenie niezależnie od fazy: **dzienny limit wydatków ustawiony 
 
 ## 2. Budżet startowy (przeliczony 2026-09-25)
 
-*Poprzednia wersja (~1500–3000 zł) liczyła tylko jednego kandydata i pomijała koszty stałe firmy. Pozycje w USD przeliczone po ~3,7 zł/USD. Wszystkie kwoty orientacyjne.*
+*Biznes jednoosobowy. **Do pierwszego klienta bez rejestracji firmy** (działalność nierejestrowana) — brak ZUS i stałego biura rachunkowego. Pozycje w USD po ~3,7 zł/USD. Kwoty orientacyjne.*
 
-### A. Jednorazowo — start firmy
+### A. Jednorazowo — start
 
 | Pozycja | Szacunek |
 |---|---|
-| Rejestracja spółki cywilnej (CEIDG bezpłatnie) + PCC 0,5% od wkładów | ~0–100 zł |
-| Weryfikacja wzorca regulaminu i polityk przez prawnika (jednorazowo, potem reużywalny) | ~500–1500 zł ⚠️ wycena |
-| Bufor (konto firmowe, drobne opłaty) | ~300–500 zł |
-| **Suma A** | **~800–2100 zł** |
+| Rejestracja firmy | 0 zł (dopiero po pierwszym kliencie) |
+| Weryfikacja wzorca regulaminu i polityk przez prawnika | ~500–1500 zł ⚠️ wycena |
+| Konsultacja z księgową (VAT-UE, PKWiU, limit przychodu) | ~200–500 zł |
+| Bufor (drobne opłaty) | ~300–500 zł |
+| **Suma A** | **~1000–2500 zł** |
 
-### B. Miesięcznie — koszty stałe (niezależne od liczby produktów)
+### B. Miesięcznie — koszty stałe
 
-| Pozycja | Szacunek / mc |
-|---|---|
-| Infrastruktura IT (20–75 USD, patrz `00_STRATEGIA/Architektura_Systemu/Infrastruktura.md`) | ~75–280 zł |
-| Biuro rachunkowe | ~200–500 zł |
-| Składka zdrowotna 2 wspólników (ulga na start zwalnia tylko ze składek społecznych; 2 × 432,54 zł — minimalna, zależy od formy opodatkowania) | ~865 zł |
-| **Suma B** | **~1140–1645 zł / mc** |
+| Pozycja | Faza bez firmy | Po rejestracji JDG |
+|---|---|---|
+| Infrastruktura IT (20–75 USD, patrz `00_STRATEGIA/Architektura_Systemu/Infrastruktura.md`) | ~75–280 zł | ~75–280 zł |
+| Biuro rachunkowe | 0 zł | ~200–500 zł |
+| Składka zdrowotna (ulga na start zwalnia tylko ze społecznych) | 0 zł | ~433 zł |
+| **Suma B** | **~75–280 zł / mc** | **~710–1215 zł / mc** |
 
 ### C. Na każdego kandydata produktowego
 
 | Pozycja | Szacunek |
 |---|---|
 | Test reklamowy (3–5 dni) | 500–1500 zł |
-| VAT od importu usług reklamowych (23%, jeśli jesteśmy zwolnieni z VAT — patrz `01_FINANSE_I_PRAWO/Podatki_i_Ksiegowosc/Zasady_Ksiegowe_i_VAT.md`) | 115–345 zł |
+| VAT od importu usług reklamowych (23%, przy zwolnieniu z VAT — patrz `01_FINANSE_I_PRAWO/Podatki_i_Ksiegowosc/Zasady_Ksiegowe_i_VAT.md`) | 115–345 zł |
 | Domena | 15–70 zł |
 | Grafiki AI (2–5 USD) | ~10–20 zł |
 | Próbka towaru (sprawdzenie jakości przed kampanią) | 100–300 zł |
 | **Suma C (na kandydata)** | **~740–2235 zł** |
 
-### Podsumowanie
+### Podsumowanie (faza bez firmy)
 
 | Wariant | Wzór | Kwota |
 |---|---|---|
-| Pierwszy miesiąc, 1 kandydat | A + B + 1×C | **~2,7–6,0 tys. zł** |
-| Pierwszy miesiąc, 3 kandydatów równolegle (shortlista wg procesu) | A + B + 3×C | **~4,2–10,5 tys. zł** |
-| **Rekomendowana rezerwa na pierwsze 3 miesiące** (3 testy, koszty stałe przez 3 mc) | A + 3×B + 3×C | **~6,5–13,7 tys. zł** |
+| Pierwszy miesiąc, 1 kandydat | A + B + 1×C | **~1,8–5,0 tys. zł** |
+| Pierwszy miesiąc, 3 kandydatów równolegle | A + B + 3×C | **~3,3–9,5 tys. zł** |
+| **Rekomendowana rezerwa na pierwsze 3 miesiące** (3 testy) | A + 3×B + 3×C | **~3,4–10,0 tys. zł** |
 
-Rekomendacja: zabezpieczyć rezerwę na 3 miesiące przed pierwszym testem, a testy prowadzić **po kolei albo po 2 równolegle**, żeby wnioski z pierwszego testu obniżyły koszt kolejnych. Każdy dodatkowy kandydat ponad 3 = kolejne ~0,7–2,2 tys. zł.
+Po rejestracji JDG koszty stałe rosną o ~635–935 zł/mc (ZUS zdrowotny + biuro rachunkowe) — rejestrować dopiero, gdy jest pierwszy klient i produkt po GO. Testy prowadzić **po kolei albo po 2 równolegle** (ograniczeniem jest też czas właściciela na akceptacje). Każdy kolejny kandydat = ~0,7–2,2 tys. zł.
 
 ## 3. Prognoza scenariuszowa (pierwsze 3 miesiące, orientacyjna — do aktualizacji po wyborze produktu)
 
@@ -60,7 +61,7 @@ Rekomendacja: zabezpieczyć rezerwę na 3 miesiące przed pierwszym testem, a te
 |---|---|---|
 | Pesymistyczny | Żaden z 3 pierwszych kandydatów nie osiąga GO | Wnioski dopisane do `00_STRATEGIA/Proces_Wyboru_Produktu.md`; kolejna shortlista tylko jeśli zostało ≥ 2 mc kosztów stałych w rezerwie, inaczej przegląd całego modelu |
 | Realistyczny | 1 z 3 testowanych produktów osiąga GO | Skalowanie tego produktu (marża z niego finansuje kolejne testy), test następnego kandydata |
-| Optymistyczny | 2+ produkty z GO w pierwszych 3 miesiącach | Skalowanie obu, logistyka PL/3PL dla silniejszego (`00_STRATEGIA/Business_Plan_i_Koncepcja.md`, sekcja 5.1); decyzję o sp. z o.o. przyspieszyć, jeśli rośnie ryzyko (obrót, reklamacje) — standardowo 6.–12. mc |
+| Optymistyczny | 2+ produkty z GO w pierwszych 3 miesiącach | Skalowanie obu, logistyka PL/3PL dla silniejszego (`00_STRATEGIA/Business_Plan_i_Koncepcja.md`, sekcja 5.1); rejestracja JDG od razu po pierwszym kliencie; decyzję o sp. z o.o. przyspieszyć, jeśli rośnie ryzyko (obrót, reklamacje) — standardowo 6.–12. mc |
 
 ## 4. Twarde limity kosztowe API AI (rekomendacja z `Infrastruktura.md`)
 

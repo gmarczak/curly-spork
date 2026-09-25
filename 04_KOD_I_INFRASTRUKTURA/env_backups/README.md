@@ -13,7 +13,7 @@
 
 - `SUPABASE_SERVICE_ROLE_KEY` **omija Row Level Security** — trafia wyłącznie do `medusa-backend` (i skryptów administracyjnych), **nigdy do procesu agentów**.
 - Agenci AI komunikują się z danymi sklepu przez **API Medusy z osobnym kluczem o ograniczonym zakresie** (patrz model uprawnień w ADR_001). Bezpośredni dostęp agentów do bazy: tylko rola read-only do bazy wiedzy (pgvector), filtrowana po `product_id`.
-- Klucze reklamowe (Meta/TikTok) — tokeny systemowe z minimalnymi uprawnieniami, nie osobiste konta wspólników.
+- Klucze reklamowe (Meta/TikTok) — tokeny systemowe z minimalnymi uprawnieniami, nie osobiste konto właściciela.
 
 ## Rejestr kluczy (tylko metadane — nigdy wartości)
 

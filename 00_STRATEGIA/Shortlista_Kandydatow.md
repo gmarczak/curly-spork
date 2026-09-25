@@ -1,14 +1,14 @@
 # Shortlista Kandydatów Produktowych — arkusz roboczy
 
-*Utworzono: 2026-09-25. Narzędzie do wykonania `Proces_Wyboru_Produktu.md` — to jest krok blokujący wszystko inne (kod, kampanie, cele przychodowe). Decyzję podejmują obaj wspólnicy.*
+*Utworzono: 2026-09-25. Narzędzie do wykonania `Proces_Wyboru_Produktu.md` — to jest krok blokujący wszystko inne (kod, kampanie, cele przychodowe). Decyzję podejmuje właściciel.*
 
 ## Plan: sprint wyboru w 5 dni roboczych
 
 | Dzień | Zadanie | Wynik |
 |---|---|---|
-| 1 | Research wg źródeł z sekcji 2 procesu (TikTok Creative Center, Meta Ads Library, trendy CJ/AliExpress, Google Trends, Allegro/Amazon.de). Każdy wspólnik osobno. | po 8–10 surowych pomysłów na osobę w tabeli „Lejek” |
+| 1 | Research wg źródeł z sekcji 2 procesu (TikTok Creative Center, Meta Ads Library, trendy CJ/AliExpress, Google Trends, Allegro/Amazon.de). Właściciel + agent researchu. | ≥ 15 surowych pomysłów w tabeli „Lejek” |
 | 2 | Odrzucenie wg kryteriów eliminujących (sekcja 1a procesu). Dla reszty: realne ceny rynkowe (Allegro), COGS + dostawa (CJ/AliExpress), wstępne M. | ≥ 10 kandydatów z wyliczoną M |
-| 3 | Punktacja ważona (tabela „Ocena”) — **każdy wspólnik ocenia osobno**, potem średnia. Różnice ≥ 2 pkt w kryterium = rozmowa. | ranking |
+| 3 | Punktacja ważona (tabela „Ocena”) — **właściciel ocenia sam, agent AI daje drugą ocenę niezależnie**, potem porównanie. Różnice ≥ 2 pkt w kryterium = rozmowa. | ranking |
 | 4 | Wybór 3 kandydatów z ≥ 45 pkt. Dla każdego: folder `02_PRODUKTY/P00X_Nazwa` z szablonu, zamówienie próbki, pytanie do dostawcy o magazyn UE, dane GPSR i adres zwrotów. | 3 foldery produktów, próbki zamówione |
 | 5 | Decyzja o kolejności testów (po kolei albo 2 równolegle — budżet: `01_FINANSE_I_PRAWO/Koszty_Infrastruktura/Budzet_Startowy_i_Prognoza.md`) i wpis w sekcji „Decyzja”. | kandydat nr 1 do testu |
 
@@ -93,4 +93,4 @@ M = cena − COGS − dostawa − prowizja (~1,5% + 0,40 zł) − rezerwa na zwr
 | Kandydat nr 1 do testu | |
 | Tryb testów (po kolei / 2 równolegle) | |
 | Budżet testu kandydata nr 1 | 500–1500 zł |
-| Akceptacja wspólnika 1 / wspólnika 2 | |
+| Akceptacja właściciela | |

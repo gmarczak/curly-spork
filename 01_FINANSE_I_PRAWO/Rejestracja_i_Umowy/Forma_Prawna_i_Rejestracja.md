@@ -1,52 +1,64 @@
 # Forma Prawna i Rejestracja
 
-*Nie jest to porada prawna. Przed rejestracją skonsultuj wybór z księgowym/prawnikiem — poniżej robocze porównanie do podjęcia decyzji.*
+*Aktualizacja 2026-09-25: **biznes jednoosobowy** — jeden właściciel + agenci AI. Warianty dla wspólników (spółka cywilna, umowa wspólników) usunięte. **Firmy nie rejestrujemy przed pierwszym klientem** — start jako działalność nierejestrowana. To nie jest porada prawna — punkty ⚠️ potwierdzić z księgową/prawnikiem.*
 
 ## 1. Kontekst
 
-Dwóch wspólników, brak zarejestrowanej działalności na dzień 2026-09-16, faza: przed wyborem pierwszego produktu.
+Jeden właściciel, brak zarejestrowanej działalności na dzień 2026-09-25, faza: przed wyborem pierwszego produktu. Pracę operacyjną wykonują agenci AI; właściciel podejmuje decyzje i zatwierdza akcje (kolejka akceptacji w panelu `04_KOD_I_INFRASTRUKTURA/panel-biuro/`).
 
-## 2. Porównanie form prawnych
+## 2. Porównanie form prawnych (1 osoba)
 
-| Forma | Odpowiedzialność za długi | Koszt/złożoność prowadzenia | Podatki | Ocena dla tego projektu |
+| Forma | Odpowiedzialność za długi | Koszt/złożoność | Podatki i ZUS | Ocena dla tego projektu |
 |---|---|---|---|---|
-| **2× JDG + umowa o współpracy** | każdy wspólnik całym majątkiem, tylko za swoją część | najniższa — CEIDG, książka przychodów/rozchodów lub ryczałt | PIT indywidualnie dla każdego | najszybszy start, ale brak jednego wspólnego podmiotu — trudniej podpisywać jedną umowę z dostawcą/bramką płatności |
-| **Spółka cywilna** | obaj wspólnicy całym majątkiem, solidarnie | niska — jeden NIP/REGON spółki, księgowość może być uproszczona | PIT proporcjonalnie do udziałów | **rekomendowana na fazę walidacji** — jeden podmiot, niski koszt, łatwe do przekształcenia później |
-| **Spółka jawna** | całym majątkiem (subsydiarnie, po spółce) | wpis do KRS wymagany, więcej formalności niż cywilna | PIT | rzadko uzasadniona przewaga nad cywilną na tym etapie |
-| **Sp. z o.o.** | ograniczona do wniesionego kapitału (chroni majątek prywatny) | wyższa — pełna księgowość, KRS, rejestracja przez system S24 może być szybka i niedroga | CIT 9% (mały podatnik, do limitu) + PIT 19% od wypłaconej dywidendy — **uwaga: spółka powstała z przekształcenia (np. s.c.) nie może stosować 9% w roku rozpoczęcia działalności i w roku następnym** (art. 19 ust. 1a ustawy o CIT) ⚠️ | **rekomendowana po walidacji** — gdy jest realna sprzedaż, wiele domen/sklepów, kontrakty z bramkami płatności, ryzyko związane z RODO/reklamacjami |
+| **Działalność nierejestrowana** | całym majątkiem osobistym | zerowa — bez CEIDG, bez ZUS; tylko uproszczona ewidencja sprzedaży | PIT na skali w zeznaniu rocznym; **limit przychodu: 225% minimalnego wynagrodzenia na kwartał** (2026: ok. 10 800 zł/kwartał ⚠️); VAT jak niżej | **rekomendowana do pierwszego klienta / pierwszej decyzji GO** |
+| **JDG (jednoosobowa działalność gospodarcza)** | całym majątkiem osobistym | najniższa — CEIDG online, bezpłatnie; KPiR lub ryczałt | PIT: skala / liniowy 19% / ryczałt; ulga na start i preferencyjny ZUS | **po pierwszych klientach** — przed przekroczeniem limitu działalności nierejestrowanej |
+| **Jednoosobowa sp. z o.o.** | ograniczona do majątku spółki | wyższa — KRS (S24), pełna księgowość, sprawozdania | CIT 9%/19% + PIT 19% od dywidendy (lub estoński CIT). **Jedyny wspólnik płaci ZUS jak przedsiębiorca, bez ulgi na start** ⚠️ | **rekomendowana po walidacji** — gdy rośnie obrót i ryzyko (reklamacje, RODO, umowy B2B) |
+| Spółka cywilna / jawna | — | — | — | **niemożliwa** — wymaga min. 2 wspólników |
 
 ## 3. Rekomendowana ścieżka
 
-1. **Faza 0 (teraz — walidacja pierwszego produktu):** spółka cywilna (albo 2× JDG, jeśli chcecie maksymalnie odroczyć formalności) — minimalny koszt, szybki start, wystarczające do podpisania umowy z dostawcą dropshipping i otwarcia konta Stripe.
-2. **Faza 1 (po potwierdzeniu, że model działa — realna sprzedaż, plan skalowania na kilka produktów; orientacyjnie 6.–12. miesiąc, patrz `00_STRATEGIA/Business_Plan_i_Koncepcja.md`):** sp. z o.o. — ochrona majątku prywatnego wspólników, większa wiarygodność dla partnerów B2B (bramki płatności, hurtownicy).
-   * **Dwie ścieżki do porównania z księgowym:** (a) przekształcenie s.c. w sp. z o.o. — ciągłość umów i NIP, ale **bez CIT 9% przez pierwsze 2 lata podatkowe**; (b) założenie nowej sp. z o.o. i przeniesienie działalności (marki, domeny, umowy) — CIT 9% dostępny od startu, ale więcej pracy przy przenoszeniu umów i ryzyko zarzutu obejścia przepisów. ⚠️
+1. **Faza 0 (teraz → pierwszy klient):** **działalność nierejestrowana** — zero formalności i kosztów stałych (bez ZUS, bez biura rachunkowego). Wystarcza na testy reklamowe i pierwsze sprzedaże.
+   * **Limit liczy się od przychodu (sprzedaży), nie od zysku.** Przy kampaniach łatwo go przekroczyć: przy cenie 139 zł to ok. 77 zamówień na kwartał. ⚠️
+   * Po przekroczeniu limitu: wpis do CEIDG w ciągu **7 dni** od dnia przekroczenia.
+   * Obowiązki bez zmian: prawa konsumenta (odstąpienie, reklamacje), regulamin, RODO, rachunek na żądanie klienta, **uproszczona ewidencja sprzedaży** (dzień po dniu).
+   * VAT: zwolnienie podmiotowe działa, ale import usług reklamowych (Meta/TikTok) nadal wymaga rejestracji VAT-UE ⚠️ — potwierdzić z księgową przed pierwszą kampanią.
+   * Stripe i dostawcy: sprawdzić, czy przyjmują osobę fizyczną bez NIP firmy (Stripe: typ konta „individual”) ⚠️.
+2. **Faza 0,5 (po pierwszym kliencie / decyzji GO, najpóźniej przed limitem):** **JDG** — ulga na start (6 mc bez składek społecznych). Nie czekać do przekroczenia limitu przy produkcie w skalowaniu.
+3. **Faza 1 (po walidacji — realna sprzedaż, kilka produktów; orientacyjnie 6.–12. miesiąc, patrz `00_STRATEGIA/Business_Plan_i_Koncepcja.md`):** jednoosobowa sp. z o.o. — ochrona majątku prywatnego.
+   * **Dwie ścieżki do porównania z księgową:** (a) **przekształcenie JDG w sp. z o.o.** (art. 551 § 5 KSH) — ciągłość umów, NIP i zezwoleń, ale **bez CIT 9% w roku przekształcenia i w roku następnym** (art. 19 ust. 1a ustawy o CIT); (b) **nowa sp. z o.o.** i przeniesienie działalności (marki, domeny, umowy) — CIT 9% od startu, ale więcej pracy przy przenoszeniu umów. ⚠️
+   * Przed decyzją policzyć ZUS jedynego wspólnika — w wielu przypadkach wyższy niż preferencyjny ZUS w JDG. ⚠️
 
-## 4. Elementy umowy wspólników do ustalenia (przed rejestracją)
+## 4. Checklist
 
-- [ ] Podział udziałów (domyślnie 50/50 — do potwierdzenia)
-- [ ] Podział odpowiedzialności operacyjnej (kto odpowiada za co: technika/marketing/finanse)
-- [ ] Zasady wniesienia i podziału kapitału początkowego
-- [ ] Własność intelektualna (kod, marki produktowe) — do kogo należy w razie rozstania wspólników
-- [ ] Zasady wyjścia wspólnika (co się dzieje z jego udziałem)
-- [ ] Zasady podziału zysku vs. reinwestycji w nowe produkty
+**Teraz (działalność nierejestrowana):**
 
-## 5. Checklist rejestracji (spółka cywilna, wariant startowy)
+- [ ] Arkusz uproszczonej ewidencji sprzedaży (data, kwota, nr zamówienia) — prowadzony dzień po dniu
+- [ ] Monitoring przychodu kwartalnego vs limit (alarm przy 70% limitu)
+- [ ] Konsultacja z księgową: VAT-UE przy reklamach, kody PKWiU produktów
+- [ ] Konto Stripe jako osoba fizyczna (weryfikacja dostępności)
+- [ ] Regulamin z danymi sprzedawcy jako osoby fizycznej (imię, nazwisko, adres do korespondencji, e-mail)
 
-- [ ] Umowa spółki cywilnej (forma pisemna; notariusz niepotrzebny)
-- [ ] **PCC-3** — podatek od czynności cywilnoprawnych **0,5% od wartości wkładów**, deklaracja i zapłata w ciągu **14 dni** od zawarcia umowy spółki (np. wkłady 10 000 zł → 50 zł)
-- [ ] Wpis obu wspólników do CEIDG
-- [ ] Wspólny NIP i REGON spółki
-- [ ] Zgłoszenie do ZUS (składki obu wspólników)
-- [ ] Wybór formy opodatkowania (skala/ryczałt/liniowy) — konsultacja z księgowym
-- [ ] Otwarcie konta firmowego
+**Po pierwszym kliencie (JDG):**
+
+- [ ] Wpis do CEIDG (online, bezpłatnie) — kod PKD: 47.91.Z (sprzedaż detaliczna przez internet) ⚠️ potwierdzić przy rejestracji
+- [ ] Wybór formy opodatkowania (skala / liniowy / ryczałt) — konsultacja z księgową
+- [ ] Zgłoszenie do ZUS: ulga na start (tylko składka zdrowotna)
+- [ ] Konto firmowe
 - [ ] Rejestracja VAT-R (co najmniej VAT-UE — przed pierwszą fakturą za reklamy Meta/TikTok, patrz `01_FINANSE_I_PRAWO/Podatki_i_Ksiegowosc/Zasady_Ksiegowe_i_VAT.md`)
+- [ ] Nazwa firmy w CEIDG = meta-marka operatora (musi zawierać imię i nazwisko), marki produktowe osobno — patrz `00_STRATEGIA/Brand_Book_i_Identyfikacja/Brand_Book_Globalny.md`
+
+## 5. Ryzyka biznesu jednoosobowego (do zabezpieczenia)
+
+- **Odpowiedzialność całym majątkiem w JDG** — ograniczyć przez szybkie wygaszanie nierentownych produktów, twarde limity budżetu reklam i kosztów AI; rozważyć ubezpieczenie OC działalności ⚠️.
+- **Jedna osoba = jeden punkt awarii** — dostęp awaryjny (menedżer haseł z kontem awaryjnym zaufanej osoby), spisane SOP-y, agenci działający bez stałego nadzoru, ale z kolejką akceptacji.
+- **Terminy ustawowe** (14 dni na reklamację) muszą działać, gdy właściciel jest niedostępny — przypomnienia w panelu i zastępstwo.
 
 ---
 
-## 6. Aktualizacja: dofinansowania i estoński CIT (2026-09-16)
+## 6. Dofinansowania i estoński CIT
 
-Pełna analiza dostępnych dofinansowań/dotacji i ich związku z wyborem formy prawnej — patrz nowy dokument `01_FINANSE_I_PRAWO/Koszty_Infrastruktura/Dofinansowania_Dotacje_i_Sprzet_na_Firme.md`. Kluczowe punkty wpływające na decyzję z tego dokumentu:
+Pełna analiza: `01_FINANSE_I_PRAWO/Koszty_Infrastruktura/Dofinansowania_Dotacje_i_Sprzet_na_Firme.md`. Kluczowe punkty:
 
-- **Ulga na start / preferencyjny ZUS** działa tylko dla JDG/spółki cywilnej, nie dla sp. z o.o. — wzmacnia rekomendację startu jako spółka cywilna.
-- **Estoński CIT** realnie rozwiązuje problem "podwójnego opodatkowania" wskazany w sekcji 2 tego dokumentu — przy przekształceniu w sp. z o.o. efektywne opodatkowanie może spaść do ok. 20-25% (zamiast 26-34% w klasycznym CIT), pod warunkiem spełnienia wymogów zatrudnienia i struktury przychodów.
-- **Platformy Startowe (do 600 000 zł)** wymagają formy sp. z o.o. i dostępne są tylko w woj. Polska Wschodnia — jeśli to Wasz region, może to być argument za wcześniejszym przejściem na sp. z o.o. niż zakładano.
+- **Ulga na start / preferencyjny ZUS** — tylko JDG, nie sp. z o.o. — wzmacnia rekomendację startu jako JDG.
+- **Estoński CIT** przy sp. z o.o. wymaga zatrudnienia min. 3 osób niebędących udziałowcami — przy modelu „1 osoba + AI” zwykle nieosiągalne na starcie.
+- **Platformy Startowe (do 600 000 zł)** wymagają sp. z o.o. i siedziby w Polsce Wschodniej — jeśli to Twój region, argument za wcześniejszą sp. z o.o.

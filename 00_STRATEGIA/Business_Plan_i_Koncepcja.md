@@ -16,7 +16,9 @@ Grupa docelowa i rynki startowe są zależne od wybranego produktu i zostaną wy
 
 ## 3. Struktura właścicielska
 
-Dwóch wspólników (50/50 — do potwierdzenia w umowie wspólników, patrz `01_FINANSE_I_PRAWO/Rejestracja_i_Umowy/Forma_Prawna_i_Rejestracja.md`). Forma prawna: start jako **spółka cywilna** (rekomendacja; 2× JDG + umowa to wariant awaryjny), docelowo sp. z o.o. po walidacji.
+**Biznes jednoosobowy z użyciem AI.** Jeden właściciel podejmuje decyzje i zatwierdza akcje agentów; pracę operacyjną (branding, treści, kreacje, obsługa klienta, przekazywanie zamówień) wykonują agenci AI. Forma prawna: **do pierwszego klienta bez rejestracji firmy** (działalność nierejestrowana), potem **JDG**, docelowo jednoosobowa sp. z o.o. po walidacji (patrz `01_FINANSE_I_PRAWO/Rejestracja_i_Umowy/Forma_Prawna_i_Rejestracja.md`).
+
+**Model pracy właściciela:** codziennie ~30–60 min na kolejkę akceptacji i przegląd KPI w panelu `04_KOD_I_INFRASTRUKTURA/panel-biuro/`; raz w tygodniu decyzje go/no-go i wybór kolejnych kandydatów. Wszystko, co agent może zrobić bez ryzyka finansowego lub prawnego, robi sam (uprawnienia: `Architektura_Systemu/ADR_001_Stack_Techniczny.md`).
 
 ## 4. Jak zarabia fabryka (model biznesowy)
 
@@ -40,7 +42,7 @@ Dwóch wspólników (50/50 — do potwierdzenia w umowie wspólników, patrz `01
 
 ### 5.1 Decyzja logistyczna (model dostawy wg etapu produktu)
 
-*Progi orientacyjne — do potwierdzenia przez wspólników po pierwszych danych.*
+*Progi orientacyjne — do potwierdzenia przez właściciela po pierwszych danych.*
 
 | Etap produktu | Model logistyki | Warunek przejścia na kolejny etap |
 |---|---|---|
@@ -52,27 +54,29 @@ Zwroty w każdym modelu: adres zwrotów w PL/UE (patrz `05_OPERACJE_I_ARCHIWUM/P
 
 ## 6. Cele na pierwsze 6 i 12 miesięcy
 
-*Cele PRZYJĘTE 2026-09-25 (akceptacja: wspólnik 1 / gmarczak; wspólnik 2 — do potwierdzenia). Cele przychodowe dopisać po pierwszym teście, gdy znana będzie realna M i CPA.*
+*Cele PRZYJĘTE 2026-09-25 (akceptacja: właściciel / gmarczak). Cele przychodowe dopisać po pierwszym teście, gdy znana będzie realna M i CPA.*
 
 | Okres | Cele procesowe (mierzalne) | Cele finansowe |
 |---|---|---|
-| **0–1 mc** | ≥ 10 kandydatów ocenionych w `Shortlista_Kandydatow.md`, 3 na shortliście (≥ 45 pkt); s.c. zarejestrowana; ADR_001 zatwierdzony; stack uruchomiony (storefront + Medusa + Stripe w trybie testowym) | wydatki w granicach budżetu startowego |
-| **1–3 mc** | ≥ 3 testy reklamowe zakończone decyzją; ≥ 1 decyzja GO; pierwsze realne zamówienia i pierwsza iteracja SOP | CPA ≤ 100% M dla produktu po GO |
+| **0–1 mc** | ≥ 10 kandydatów ocenionych w `Shortlista_Kandydatow.md`, 3 na shortliście (≥ 45 pkt); ewidencja sprzedaży i regulamin gotowe (bez rejestracji firmy); ADR_001 zatwierdzony; stack uruchomiony (storefront + Medusa + Stripe w trybie testowym) | wydatki w granicach budżetu startowego |
+| **1–3 mc** | ≥ 3 testy reklamowe zakończone decyzją; ≥ 1 decyzja GO; **pierwszy klient**; rejestracja JDG po pierwszym kliencie; pierwsza iteracja SOP | CPA ≤ 100% M dla produktu po GO |
 | **3–6 mc** | łącznie ≥ 8 testów; 1–2 produkty w fazie skalowania; pierwszy zwycięzca na logistyce PL/3PL (sekcja 5.1) | produkt(y) po GO na plusie po kosztach reklamy; ≥ 50% kosztów stałych pokryte z marży |
-| **6–12 mc** | portfel 3–5 aktywnych produktów rentownych (z 15–25 przetestowanych); decyzja o sp. z o.o. | koszty stałe i wynagrodzenia wspólników pokryte z marży (wartość docelowa: do ustalenia) |
+| **6–12 mc** | portfel 3–5 aktywnych produktów rentownych (z 15–25 przetestowanych); decyzja o sp. z o.o. | koszty stałe i wynagrodzenie właściciela pokryte z marży (wartość docelowa: do ustalenia) |
 
 ## 7. Kluczowe ryzyka
 
 * Brak zdecydowanego produktu = brak przychodu do momentu zamknięcia procesu wyboru — priorytet #1.
 * Koncentracja na jednym kanale reklamowym (ryzyko blokady konta Meta/TikTok).
 * Koszty AI/infrastruktury rosnące bez kontroli przy błędach agentów — patrz wymóg monitoringu LLM w `Architektura_Systemu/Infrastruktura.md`.
-* Odpowiedzialność osobista wspólników w fazie przed sp. z o.o.
+* Odpowiedzialność całym majątkiem osobistym (działalność nierejestrowana i JDG — faza przed sp. z o.o.).
+* Przekroczenie limitu przychodu działalności nierejestrowanej przy udanej kampanii — alarm przy 70% limitu, JDG przed przekroczeniem.
+* Jedna osoba = jeden punkt awarii: choroba/urlop właściciela nie może zatrzymać obsługi reklamacji (termin 14 dni) — dostęp awaryjny i przypomnienia w panelu.
+* Ograniczony czas właściciela — liczba równoległych testów zależy od przepustowości kolejki akceptacji, nie tylko od budżetu.
 
 ## 8. Otwarte decyzje (checklist)
 
 - [ ] Wybór pierwszego produktu/niszy (patrz `Proces_Wyboru_Produktu.md`)
 - [ ] Grupa docelowa i rynek startowy dla tego produktu
-- [ ] Podpisanie umowy wspólników
-- [ ] Rejestracja formy prawnej
+- [ ] Rejestracja JDG — **dopiero po pierwszym kliencie**
 - [ ] Wybór dostawcy/modelu logistyki dla pierwszego produktu
 - [ ] Konfiguracja kont API (Stripe, dostawcy modeli AI) — patrz `04_KOD_I_INFRASTRUKTURA/env_backups/README.md`

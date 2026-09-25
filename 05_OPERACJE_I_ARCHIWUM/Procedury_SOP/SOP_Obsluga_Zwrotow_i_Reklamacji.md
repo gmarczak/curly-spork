@@ -1,6 +1,6 @@
 # SOP: Obsługa Zwrotów i Reklamacji
 
-*Model docelowy: Agent Wsparcia jako pierwsza linia, eskalacja do wspólnika w określonych przypadkach (potwierdzone w wywiadzie projektowym).*
+*Model docelowy: Agent Wsparcia jako pierwsza linia, eskalacja do właściciela w określonych przypadkach (potwierdzone w wywiadzie projektowym).*
 
 ## 1. Zwrot w ramach 14-dniowego prawa odstąpienia (konsument UE)
 
@@ -12,12 +12,12 @@
 
 ## 2. Reklamacja (towar niezgodny z opisem/uszkodzony)
 
-0. **Termin ustawowy: 14 dni na odpowiedź na reklamację. Brak odpowiedzi w terminie = reklamacja uznana.** Data wpływu reklamacji zapisywana w zamówieniu w Medusie; przypomnienie dla wspólnika po 7 dniach, jeśli sprawa nie jest zamknięta.
+0. **Termin ustawowy: 14 dni na odpowiedź na reklamację. Brak odpowiedzi w terminie = reklamacja uznana.** Data wpływu reklamacji zapisywana w zamówieniu w Medusie; przypomnienie dla właściciela po 7 dniach (i po 12 dniach — ostatnia szansa), jeśli sprawa nie jest zamknięta.
 1. Klient opisuje problem, najlepiej ze zdjęciem.
 2. **Agent Wsparcia** ocenia typ problemu na bazie wiedzy o produkcie (RAG z pgvector).
-3. **Eskalacja do wspólnika (człowieka), gdy:**
+3. **Eskalacja do właściciela (człowieka), gdy:**
    - klient jest niezadowolony po 2 wymianach z agentem,
-   - żądana kwota zwrotu/rekompensaty przekracza **100 zł** (próg domyślny; wspólnicy mogą go zmienić — wtedy zaktualizować też prompt Agenta Wsparcia),
+   - żądana kwota zwrotu/rekompensaty przekracza **100 zł** (próg domyślny; właściciel może go zmienić — wtedy zaktualizować też prompt Agenta Wsparcia),
    - zgłoszenie dotyczy potencjalnego problemu bezpieczeństwa/zdrowia,
    - klient grozi działaniami prawnymi/publicznymi (media, UOKiK).
 4. **Decyzję w eskalacji podejmuje się w Medusa Admin** (notatka przy zamówieniu, tam zostają dane klienta). Dodatkowo, dla wniosków procesowych, wpis w `05_OPERACJE_I_ARCHIWUM/Zgloszenia_i_Bledy/` wg `Szablon_Zgloszenia_Bledu.md` — **bez danych osobowych** (tylko nr zamówienia, typ problemu, decyzja). Repo git nie jest miejscem na dane klientów (RODO).
@@ -25,4 +25,4 @@
 
 ## 3. Zasada ogólna eskalacji (potwierdzona z właścicielem)
 
-Model: **agent + eskalacja do człowieka.** Agent obsługuje pierwszą linię (odpowiedzi na pytania, standardowe zwroty w terminie), człowiek (wspólnik) rozstrzyga przypadki niestandardowe, kosztowe lub reputacyjnie ryzykowne.
+Model: **agent + eskalacja do człowieka.** Agent obsługuje pierwszą linię (odpowiedzi na pytania, standardowe zwroty w terminie), człowiek (właściciel) rozstrzyga przypadki niestandardowe, kosztowe lub reputacyjnie ryzykowne.
