@@ -10,7 +10,7 @@ Efekt końcowy: ikona na pulpicie → panel „Biuro Agentów” (Vercel) → da
 
 ## Koszt (szacunek)
 
-- Hetzner CX22: ok. 5 €/mc.
+- Hetzner CPX22 (2 vCPU, 4 GB, Falkenstein): **24,59 €/mc z VAT** (cena z konsoli 2026-09-25; seria CX była niedostępna).
 - Vercel Hobby: 0 zł na start ⚠️ przy komercyjnym użyciu warunki planu do sprawdzenia.
 - Domena: **niepotrzebna na start.** Panel: link z Vercel. API agentów: adres `https://<IP-z-myślnikami>.sslip.io` (darmowy DNS wskazujący na IP serwera; Caddy dostaje dla niego certyfikat HTTPS).
 
@@ -40,6 +40,11 @@ Skrypt instaluje Dockera i zaporę, pobiera kod, pyta o `PANEL_API_TOKEN` (i opc
    - `deploy/.env.litellm` — `ANTHROPIC_API_KEY`, `LITELLM_MASTER_KEY`, opcjonalnie `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY`.
 5. Start: `docker compose -f docker-compose.prod.yml up -d --build`
 6. Test: `curl https://1-2-3-4.sslip.io/health` → `{"ok":true}`.
+
+## Stan wdrożenia (2026-09-25)
+
+- Serwer `agenci`: Hetzner CPX22, Falkenstein, IP `167.233.112.182`, API: `https://167-233-112-182.sslip.io` — uruchomiony skryptem `bootstrap.sh`.
+- Panel: `https://biuro-agentow.vercel.app` z `AGENTS_API_URL` ustawionym na serwer.
 
 ## Krok 2 — panel na Vercel (zrobione 2026-09-25)
 

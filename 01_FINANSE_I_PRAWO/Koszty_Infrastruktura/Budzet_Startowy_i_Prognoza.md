@@ -29,10 +29,10 @@ Twarde zabezpieczenie niezależnie od fazy: **dzienny limit wydatków ustawiony 
 
 | Pozycja | Faza bez firmy | Po rejestracji JDG |
 |---|---|---|
-| Infrastruktura IT (20–75 USD, patrz `00_STRATEGIA/Architektura_Systemu/Infrastruktura.md`) | ~75–280 zł | ~75–280 zł |
+| Infrastruktura IT — serwer agentów Hetzner CPX22 24,59 €/mc (≈ 105 zł) + reszta 0–50 USD (patrz `00_STRATEGIA/Architektura_Systemu/Infrastruktura.md`) | ~105–290 zł | ~105–290 zł |
 | Biuro rachunkowe | 0 zł | ~200–500 zł |
 | Składka zdrowotna (ulga na start zwalnia tylko ze społecznych) | 0 zł | ~433 zł |
-| **Suma B** | **~75–280 zł / mc** | **~710–1215 zł / mc** |
+| **Suma B** | **~105–290 zł / mc** | **~740–1225 zł / mc** |
 
 ### C. Na każdego kandydata produktowego
 
@@ -51,7 +51,7 @@ Twarde zabezpieczenie niezależnie od fazy: **dzienny limit wydatków ustawiony 
 |---|---|---|
 | Pierwszy miesiąc, 1 kandydat | A + B + 1×C | **~1,8–5,0 tys. zł** |
 | Pierwszy miesiąc, 3 kandydatów równolegle | A + B + 3×C | **~3,3–9,5 tys. zł** |
-| **Rekomendowana rezerwa na pierwsze 3 miesiące** (3 testy) | A + 3×B + 3×C | **~3,4–10,0 tys. zł** |
+| **Rekomendowana rezerwa na pierwsze 3 miesiące** (3 testy) | A + 3×B + 3×C | **~3,5–10,0 tys. zł** |
 
 Po rejestracji JDG koszty stałe rosną o ~635–935 zł/mc (ZUS zdrowotny + biuro rachunkowe) — rejestrować dopiero, gdy jest pierwszy klient i produkt po GO. Testy prowadzić **po kolei albo po 2 równolegle** (ograniczeniem jest też czas właściciela na akceptacje). Każdy kolejny kandydat = ~0,7–2,2 tys. zł.
 
