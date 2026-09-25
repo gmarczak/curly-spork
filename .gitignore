@@ -10,6 +10,8 @@
 *.pem
 *.key
 secrets/
+.env.agents
+.env.litellm
 
 # Folder backupów env: w repo zostaje wyłącznie README z zasadami
 04_KOD_I_INFRASTRUKTURA/env_backups/*

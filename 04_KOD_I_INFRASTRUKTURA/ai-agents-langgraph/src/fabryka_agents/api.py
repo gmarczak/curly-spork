@@ -4,12 +4,14 @@ Uruchomienie: uvicorn fabryka_agents.api:app
 """
 
 import secrets
+import uuid
 from collections.abc import Awaitable, Callable
 from typing import Any
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Request
 from pydantic import BaseModel, ValidationError
 
+from .activity import AGENT_NAMES, Panel, snapshot
 from .config import Settings, get_settings
 from .events import MedusaEvent
 from .security import verify
@@ -22,7 +24,7 @@ class Decision(BaseModel):
     decision: Any
 
 
-def create_app(settings: Settings, enqueue: Enqueue, dedup: Dedup, approvals: Approvals) -> FastAPI:
+def create_app(settings: Settings, enqueue: Enqueue, dedup: Dedup, approvals: Approvals, panel: Panel) -> FastAPI:
     app = FastAPI(title="Fabryka — agenci AI")
 
     def panel_auth(authorization: str | None = Header(default=None)) -> None:
@@ -60,6 +62,26 @@ def create_app(settings: Settings, enqueue: Enqueue, dedup: Dedup, approvals: Ap
         await enqueue("resume_graph", thread_id=thread_id, graph=item["graph"], decision=body.decision)
         return {"status": "resumed"}
 
+    @app.get("/panel/state", dependencies=[Depends(panel_auth)])
+    async def panel_state() -> dict:
+        return snapshot(panel, approvals.list())
+
+    @app.post("/panel/agents/{agent}/{action}", dependencies=[Depends(panel_auth)])
+    async def agent_control(agent: str, action: str) -> dict:
+        if agent not in AGENT_NAMES or action not in ("pause", "resume"):
+            raise HTTPException(status_code=404, detail="Nieznany agent lub akcja")
+        (panel.pause if action == "pause" else panel.resume)(agent)
+        panel.log(agent, "info", "Wstrzymany przez właściciela." if action == "pause" else "Wznowiony przez właściciela.")
+        return {"agent": agent, "paused": panel.is_paused(agent)}
+
+    @app.post("/panel/demo/order", dependencies=[Depends(panel_auth)], status_code=202)
+    async def demo_order() -> dict:
+        """Testowe zamówienie przez prawdziwy przepływ: worker → Agent Fulfillmentu → (brak dostawcy) → akceptacja."""
+        order_id = f"demo_{uuid.uuid4().hex[:8]}"
+        event = {"id": f"demo:{order_id}", "name": "order.placed", "data": {"id": order_id, "demo": True}}
+        await enqueue("handle_event", event)
+        return {"status": "queued", "order_id": order_id}
+
     return app
 
 
@@ -68,6 +90,7 @@ def _default_app() -> FastAPI:
     from arq import create_pool
     from arq.connections import RedisSettings
 
+    from .activity import RedisPanel
     from .store import RedisApprovals, RedisDedup
 
     settings = get_settings()
@@ -80,7 +103,7 @@ def _default_app() -> FastAPI:
             pool = await create_pool(RedisSettings.from_dsn(settings.redis_url))
         return await pool.enqueue_job(job, *args, **kwargs)
 
-    return create_app(settings, enqueue, RedisDedup(r), RedisApprovals(r))
+    return create_app(settings, enqueue, RedisDedup(r), RedisApprovals(r), RedisPanel(r))
 
 
 def __getattr__(name: str):

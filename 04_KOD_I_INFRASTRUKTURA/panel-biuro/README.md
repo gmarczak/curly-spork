@@ -1,34 +1,31 @@
-# panel-biuro — Biuro Agentów
+# panel-biuro — Biuro Agentów na żywo
 
-Panel do podglądu i sterowania agentami AI. Status: **prototyp na danych przykładowych** (`biuro.html` — stan na dziś: realni agenci tej sesji Claude Code, realny plan i decyzje).
+Aplikacja Next.js 16. Status: **działa lokalnie z prawdziwym serwisem agentów**. Sprawdzone w przeglądarce: logowanie, testowe zamówienie, decyzja „Ponów”, dziennik na żywo.
 
-## Co ma robić
+## Co pokazuje
 
-- **Biuro:** każdy agent to biurko ze statusem (pracuje / czeka na człowieka / błąd / wstrzymany), bieżącym zadaniem, ostatnią myślą i kosztem.
-- **Szczegóły agenta:** myśli i działania na żywo, plan zadania krok po kroku, uprawnienia (ADR-001), limit kosztów.
-- **Sterowanie:** wstrzymaj / wznów, ponów krok, przerwij zadanie, polecenie tekstowe, zmiana dziennego limitu.
-- **Plan pracy:** tablica zadań (Do zrobienia → W trakcie → Czeka na akceptację → Zrobione).
-- **Do akceptacji:** decyzje, których agent nie może podjąć sam (kampania, zwrot > 100 zł, błąd dostawcy).
+- **Zespół:** 4 agentów, status (pracuje / czeka na Ciebie / błąd / wolny / wstrzymany), bieżące zadanie, ostatnia myśl.
+- **Myśli i działania:** dziennik kroków agentów, odświeżany co 3 s.
+- **Czeka na Ciebie:** decyzje z przyciskami (Ponów / Obsłużę ręcznie; odpowiedź dla klienta; Zatwierdź / Popraw / Odrzuć).
+- **Sterowanie:** Wstrzymaj / Wznów agenta; „Wyślij testowe zamówienie” (prawdziwy przepływ przez worker).
 
-## Wersja docelowa — skąd dane
+## Jak działa
 
-| Element panelu | Źródło |
-|---|---|
-| Myśli, wywołania narzędzi, koszt | Langfuse (API tras) |
-| Stan i plan agenta | LangGraph — checkpointer w Postgres (Supabase) |
-| Kolejka i status zadań | Redis + `arq` |
-| Akceptacje | przerwania LangGraph (`interrupt`) → decyzja w panelu wznawia graf |
-| Wstrzymanie / limit | flaga w Redis + budżet klucza w LiteLLM |
-| Plan pracy | tabela zadań w Postgres |
+- Przeglądarka → API Next.js (`src/app/api/*`) → serwis agentów (`/panel/state`, `/approvals`, `/panel/agents/...`). Token API zostaje na serwerze.
+- Logowanie hasłem właściciela (`PANEL_PASSWORD`), sesja podpisana `SESSION_SECRET`.
 
-## Technologia
+## Lokalnie
 
-- Next.js (ten sam stack co storefront), osobna aplikacja w tym folderze.
-- Dostęp tylko dla właściciela (logowanie Supabase Auth, 2FA).
-- Aktualizacje na żywo: Server-Sent Events z serwisu agentów.
-- Wszystkie akcje sterujące idą przez API serwisu agentów — panel nie ma kluczy do Medusy ani modeli AI.
+```bash
+# agenci (patrz ai-agents-langgraph/README.md)
+redis-server &
+cd ../ai-agents-langgraph && PANEL_API_TOKEN=dev uvicorn fabryka_agents.api:app --port 8000 &
+PANEL_API_TOKEN=dev arq fabryka_agents.worker.WorkerSettings &
+# panel
+cd ../panel-biuro && cp .env.example .env.local   # AGENTS_API_URL, PANEL_API_TOKEN=dev, hasło, sekret
+npm install && npm run dev                          # http://localhost:3100
+```
 
-## Gotowe narzędzia opensource (uzupełniają panel, nie zastępują)
+Wdrożenie na serwer i Vercel: `../deploy/README.md`.
 
-- Langfuse — szczegółowe logi i koszty.
-- LangGraph Studio (`langgraph dev`) — graf agenta przy debugowaniu.
+`biuro.html` — statyczny zrzut stanu z sesji Claude Code (25.09), zostaje jako historia.

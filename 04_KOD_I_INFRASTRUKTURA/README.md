@@ -7,7 +7,7 @@ Ten folder zawiera trzy współpracujące komponenty kodu wspólnego silnika —
 | `medusa-backend/` | Silnik e-commerce: katalog, zamówienia, płatności (Stripe), integracja z kurierami/dostawcami | MedusaJS (Node.js/TypeScript) | Hetzner VPS |
 | `storefront-nextjs/` | Frontend wielodomenowy — rozpoznaje domenę klienta i renderuje odpowiedni sklep | Next.js | Vercel |
 | `ai-agents-langgraph/` | Zespół agentów AI (Onboarding/Branding, Support, Marketing, Fulfillment) | LangGraph (Python) + kolejka Redis/`arq` + LiteLLM | Hetzner VPS (osobny proces/worker) |
-| `panel-biuro/` | Biuro Agentów: podgląd myśli i planu agentów, sterowanie, akceptacje (obecnie: `biuro.html`) | Next.js | Vercel (dostęp tylko dla właściciela) |
+| `panel-biuro/` | Biuro Agentów na żywo: status agentów, dziennik działań, akceptacje, wstrzymywanie | Next.js | Vercel (dostęp tylko dla właściciela) |
 | `env_backups/` | Tylko README z zasadami — same backupy trzymamy w menedżerze haseł, poza repo (blokuje to root `.gitignore`) | — | menedżer haseł / szyfrowany backup poza repo |
 
 ## Jak te repozytoria się łączą
@@ -19,7 +19,7 @@ Ten folder zawiera trzy współpracujące komponenty kodu wspólnego silnika —
 
 ## Status na dzień 2026-09-25
 
-Szkielet kodu gotowy (2026-09-25): serwis agentów (21 testów), Medusa (typecheck + build), storefront (typecheck + build + routing domen), `docker-compose.yml`, CI w `.github/workflows/ci.yml`. Brakuje elementów zależnych od produktu: dostawca, checkout, baza wiedzy, treści — patrz README w podfolderach.
+Szkielet kodu gotowy (2026-09-25): serwis agentów (21 testów), Medusa (typecheck + build), storefront (typecheck + build + routing domen), `docker-compose.yml`, CI w `.github/workflows/ci.yml`. Panel na żywo (`panel-biuro/`) + wdrożenie na serwer: `deploy/README.md`. Brakuje elementów zależnych od produktu: dostawca, checkout, baza wiedzy, treści — patrz README w podfolderach.
 
 ## Rekomendowane dodatki (patrz `Infrastruktura.md` Część 4)
 

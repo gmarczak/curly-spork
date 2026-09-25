@@ -1,6 +1,6 @@
 # ai-agents-langgraph
 
-Serwis agentów AI (Python, LangGraph). Status: **szkielet działa i jest przetestowany** (21 testów), bez podłączonego dostawcy i modeli.
+Serwis agentów AI (Python, LangGraph). Status: **szkielet działa i jest przetestowany** (24 testy), bez podłączonego dostawcy i modeli.
 
 ## Co jest
 
@@ -11,6 +11,7 @@ Serwis agentów AI (Python, LangGraph). Status: **szkielet działa i jest przete
 | `src/fabryka_agents/graphs/fulfillment.py` | zamówienie → dostawca → nr w Medusie; po 2 błędach pauza i pytanie do właściciela |
 | `src/fabryka_agents/graphs/support.py` | eskalacje deterministyczne (zwrot > 100 zł, groźby prawne, zdrowie); odpowiedź tanim modelem, maks. 3 zdania |
 | `src/fabryka_agents/graphs/draft_approve.py` | Onboarding i Marketing: szkic → akceptacja właściciela (publikacja / start kampanii) |
+| `src/fabryka_agents/activity.py`, `narration.py` | statusy agentów, dziennik „myśli i działań”, pauza — dla panelu (`GET /panel/state`, `POST /panel/agents/{id}/pause\|resume`, `POST /panel/demo/order`) |
 | `src/fabryka_agents/permissions.py` | tabela uprawnień z ADR-001; akcje tylko dla człowieka |
 | `litellm.config.yaml` | poziomy modeli: `tani`, `kreatywny`, `analityczny` |
 

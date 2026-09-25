@@ -1,0 +1,50 @@
+# Serwer (Hetzner VPS): serwis agentów + worker + Redis + LiteLLM + Caddy (HTTPS).
+# Panel (Next.js) stoi na Vercel i łączy się z https://$AGENTS_DOMAIN.
+# Start na serwerze: cd 04_KOD_I_INFRASTRUKTURA/deploy && docker compose -f docker-compose.prod.yml up -d --build
+services:
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: [redis:/data]
+    restart: unless-stopped
+
+  litellm:
+    image: ghcr.io/berriai/litellm:main-stable
+    command: ["--config", "/app/config.yaml", "--port", "4000"]
+    env_file: .env.litellm
+    volumes: ["../ai-agents-langgraph/litellm.config.yaml:/app/config.yaml:ro"]
+    restart: unless-stopped
+
+  agents-api:
+    build: ../ai-agents-langgraph
+    env_file: .env.agents
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      LITELLM_BASE_URL: http://litellm:4000
+    depends_on: [redis]
+    restart: unless-stopped
+
+  agents-worker:
+    build: ../ai-agents-langgraph
+    command: ["arq", "fabryka_agents.worker.WorkerSettings"]
+    env_file: .env.agents
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      LITELLM_BASE_URL: http://litellm:4000
+    depends_on: [redis, litellm]
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2-alpine
+    ports: ["80:80", "443:443"]
+    environment:
+      AGENTS_DOMAIN: ${AGENTS_DOMAIN}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+    depends_on: [agents-api]
+    restart: unless-stopped
+
+volumes:
+  redis:
+  caddy_data:
