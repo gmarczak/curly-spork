@@ -29,6 +29,55 @@ Rezerwa: mata węchowa XXL (najbezpieczniejsza regulacyjnie, niższa M).
 
 **Przed dniem 3 sprintu:** ręcznie sprawdzić ceny i liczbę ofert na Allegro; ceny i magazyn UE w CJ/AliExpress; nasycenie w Meta Ads Library; kody PKWiU dla #1, #6, #9 z księgową.
 
+## Weryfikacja rynku — top 5 (agent AI, 2026-09-25, dane z sieci)
+
+*Top 5 z sesji rankingowej (spoza tego arkusza): malowanie po numerach ze zdjęcia, ostrzałka rolkowa, mata węchowa XXL, punch needle, kalimba 17.*
+
+**Dostęp do źródeł:**
+- **Allegro:** listing blokowany (DataDome, 403 z IP chmury). Liczby ofert i min/typowa/max z top 10 **nie zebrane**. Ceny i „X osób kupiło” tylko ze snippetów wyszukiwarki.
+- **AliExpress:** strony wyników OK (ceny PLN dla PL, z VAT). Strony produktów blokowane (captcha) — czasu dostawy z Chin nie odczytano; tam gdzie brak, szacunek 7–14 dni.
+- **Meta Ads Library (PL, aktywne, wszystkie reklamy):** OK. „Najstarsza” = najstarsza wśród pierwszych 30 wyników.
+- **Google Trends (PL, 12 mc):** OK.
+
+### Dane zebrane
+
+| Kandydat | Allegro (snippety) | AliExpress (cena PLN, sprzedane) | Magazyn UE | Meta Ads PL | Google Trends PL 12 mc |
+|---|---|---|---|---|---|
+| Malowanie po numerach ze zdjęcia | 30×40: 149–174,89 zł; 40×50: 45–204,90 zł; „na ramie” od 209 zł (8 sprzedawców); kupiło: 2–8 os. na ofertę | 23,59–42,59 zł najmniejszy wariant (1–3 tys.+); 129,59 zł wariant premium (5 tys.+); wysyłka od 40 zł darmowa | brak | fraza ogólna: 80 reklam, najstarsza 2024-10-30 (IPicasso), 6+ reklamodawców; „ze zdjęcia”: 11 reklam, 1 reklamodawca (Wymalujtosam.pl, od 2026-08-09) | najwyższy wolumen z 5 (śr. 52); r/r −21%; szczyt XII (2,5× lato) |
+| Ostrzałka rolkowa + magnes | cylindryczna z magnesem 79 zł; zestawy 69,90–79 zł; kupiło: do 58 os. | 61,99 zł bestseller (10 tys.+); 24,39 zł wariant podstawowy (5 tys.+); 78,39 zł 4 kąty drewno (5 tys.+) | DE: 112,99 zł, dostawa 3–7 dni | „ostrzałka rolkowa”: 27 reklam, **wszystkie od IX 2026** (Morvix 21, NaOstro 6); EN: 70 (Hatori, HORL) | „ostrzałka do noży” śr. 28,5; r/r −26%; szczyt XII (1,5×); „ostrzałka rolkowa” ≈ 0 wyszukiwań |
+| Mata węchowa XXL | XXL 40,01–54,99 zł; 49 zł supercena; kupiło: 3–41 os. | 62,59 zł duża (800+); 27–30 zł małe; 166,99 zł filcowa składana (4 tys.+) | PL: 58,79–89,79 zł, dostawa 3–7 dni (nowe oferty, 1–5 sprzedanych) | 3 reklamy (od 2026-07-14) | niski wolumen (śr. 4,2); stabilnie; szczyt XII |
+| Punch needle | 58,90–89,99 zł; 79,99 zł — kupiło 83 os. | 32,79–34,69 zł zestawy 20×20 (1 tys.+) | brak (filtr PL zwraca inne produkty) | 47 reklam, najstarsza 2025-11-26, lider Miicreative (13) | najniższy wolumen (śr. 3,1); tygodnie z zerem III–VIII; szczyt II |
+| Kalimba 17 | od 58,99 zł (model: 257 os. w 30 dni); drewniane do 119 zł; kupiło: 11–39 os. na ofertę | 52,57 zł Hluru (2 tys.+); 56,59 zł Lydesy; 75–81 zł mahoń | PL: 68,81–73,99 zł (Zenwire), dostawa 2–4 dni | 14 reklam, najstarsza 2026-08-12 | śr. 13,6; r/r ≈ 0%; szczyt XII (2×) |
+
+### Realne M (przy zwolnieniu z VAT)
+
+M = 0,935 × cena − COGS − 0,40 zł. COGS = cena detaliczna AliExpress z VAT i dostawą (górna granica; oferta CJ/hurt zwykle niższa — do sprawdzenia).
+
+| Kandydat | Cena | COGS przyjęty | Udział | M (zł) | M wcześniej | Uwaga |
+|---|---|---|---|---|---|---|
+| Malowanie ze zdjęcia | 159 | 60 (szac.: 40×50 z ramą, wariant nieodczytany) | 38% | 88,3 | 98,3 | przy COGS 45 zł: M 103 |
+| Ostrzałka rolkowa | 119 | 40 (szac.: środek 24–62) | 34% | 70,9 | 70,9–90,5 | przy COGS 62 zł: M 48,9, udział 52% → eliminacja |
+| Mata węchowa XXL | 79 | 62,59 | 79% | 10,9 | 48,5 | Allegro 40–55 zł — cena 79 nie do obrony |
+| Punch needle | 89 | 34,50 | 39% | 48,3 | 60,8 | |
+| Kalimba 17 | 79 | 56,59 (CN) / 68,81 (PL) | 72–87% | 16,9 / 4,7 | 51,5 | Allegro od 58,99 zł |
+
+### Punktacja po weryfikacji
+
+| Kandydat | Cena ×2 | Marża ×2 | Wow ×2 | Dostawca ×2 | Nasycenie ×1 | Sezonowość ×1 | Zwroty ×1 | Zgodność PL ×2 | **Suma** |
+|---|---|---|---|---|---|---|---|---|---|
+| Ostrzałka rolkowa (119 zł) | 4 | 4 | 4 | 4 | 3 | 4 | 5 | 4 | **52** |
+| Malowanie ze zdjęcia (159 zł) | 5 | 3 | 5 | 3 | 3 | 3 | 4 | 4 | **50** |
+| Punch needle (89 zł) | 4 | 3 | 4 | 3 | 4 | 2 | 4 | 4 | **46** |
+| Mata węchowa XXL (79 zł) | 2 | 1 | 3 | 3 | 5 | 4 | 5 | 5 | 42 ✗ |
+| Kalimba 17 (79 zł) | 3 | 1 | 4 | 4 | 5 | 3 | 4 | 3 | 42 ✗ |
+
+✗ = eliminacja (Marża < 3).
+
+**Najważniejsze ryzyka:**
+- Ostrzałka: 2 polskie marki (Morvix, NaOstro) testują ten sam produkt od IX 2026. Allegro kotwiczy cenę na 79 zł. Wynik zależy od COGS — zapytać CJ o wariant z magnetyczną podstawą.
+- Malowanie ze zdjęcia: brak magazynu UE; personalizacja wydłuża dostawę. Personalizacja może wyłączać prawo odstąpienia ⚠️ do weryfikacji z prawnikiem. Nie kierować do dzieci (EN71).
+- Punch needle: bardzo mały wolumen wyszukiwań i martwy sezon III–VIII.
+
 ## Lejek (surowe pomysły)
 
 | # | Pomysł | Kto znalazł | Źródło (link) | Kryterium eliminujące? | Dalej? |
