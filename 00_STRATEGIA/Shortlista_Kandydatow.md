@@ -133,13 +133,44 @@ M = cena − COGS − dostawa − prowizja (~1,5% + 0,40 zł) − rezerwa na zwr
 
 *W komórkach wpisuj ocenę 1–5; suma = Σ ocena × waga. Przykład wypełnienia: `02_PRODUKTY/P001_Poduszka_Ergonomiczna_PRZYKLAD/Specyfikacja.md`, sekcja 5 (54/65).*
 
+## Dzień 5 — porównanie finalistów (agent AI, 2026-09-25)
+
+| Kryterium | P002 Malowanie ze zdjęcia | P003 Punch needle |
+|---|---|---|
+| M (= maks. CPA) | 88,3 zł (szac., COGS 60 zł) | 48,3 zł |
+| Punkty | 50 | 46 |
+| Popyt (Google Trends, śr. 12 mc) | 52 — najwyższy z top 5 | 3,1 — najniższy |
+| Siła hooka | bardzo wysoka (zdjęcie → obraz) | wysoka (ASMR), węższa grupa |
+| Ryzyko prawne | średnie: RODO (zdjęcia do Chin) ⚠️, zwroty personalizacji ⚠️ | niskie |
+| Czas dostawy | 12–20 dni (szac.) | 7–14 dni (szac.) |
+| Okno sezonu | IX–XII, szczyt XII | X–II |
+
+**Rekomendacja agenta:** P002 jako nr 1. Wyższa M daje 1,8× więcej miejsca na CPA. Popyt jest ok. 17× większy. Szczyt przypada na XII — test musi ruszyć do końca X.
+P003 jako nr 2, zaraz po decyzji dla P002. Sezon trwa do II, więc start w XI nic nie traci.
+
+**Warunki przed startem P002:**
+- Realny COGS z wyceny ≤ 63 zł. Przeliczyć M i wpisać próg GO w sekcji 6 `02_PRODUKTY/P002_Malowanie_Ze_Zdjecia/Specyfikacja.md` **przed** startem.
+- Rozwiązana kwestia RODO (patrz lista niżej).
+
+### Lista przed pierwszą kampanią
+
+- [ ] Konsultacja z księgową: PKWiU P002/P003, VAT-UE i 23% VAT od reklam Meta, limit działalności nierejestrowanej ⚠️.
+- [ ] Konsultacja z prawnikiem: przekazanie zdjęć klientów do dostawcy w Chinach (albo własny szablon), wyłączenie zwrotu dla personalizacji ⚠️.
+- [ ] Regulamin i polityka prywatności z danymi osoby fizycznej.
+- [ ] Konto Stripe jako osoba fizyczna (karty, BLIK).
+- [ ] Arkusz ewidencji sprzedaży z alarmem przy 70% limitu kwartalnego.
+- [ ] Próbka P002 odebrana: zdjęcia i wideo do kreacji.
+- [ ] Domena, landing, piksel Meta + Conversions API.
+- [ ] Na stronie: czas realizacji i ostatni dzień zamówień z dostawą przed świętami, dane GPSR.
+
 ## Decyzja
 
 | Pole | Wartość |
 |---|---|
-| Data decyzji | |
+| Data decyzji | *(rekomendacja agenta 2026-09-25 — czeka na akceptację)* |
 | Shortlista (3 kandydatów, ID folderów) | P002 Malowanie ze zdjęcia, P003 Punch needle; ostrzałka rolkowa czeka na wycenę CJ (warunek: COGS ≤ 45 zł) |
-| Kandydat nr 1 do testu | |
-| Tryb testów (po kolei / 2 równolegle) | |
-| Budżet testu kandydata nr 1 | 500–1500 zł |
+| Kandydat nr 1 do testu | P002 Malowanie ze zdjęcia (rekomendacja) |
+| Tryb testów (po kolei / 2 równolegle) | po kolei: P002 → P003 (rekomendacja) |
+| Budżet testu kandydata nr 1 | 1000 zł reklam + VAT 23% = 1230 zł; 5 dni × 200 zł (rekomendacja) |
+| Próg GO | CPA ≤ M P002 po realnej wycenie (dziś 88,3 zł, szac.); progi: `Proces_Wyboru_Produktu.md`, sekcja 4 |
 | Akceptacja właściciela | |
