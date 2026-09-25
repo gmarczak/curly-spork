@@ -28,7 +28,7 @@ Oceń każdego kandydata w skali 1–5 na poniższych kryteriach. Suma decyduje 
 
 1. **Shortlist:** wybierz 3–5 kandydatów spełniających checklistę z pkt 1.
 2. **Wypełnij `02_PRODUKTY/_SZABLON_PRODUKTU/Specyfikacja.md`** dla każdego (kopiuj folder szablonu jako nowy `P00X_Nazwa`).
-3. **Agent Onboardingu/Brandingu** generuje landing page + 3–5 wariantów kreacji reklamowych dla każdego kandydata (patrz `Prompty_dla_Agentow/Szablon_Promptow_Systemowych.md`).
+3. **Agent Onboardingu/Brandingu** generuje markę i landing page, a **Agent Marketingowy** 3–5 wariantów kreacji reklamowych dla każdego kandydata (patrz `02_PRODUKTY/_SZABLON_PRODUKTU/Prompty_dla_Agentow/Szablon_Promptow_Systemowych.md`).
 4. **Mini-test reklamowy:** budżet testowy zgodnie z `01_FINANSE_I_PRAWO/Koszty_Infrastruktura/Budzet_Startowy_i_Prognoza.md` (500–1500 zł na kandydata), czas trwania 3–5 dni.
 5. **Decyzja go/no-go** na podstawie: CTR kreacji, koszt za dodanie do koszyka, koszt za zamówienie (CPA) względem zakładanej marży.
 6. **Zwycięzca** przechodzi do pełnego uruchomienia — patrz `05_OPERACJE_I_ARCHIWUM/Procedury_SOP/SOP_Uruchomienie_Nowego_Produktu.md`.

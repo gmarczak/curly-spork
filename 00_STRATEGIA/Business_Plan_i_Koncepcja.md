@@ -12,7 +12,7 @@ Model biznesowy nie jest przywiązany do jednej kategorii produktowej. Jest przy
 
 **Pierwszy produkt/nisza: NIEUSTALONY.** Folder `02_PRODUKTY/P001_Poduszka_Ergonomiczna_PRZYKLAD` to nazwa placeholder, nie decyzja. Proces wyboru pierwszego kandydata opisuje `Proces_Wyboru_Produktu.md` w tym samym folderze — to jest krok, który trzeba wykonać przed uruchomieniem pierwszej kampanii.
 
-Grupa docelowa i rynki startowe są zależne od wybranego produktu i zostaną wypełnione w `02_PRODUKTY/_SZABLON_PRODUKTU/Specyfikacja.md` dla konkretnego kandydata. Jedyne, co jest już zdecydowane niezależnie od produktu: **Polska jako rynek startowy** (BLIK jako potwierdzona metoda płatności), z opcją ekspansji na inne kraje UE po walidacji na rynku PL.
+Grupa docelowa i rynki startowe są zależne od wybranego produktu i zostaną wypełnione w `02_PRODUKTY/_SZABLON_PRODUKTU/Specyfikacja.md` dla konkretnego kandydata. Jedyne, co jest już zdecydowane niezależnie od produktu: **Polska jako rynek startowy** (BLIK jako wymagana metoda płatności — przez Stripe, dostępność do potwierdzenia przy aktywacji konta, patrz `Architektura_Systemu/ADR_001_Stack_Techniczny.md`), z opcją ekspansji na inne kraje UE po walidacji na rynku PL.
 
 ## 3. Struktura właścicielska
 

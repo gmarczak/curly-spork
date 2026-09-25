@@ -1,5 +1,7 @@
 # Dokumentacja: Fabryka E-commerce AI (Multi-Tenant)
 
+> **Aktualizacja 2026-09-25:** wybory „X / Y” w tym dokumencie zamyka `ADR_001_Stack_Techniczny.md` (propozycja do zatwierdzenia). Tam też jest model uprawnień agentów i aktualne poziomy modeli AI. Części 1–3 zostają jako tło i uzasadnienie.
+
 ---
 
 # Część 1: Architektura i Koncepcja Systemu
@@ -18,17 +20,19 @@ Jeden centralny system e-commerce i jeden zespół agentów AI, który pozwala b
    * *Alternatywa:* Saleor (Python/Django, GraphQL).
 2. **Silnik Agentów AI (Orkiestracja):**
    * **LangGraph:** Kontrola deterministycznych procesów decyzyjnych i pętli zadań w oparciu o grafy stanów.
-   * **CrewAI:** Definiowanie ról agentów (badacz rynku, copywriter, support) i klonowanie szablonów zespołów.
+   * ~~**CrewAI**~~ — odrzucony w ADR_001 (jeden framework agentów: LangGraph).
 3. **Frontend (Strony sklepowe):**
    * **Next.js / Astro:** Jedna aplikacja frontowa z routingiem wielodomenowym (*multi-domain*). Rozpoznaje domenę, na którą wszedł klient, i w locie renderuje odpowiedni layout, kolory, teksty i checkout.
 4. **Baza danych i Pamięć AI:**
-   * **PostgreSQL / Supabase:** Centralna baza danych z mechanizmem *Row Level Security* (izolacja danych per produkt).
-   * **pgvector / Qdrant:** Baza wektorowa do wyszukiwania semantycznego (RAG) – wiedza produktowa i baza FAQ dla bota obsługi.
+   * **PostgreSQL / Supabase:** Centralna baza danych. Izolację danych sklepów (zamówienia, klienci) zapewnia Medusa przez *Sales Channels*; *Row Level Security* stosujemy tylko do tabeli bazy wiedzy agentów (filtr po `product_id`) — szczegóły w ADR_001.
+   * **pgvector:** Baza wektorowa do wyszukiwania semantycznego (RAG) – wiedza produktowa i baza FAQ dla bota obsługi. (Qdrant odrzucony w ADR_001 — pgvector wystarczy na tę skalę.)
 
 ### Główne role agentów
-* **Agent Onboardingu / Brandingu:** Generuje landing page, opisy SEO, dobiera styl wizualny i konfiguruje parametry nowego produktu w bazie.
+*Research kandydatów produktowych robią wspólnicy (`00_STRATEGIA/Proces_Wyboru_Produktu.md`), wspomagani doraźnie modelem z poziomu analitycznego — nie ma osobnego „agenta badacza rynku”. Uprawnienia każdego agenta: ADR_001.*
+
+* **Agent Onboardingu / Brandingu:** Generuje markę, landing page, opisy SEO, dobiera styl wizualny i zakłada produkt w Medusie jako szkic (publikuje człowiek).
 * **Agent Wsparcia (Support):** Doradca live-chat dla klienta; odpowiada wyłącznie w kontekście kupowanego przedmiotu i domyka koszyk.
-* **Agent Marketingowy:** Przygotowuje warianty nagłówków i treści reklam (Meta, TikTok, Google Ads) pod testy A/B.
+* **Agent Marketingowy:** Przygotowuje kreacje reklamowe — warianty nagłówków, hooków i skryptów wideo (Meta, TikTok) pod testy A/B. Kampanie uruchamia człowiek.
 * **Agent Fulfillmentu:** Po opłaceniu zamówienia automatycznie przekazuje dane wysyłki do API hurtowni lub dostawcy.
 
 ---
@@ -43,11 +47,15 @@ Jeden centralny system e-commerce i jeden zespół agentów AI, który pozwala b
 | **Backend & Agenci** | Serwer VPS (Hetzner CX22/CX32) | $15 – $30 / mc | $60 – $120 / mc |
 | **Frontend** | Vercel (Pro) lub Cloudflare Pages | $0 – $20 / mc | $20 – $40 / mc |
 | **Cache / Kolejki** | Upstash Redis lub lokalny Redis na VPS | $0 / mc | $10 – $20 / mc |
-| **SUMA STAŁA** | | **~$20 – $75 / mc** | **~$115 – $230 / mc** |
+| **Monitoring LLM** | Langfuse Cloud (plan darmowy → płatny przy skali) | $0 / mc | $0 – $60 / mc |
+| **Error tracking** | Sentry (plan darmowy → Team) | $0 / mc | $0 – $30 / mc |
+| **SUMA STAŁA** | | **~$20 – $75 / mc** | **~$115 – $320 / mc** |
+
+*Ceny planów Langfuse/Sentry przy skali — orientacyjne, sprawdzić aktualny cennik.*
 
 ### 2. Koszty zmienne zużycia AI (Tokeny API)
 * **Wdrożenie nowego produktu (jednorazowo):** Research, opisy, 20 wariantów reklam: **~$0.50 – $2.00 / produkt**.
-* **Obsługa klienta (Support Chat):** 5–8 wymian zdań na tanim modelu (np. GPT-4o-mini): **~$0.005 – $0.02 za sesję** (~$10 – $20 / mc przy 1000 rozmów).
+* **Obsługa klienta (Support Chat):** 5–8 wymian zdań na tanim modelu (np. Claude Haiku 4.5): **~$0.005 – $0.02 za sesję** (~$5 – $20 / mc przy 1000 rozmów). Stawka za sesję do przeliczenia po wyborze modelu i cennika.
 * **Analityka i generowanie nowych kreacji:** **~$15 – $40 / mc**.
 
 ### 3. Koszt uruchomienia kolejnego produktu
@@ -56,7 +64,7 @@ Jeden centralny system e-commerce i jeden zespół agentów AI, który pozwala b
 * **Abonament za kolejny sklep:** $0 (brak opłat za subskrypcje jak w Shopify).
 
 ### 4. Ukryte koszty w e-commerce (Rzeczywistość rynkowa)
-* **Prowizje bramek płatności:** Stripe / PayU / BLIK pobierają ok. **1.2% – 1.9% + 0.30–0.50 zł** od każdej transakcji (przy 20 000 zł obrotu to ok. 300–400 zł prowizji).
+* **Prowizje bramek płatności:** Stripe / Przelewy24 (BLIK, karty) pobierają ok. **1.2% – 1.9% + 0.30–0.50 zł** od każdej transakcji (przy 20 000 zł obrotu to ok. 300–400 zł prowizji).
 * **Budżet na reklamy:** Sam system nie generuje darmowego ruchu. Minimalny budżet testowy na weryfikację popytu jednego produktu to **500 – 1 500 zł**.
 
 ---
@@ -65,6 +73,8 @@ Jeden centralny system e-commerce i jeden zespół agentów AI, który pozwala b
 
 ### Złota zasada routingu
 **Nigdy nie używaj jednego modelu do wszystkiego.** 90% zadań w sklepie to proste operacje. Używanie flagowych modeli (np. GPT-4o, Claude 3.5 Sonnet) do kategoryzacji zapytań to 20-krotne przepłacanie.
+
+> **Uwaga 2026-09-25:** nazwy modeli i ceny poniżej pochodzą z pierwszej wersji dokumentu i są nieaktualne (GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 itd.). Aktualne poziomy: tabela „Modele AI” w `ADR_001_Stack_Techniczny.md`. Zasada podziału na poziomy pozostaje bez zmian.
 
 ### Podział modeli na 3 poziomy (Tiers)
 
@@ -93,19 +103,19 @@ Jeden centralny system e-commerce i jeden zespół agentów AI, który pozwala b
 # Część 4: Weryfikacja i Rekomendacje (Aktualizacja 2026-09-16)
 
 ### Status stacku
-Stack opisany w Częściach 1–3 zostaje **potwierdzony** jako punkt startowy: MedusaJS + LangGraph/CrewAI + Next.js/Astro + Supabase (PostgreSQL + pgvector), hosting Hetzner VPS (backend + agenci) + Vercel/Cloudflare Pages (frontend).
+Wybory zamyka **`ADR_001_Stack_Techniczny.md`** (propozycja do zatwierdzenia): MedusaJS v2 + LangGraph (Python) + Next.js + Supabase (PostgreSQL + pgvector), hosting Hetzner VPS (backend + agenci + LiteLLM + Redis) + Vercel (frontend), Cloudflare DNS.
 
 ### Rekomendowane uzupełnienia (braki wykryte przy weryfikacji)
 
 1. **Obserwowalność wywołań LLM (krytyczne przy agentach działających bez nadzoru):**
-   * **Langfuse** (open-source, self-hostowalny na tym samym VPS) lub **Helicone** — monitoring kosztów, latencji i jakości odpowiedzi per agent/model.
+   * **Langfuse Cloud** (decyzja ADR_001; self-host Langfuse v3 wymaga ClickHouse + Redis + S3, więc nie na małym VPS) — monitoring kosztów, latencji i jakości odpowiedzi per agent/model.
    * Bez tego "budżet bez limitu, ale proporcjonalny do sprzedaży" (patrz `01_FINANSE_I_PRAWO/Koszty_Infrastruktura/Budzet_Startowy_i_Prognoza.md`) nie da się w praktyce kontrolować — pętla decyzyjna agenta, która się zapętli, może wygenerować koszt niezauważony do końca miesiąca.
 2. **Error tracking:** **Sentry** (darmowy tier wystarczający na start) dla backendu Medusa, agentów i frontendu Next.js.
-3. **Warstwa DNS/WAF przed Vercel + Hetzner:** **Cloudflare** (darmowy plan) — ochrona przed botami/scraperami przy ruchu płatnym z reklam, dodatkowa warstwa cache, zarządzanie wieloma domenami produktowymi z jednego miejsca.
-4. **Kolejka zadań agentów:** już zasygnalizowana w Części 2 (Upstash Redis) — potwierdzam jako wymagane, nie opcjonalne, od pierwszego produktu: przetwarzanie zamówień i generowanie treści przez agentów powinno iść przez kolejkę (np. BullMQ na Redisie), nie synchronicznie, żeby błąd jednego zadania nie blokował całego systemu.
+3. **Warstwa DNS/WAF:** **Cloudflare** (darmowy plan; proxy/WAF dla API na Hetzner, dla domen na Vercel tryb DNS-only — patrz ADR_001) — ochrona przed botami/scraperami przy ruchu płatnym z reklam, dodatkowa warstwa cache, zarządzanie wieloma domenami produktowymi z jednego miejsca.
+4. **Kolejka zadań agentów:** już zasygnalizowana w Części 2 (Upstash Redis) — potwierdzam jako wymagane, nie opcjonalne, od pierwszego produktu: przetwarzanie zamówień i generowanie treści przez agentów powinno iść przez kolejkę (Redis + `arq` po stronie agentów w Pythonie — BullMQ jest biblioteką Node, patrz ADR_001), nie synchronicznie, żeby błąd jednego zadania nie blokował całego systemu.
 
 ### Decyzja: płatności
-**Stripe jako główny procesor** (BLIK, karty, Apple/Google Pay, lokalne metody UE takie jak iDEAL/Bancontact/Giropay z jednej integracji, natywny plugin do MedusaJS) — zgodne z zasadą "jeden silnik, wiele sklepów". **Przelewy24** jako opcjonalny fallback PL-only do testu A/B konwersji BLIK. Dostępność konkretnych metod płatności u dostawców zmienia się — zweryfikować przy faktycznej integracji.
+**Stripe jako główny procesor** (BLIK, karty, Apple/Google Pay, lokalne metody UE takie jak iDEAL/Bancontact/Giropay z jednej integracji, natywny plugin do MedusaJS) — zgodne z zasadą "jeden silnik, wiele sklepów". **Przelewy24** jako opcjonalny fallback PL-only do testu A/B konwersji BLIK (dopiero po pierwszym produkcie z decyzją GO). Dostępność konkretnych metod płatności u dostawców zmienia się — zweryfikować przy faktycznej integracji.
 
 ### Status kluczy API
 Konta u dostawców AI/płatności są zakładane na bieżąco, w miarę potrzeb produktowych — nie blokuje to prac architektonicznych. Zasady przechowywania kluczy: patrz `04_KOD_I_INFRASTRUKTURA/env_backups/README.md`.
