@@ -138,7 +138,7 @@ M = cena − COGS − dostawa − prowizja (~1,5% + 0,40 zł) − rezerwa na zwr
 | Pole | Wartość |
 |---|---|
 | Data decyzji | |
-| Shortlista (3 kandydatów, ID folderów) | |
+| Shortlista (3 kandydatów, ID folderów) | P002 Malowanie ze zdjęcia, P003 Punch needle; ostrzałka rolkowa czeka na wycenę CJ (warunek: COGS ≤ 45 zł) |
 | Kandydat nr 1 do testu | |
 | Tryb testów (po kolei / 2 równolegle) | |
 | Budżet testu kandydata nr 1 | 500–1500 zł |
