@@ -14,7 +14,17 @@ Efekt końcowy: ikona na pulpicie → panel „Biuro Agentów” (Vercel) → da
 - Vercel Hobby: 0 zł na start ⚠️ przy komercyjnym użyciu warunki planu do sprawdzenia.
 - Domena: **niepotrzebna na start.** Panel: link z Vercel. API agentów: adres `https://<IP-z-myślnikami>.sslip.io` (darmowy DNS wskazujący na IP serwera; Caddy dostaje dla niego certyfikat HTTPS).
 
-## Krok 1 — serwer (ok. 30 min)
+## Krok 1 — serwer (ok. 15 min)
+
+**Najprościej:** załóż serwer (Ubuntu 24.04, klucz SSH), zaloguj się `ssh root@IP` i wklej:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/gmarczak/curly-spork/main/04_KOD_I_INFRASTRUKTURA/deploy/bootstrap.sh | bash
+```
+
+Skrypt instaluje Dockera i zaporę, pobiera kod, pyta o `PANEL_API_TOKEN` (i opcjonalnie klucz Anthropic), ustawia adres `IP.sslip.io` i uruchamia usługi. Na końcu wypisuje adres API agentów.
+
+**Ręcznie (to samo krok po kroku):**
 
 1. Konto Hetzner Cloud → nowy serwer: Ubuntu 24.04, CX22, **klucz SSH** (bez hasła).
 2. Adres API bez domeny: IP `1.2.3.4` → `1-2-3-4.sslip.io` (działa od razu, bez konfiguracji DNS). Z własną domeną: rekord A `agenci.twojadomena.pl` → IP serwera.
