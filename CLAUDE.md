@@ -16,7 +16,7 @@
 - **Biznes jednoosobowy z AI:** jeden właściciel decyduje i zatwierdza, agenci AI wykonują pracę operacyjną.
 - **Firma dopiero po pierwszym kliencie:** start jako działalność nierejestrowana; JDG po pierwszych sprzedażach lub przed przekroczeniem limitu przychodu.
 - Fabryka e-commerce AI: wiele sklepów jednoproduktowych na wspólnym silniku. Mapa dokumentów: `README.md`.
-- Repo to na razie dokumentacja (Markdown). Kod: `04_KOD_I_INFRASTRUKTURA/` (jeszcze pusty).
+- Kod: `04_KOD_I_INFRASTRUKTURA/` — szkielet (agenci Python/LangGraph, Medusa v2, storefront Next.js 16). Testy: `pytest` w ai-agents-langgraph, `npm run typecheck` w projektach Node.
 - Stack: `00_STRATEGIA/Architektura_Systemu/ADR_001_Stack_Techniczny.md`.
 - Progi go/no-go i definicje M/CPA — jedyne źródło: `00_STRATEGIA/Proces_Wyboru_Produktu.md`, sekcja 4. Nie powtarzaj progów w innych plikach — odsyłaj.
 

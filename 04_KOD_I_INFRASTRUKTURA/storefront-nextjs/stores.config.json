@@ -1,0 +1,20 @@
+{
+  "_opis": "Jedna pozycja = jeden sklep jednoproduktowy. Dodanie produktu = nowa domena + wpis tutaj + sales channel w Medusie.",
+  "stores": [
+    {
+      "hosts": ["localhost:3000", "demo.localhost:3000"],
+      "productId": "P000_DEMO",
+      "brand": "Demo",
+      "headline": "Sklep demonstracyjny fabryki",
+      "publishableKey": "pk_ustaw_w_medusa_admin",
+      "productHandle": "demo",
+      "theme": { "accent": "#2F6B5A", "background": "#F4F5F2", "ink": "#18201C" },
+      "operator": {
+        "name": "Imię Nazwisko (osoba fizyczna — do rejestracji JDG po pierwszym kliencie)",
+        "address": "adres do korespondencji",
+        "email": "kontakt@example.com"
+      },
+      "delivery": { "days": "10–14 dni roboczych", "costPln": 0 }
+    }
+  ]
+}

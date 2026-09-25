@@ -6,7 +6,7 @@
 
 **Biznes jednoosobowy z AI.** Faza: **przed wyborem pierwszego produktu; firma rejestrowana dopiero po pierwszym kliencie.** Architektura techniczna i dokumentacja operacyjna są przygotowane (stack zamknięty w `ADR_001` — przyjęty 2026-09-25); brakuje decyzji o konkretnej niszy produktowej. **Następny krok:** sprint wyboru w `00_STRATEGIA/Shortlista_Kandydatow.md`.
 
-W repozytorium nie ma jeszcze kodu — `04_KOD_I_INFRASTRUKTURA/` zawiera tylko README. Sekretów nie trzymamy w repo (root `.gitignore`, zasady w `04_KOD_I_INFRASTRUKTURA/env_backups/README.md`).
+Szkielet kodu jest w `04_KOD_I_INFRASTRUKTURA/` (agenci, Medusa, storefront, CI). Sekretów nie trzymamy w repo (root `.gitignore`, zasady w `04_KOD_I_INFRASTRUKTURA/env_backups/README.md`).
 
 ## Struktura folderów
 
@@ -21,7 +21,7 @@ W repozytorium nie ma jeszcze kodu — `04_KOD_I_INFRASTRUKTURA/` zawiera tylko 
 
 ## Kluczowe dokumenty — od czego zacząć
 
-1. **Następny krok decyzyjny:** `00_STRATEGIA/Shortlista_Kandydatow.md` (sprint 5 dni) wg `00_STRATEGIA/Proces_Wyboru_Produktu.md` — tam też **jedyne źródło progów go/no-go** (sekcja 4).
+1. **Następny krok decyzyjny:** `00_STRATEGIA/Shortlista_Kandydatow.md` (sprint 5 dni; prompt do nowego czatu: `00_STRATEGIA/Prompt_Nowy_Czat_Sprint_Wyboru.md`) wg `00_STRATEGIA/Proces_Wyboru_Produktu.md` — tam też **jedyne źródło progów go/no-go** (sekcja 4).
 2. **Kontekst biznesowy:** `00_STRATEGIA/Business_Plan_i_Koncepcja.md`
 3. **Architektura techniczna:** `00_STRATEGIA/Architektura_Systemu/ADR_001_Stack_Techniczny.md` (decyzje) + `Infrastruktura.md` (tło, koszty)
 4. **Forma prawna i podatki:** `01_FINANSE_I_PRAWO/Rejestracja_i_Umowy/Forma_Prawna_i_Rejestracja.md`, `01_FINANSE_I_PRAWO/Podatki_i_Ksiegowosc/Zasady_Ksiegowe_i_VAT.md` (lista pytań do księgowego)

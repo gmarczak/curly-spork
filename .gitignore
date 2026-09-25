@@ -41,3 +41,8 @@ Thumbs.db
 .vscode/*
 !.vscode/extensions.json
 *.log
+
+# --- Artefakty frameworków ---
+.medusa/
+next-env.d.ts
+*.tsbuildinfo

@@ -1,7 +1,26 @@
 # medusa-backend
 
-Status: scaffolding — kod jeszcze nie zainicjalizowany (do zrobienia po wyborze pierwszego produktu, patrz `00_STRATEGIA/Proces_Wyboru_Produktu.md`).
+Medusa v2 (2.21.1). Status: **szkielet — typecheck i `medusa build` przechodzą**; wymaga Postgresa i Redisa do uruchomienia.
 
-Rola i miejsce w architekturze: patrz `04_KOD_I_INFRASTRUKTURA/README.md` i `00_STRATEGIA/Architektura_Systemu/Infrastruktura.md`.
+## Co jest
 
-Sekrety: root `.gitignore` już blokuje `.env*` — przy inicjalizacji dodać `.env.example` (same nazwy zmiennych). Zasady: `04_KOD_I_INFRASTRUKTURA/env_backups/README.md`.
+- `medusa-config.ts` — Postgres, event bus Redis, płatności Stripe.
+- `src/subscribers/order-placed.ts` — opłacone zamówienie → podpisany webhook do serwisu agentów.
+- `src/lib/agent-webhook.ts` — podpis HMAC zgodny z `ai-agents-langgraph` (test: `npm run test:webhook`).
+
+## Uruchomienie lokalne
+
+```bash
+docker compose -f ../docker-compose.yml up -d postgres redis
+cp .env.example .env        # uzupełnij sekrety
+npm install
+npx medusa db:migrate
+npx medusa user -e ty@example.com -p <hasło>
+npm run dev                 # API :9000, panel /app
+```
+
+## Nowy produkt (sklep) — w Medusa Admin, bez kodu
+
+1. Sales Channel „P00X_Nazwa”.
+2. Publishable API key przypisany do tego kanału → wpis w `storefront-nextjs/stores.config.json`.
+3. Produkt (najpierw szkic) w tym kanale, cena w PLN, region Polska z płatnością Stripe.

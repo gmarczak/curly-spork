@@ -17,9 +17,9 @@ Ten folder zawiera trzy współpracujące komponenty kodu wspólnego silnika —
 3. Po opłaceniu zamówienia subscriber w `medusa-backend` wysyła podpisany webhook do `ai-agents-langgraph`; serwis agentów wrzuca zadanie do kolejki, a Agent Fulfillmentu przekazuje dane do dostawcy i zapisuje numer przesyłki przez API Medusy (klucz o ograniczonym zakresie — model uprawnień w ADR_001).
 4. Live-chat na storefroncie komunikuje się z Agentem Wsparcia w `ai-agents-langgraph`, który ma dostęp do bazy wektorowej (pgvector w Supabase) z wiedzą o TYLKO tym jednym produkcie.
 
-## Status na dzień 2026-09-16
+## Status na dzień 2026-09-25
 
-Wszystkie trzy foldery repo są obecnie puste (scaffolding katalogów, brak zainicjalizowanego kodu). Kolejny krok techniczny: inicjalizacja MedusaJS + Next.js + struktury LangGraph po wybraniu pierwszego produktu (patrz `00_STRATEGIA/Proces_Wyboru_Produktu.md`) — nie ma sensu kodować przed wyborem niszy, żeby nie zgadywać wymagań.
+Szkielet kodu gotowy (2026-09-25): serwis agentów (21 testów), Medusa (typecheck + build), storefront (typecheck + build + routing domen), `docker-compose.yml`, CI w `.github/workflows/ci.yml`. Brakuje elementów zależnych od produktu: dostawca, checkout, baza wiedzy, treści — patrz README w podfolderach.
 
 ## Rekomendowane dodatki (patrz `Infrastruktura.md` Część 4)
 
