@@ -1,10 +1,12 @@
 # JaGrzep — Fabryka E-commerce AI (Multi-Tenant)
 
-*Mapa dokumentacji. Ostatnia pełna aktualizacja: 2026-09-16.*
+*Mapa dokumentacji. Ostatnia pełna aktualizacja: 2026-09-25.*
 
 ## Status projektu w skrócie
 
-Faza: **przed wyborem pierwszego produktu.** Architektura techniczna i dokumentacja operacyjna są przygotowane; brakuje decyzji o konkretnej niszy produktowej (patrz `00_STRATEGIA/Proces_Wyboru_Produktu.md` — to jest następny krok).
+Faza: **przed wyborem pierwszego produktu.** Architektura techniczna i dokumentacja operacyjna są przygotowane (stack zamknięty w `ADR_001` — do zatwierdzenia); brakuje decyzji o konkretnej niszy produktowej. **Następny krok:** sprint wyboru w `00_STRATEGIA/Shortlista_Kandydatow.md`.
+
+W repozytorium nie ma jeszcze kodu — `04_KOD_I_INFRASTRUKTURA/` zawiera tylko README. Sekretów nie trzymamy w repo (root `.gitignore`, zasady w `04_KOD_I_INFRASTRUKTURA/env_backups/README.md`).
 
 ## Struktura folderów
 
@@ -19,15 +21,19 @@ Faza: **przed wyborem pierwszego produktu.** Architektura techniczna i dokumenta
 
 ## Kluczowe dokumenty — od czego zacząć
 
-1. **Następny krok decyzyjny:** `00_STRATEGIA/Proces_Wyboru_Produktu.md` — wybór pierwszego kandydata produktowego.
+1. **Następny krok decyzyjny:** `00_STRATEGIA/Shortlista_Kandydatow.md` (sprint 5 dni) wg `00_STRATEGIA/Proces_Wyboru_Produktu.md` — tam też **jedyne źródło progów go/no-go** (sekcja 4).
 2. **Kontekst biznesowy:** `00_STRATEGIA/Business_Plan_i_Koncepcja.md`
-3. **Architektura techniczna:** `00_STRATEGIA/Architektura_Systemu/Infrastruktura.md`
-4. **Forma prawna:** `01_FINANSE_I_PRAWO/Rejestracja_i_Umowy/Forma_Prawna_i_Rejestracja.md`
-5. **Jak uruchomić nowy produkt:** `05_OPERACJE_I_ARCHIWUM/Procedury_SOP/SOP_Uruchomienie_Nowego_Produktu.md`
-6. **Wzór wypełnionego produktu (DEMO):** `02_PRODUKTY/P001_Poduszka_Ergonomiczna_PRZYKLAD/`
+3. **Architektura techniczna:** `00_STRATEGIA/Architektura_Systemu/ADR_001_Stack_Techniczny.md` (decyzje) + `Infrastruktura.md` (tło, koszty)
+4. **Forma prawna i podatki:** `01_FINANSE_I_PRAWO/Rejestracja_i_Umowy/Forma_Prawna_i_Rejestracja.md`, `01_FINANSE_I_PRAWO/Podatki_i_Ksiegowosc/Zasady_Ksiegowe_i_VAT.md` (lista pytań do księgowego)
+5. **Budżet:** `01_FINANSE_I_PRAWO/Koszty_Infrastruktura/Budzet_Startowy_i_Prognoza.md` — rezerwa na pierwsze 3 miesiące ~6,5–13,7 tys. zł
+6. **Jak uruchomić nowy produkt:** `05_OPERACJE_I_ARCHIWUM/Procedury_SOP/SOP_Uruchomienie_Nowego_Produktu.md`
+7. **Wzór wypełnionego produktu (DEMO):** `02_PRODUKTY/P001_Poduszka_Ergonomiczna_PRZYKLAD/`
 
 ## Otwarte decyzje wymagające działania właścicieli
 
-- [ ] Wybór pierwszego produktu/niszy
+- [ ] Wybór pierwszego produktu/niszy — `00_STRATEGIA/Shortlista_Kandydatow.md`
+- [ ] Zatwierdzenie stacku — `00_STRATEGIA/Architektura_Systemu/ADR_001_Stack_Techniczny.md`
+- [ ] Zatwierdzenie/korekta liczbowych celów — `00_STRATEGIA/Business_Plan_i_Koncepcja.md`, sekcja 6
+- [ ] Konsultacja z biurem rachunkowym (VAT, VAT-UE, KSeF, IOSS) i prawnikiem (regulamin, GPSR) — listy pytań w dokumentach 01_FINANSE_I_PRAWO
 - [ ] Podpisanie umowy wspólników i rejestracja formy prawnej (rekomendacja: spółka cywilna → sp. z o.o. po walidacji)
-- [ ] Założenie kont/kluczy API (Stripe, dostawcy modeli AI) — na bieżąco przy pierwszym produkcie
+- [ ] Założenie kont/kluczy API (Stripe, dostawcy modeli AI) — na bieżąco przy pierwszym produkcie; klucze tylko w menedżerze haseł
