@@ -94,6 +94,20 @@ def test_worker_logs_steps_and_status_for_panel():
     assert panel.recent()[0]["kind"] == "done"
 
 
+def test_manual_decision_logged_as_manual_not_supplier():
+    panel = MemoryPanel()
+    ctx = {
+        "approvals": MemoryApprovals(),
+        "panel": panel,
+        "graphs": {"fulfillment": fulfillment.build(FakeSupplier(fail_times=2), FakeMedusa(), checkpointer=InMemorySaver())},
+    }
+    asyncio.run(worker.handle_event(ctx, {"id": "e1", "name": "order.placed", "data": {"id": "o7"}}))
+    asyncio.run(worker.resume_graph(ctx, "fulfillment:o7", "fulfillment", "manual"))
+    last = panel.recent()[0]
+    assert last["kind"] == "done"
+    assert "o7" in last["text"] and "obsługa ręczna" in last["text"] and "→ dostawca" not in last["text"]
+
+
 def test_paused_agent_defers_work():
     panel = MemoryPanel()
     panel.pause("fulfillment")
