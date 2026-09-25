@@ -1,6 +1,6 @@
 # Dokumentacja: Fabryka E-commerce AI (Multi-Tenant)
 
-> **Aktualizacja 2026-09-25:** wybory „X / Y” w tym dokumencie zamyka `ADR_001_Stack_Techniczny.md` (propozycja do zatwierdzenia). Tam też jest model uprawnień agentów i aktualne poziomy modeli AI. Części 1–3 zostają jako tło i uzasadnienie.
+> **Aktualizacja 2026-09-25:** wybory „X / Y” w tym dokumencie zamyka `ADR_001_Stack_Techniczny.md` (przyjęty 2026-09-25). Tam też jest model uprawnień agentów i aktualne poziomy modeli AI. Części 1–3 zostają jako tło i uzasadnienie.
 
 ---
 
@@ -103,7 +103,7 @@ Jeden centralny system e-commerce i jeden zespół agentów AI, który pozwala b
 # Część 4: Weryfikacja i Rekomendacje (Aktualizacja 2026-09-16)
 
 ### Status stacku
-Wybory zamyka **`ADR_001_Stack_Techniczny.md`** (propozycja do zatwierdzenia): MedusaJS v2 + LangGraph (Python) + Next.js + Supabase (PostgreSQL + pgvector), hosting Hetzner VPS (backend + agenci + LiteLLM + Redis) + Vercel (frontend), Cloudflare DNS.
+Wybory zamyka **`ADR_001_Stack_Techniczny.md`** (przyjęty 2026-09-25): MedusaJS v2 + LangGraph (Python) + Next.js + Supabase (PostgreSQL + pgvector), hosting Hetzner VPS (backend + agenci + LiteLLM + Redis) + Vercel (frontend), Cloudflare DNS.
 
 ### Rekomendowane uzupełnienia (braki wykryte przy weryfikacji)
 

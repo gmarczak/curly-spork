@@ -52,7 +52,7 @@ Zwroty w każdym modelu: adres zwrotów w PL/UE (patrz `05_OPERACJE_I_ARCHIWUM/P
 
 ## 6. Cele na pierwsze 6 i 12 miesięcy
 
-*PROPOZYCJA liczbowych celów (2026-09-25) — do zatwierdzenia lub korekty przez wspólników. Cele przychodowe dopisać po pierwszym teście, gdy znana będzie realna M i CPA.*
+*Cele PRZYJĘTE 2026-09-25 (akceptacja: wspólnik 1 / gmarczak; wspólnik 2 — do potwierdzenia). Cele przychodowe dopisać po pierwszym teście, gdy znana będzie realna M i CPA.*
 
 | Okres | Cele procesowe (mierzalne) | Cele finansowe |
 |---|---|---|

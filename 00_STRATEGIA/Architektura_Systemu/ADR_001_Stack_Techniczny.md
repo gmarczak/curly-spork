@@ -3,7 +3,7 @@
 | Pole | Wartość |
 |---|---|
 | Data | 2026-09-25 |
-| Status | **PROPOZYCJA — do zatwierdzenia przez obu wspólników** (po akceptacji zmienić na „Przyjęta" i wpisać datę) |
+| Status | **PRZYJĘTA — 2026-09-25** (akceptacja: wspólnik 1 / gmarczak; wspólnik 2 — do potwierdzenia) |
 | Zastępuje | „Status stacku" w `Infrastruktura.md`, Część 4 (tam nadal zostawały pary „X / Y") |
 
 ## Kontekst
@@ -67,5 +67,5 @@ Nazwy i ceny modeli zmieniają się co kilka miesięcy — **przed wdrożeniem s
 
 ## Do zatwierdzenia
 
-- [ ] Wspólnik 1: akceptuję / uwagi: ___
+- [x] Wspólnik 1 (gmarczak): akceptuję — 2026-09-25
 - [ ] Wspólnik 2: akceptuję / uwagi: ___

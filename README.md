@@ -4,7 +4,7 @@
 
 ## Status projektu w skrócie
 
-Faza: **przed wyborem pierwszego produktu.** Architektura techniczna i dokumentacja operacyjna są przygotowane (stack zamknięty w `ADR_001` — do zatwierdzenia); brakuje decyzji o konkretnej niszy produktowej. **Następny krok:** sprint wyboru w `00_STRATEGIA/Shortlista_Kandydatow.md`.
+Faza: **przed wyborem pierwszego produktu.** Architektura techniczna i dokumentacja operacyjna są przygotowane (stack zamknięty w `ADR_001` — przyjęty 2026-09-25); brakuje decyzji o konkretnej niszy produktowej. **Następny krok:** sprint wyboru w `00_STRATEGIA/Shortlista_Kandydatow.md`.
 
 W repozytorium nie ma jeszcze kodu — `04_KOD_I_INFRASTRUKTURA/` zawiera tylko README. Sekretów nie trzymamy w repo (root `.gitignore`, zasady w `04_KOD_I_INFRASTRUKTURA/env_backups/README.md`).
 
@@ -32,8 +32,8 @@ W repozytorium nie ma jeszcze kodu — `04_KOD_I_INFRASTRUKTURA/` zawiera tylko 
 ## Otwarte decyzje wymagające działania właścicieli
 
 - [ ] Wybór pierwszego produktu/niszy — `00_STRATEGIA/Shortlista_Kandydatow.md`
-- [ ] Zatwierdzenie stacku — `00_STRATEGIA/Architektura_Systemu/ADR_001_Stack_Techniczny.md`
-- [ ] Zatwierdzenie/korekta liczbowych celów — `00_STRATEGIA/Business_Plan_i_Koncepcja.md`, sekcja 6
+- [x] Zatwierdzenie stacku — `00_STRATEGIA/Architektura_Systemu/ADR_001_Stack_Techniczny.md` (2026-09-25, wspólnik 2 do potwierdzenia)
+- [x] Zatwierdzenie liczbowych celów — `00_STRATEGIA/Business_Plan_i_Koncepcja.md`, sekcja 6 (2026-09-25, wspólnik 2 do potwierdzenia)
 - [ ] Konsultacja z biurem rachunkowym (VAT, VAT-UE, KSeF, IOSS) i prawnikiem (regulamin, GPSR) — listy pytań w dokumentach 01_FINANSE_I_PRAWO
 - [ ] Podpisanie umowy wspólników i rejestracja formy prawnej (rekomendacja: spółka cywilna → sp. z o.o. po walidacji)
 - [ ] Założenie kont/kluczy API (Stripe, dostawcy modeli AI) — na bieżąco przy pierwszym produkcie; klucze tylko w menedżerze haseł
