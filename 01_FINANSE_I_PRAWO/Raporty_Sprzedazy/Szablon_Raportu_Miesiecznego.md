@@ -17,9 +17,11 @@
 
 ### 2. Wyniki per produkt
 
-| Produkt | Przychód | Zamówienia | Budżet Ads | ROAS | CAC | Status |
-|---|---|---|---|---|---|---|
-| | | | | | | testowany / skalowany / wygaszony |
+| Produkt | Przychód | Zamówienia | Budżet Ads | ROAS | CPA | M (marża jedn.) | CPA / M | Status |
+|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | testowany / skalowany / wygaszony |
+
+*Definicje M i CPA: `00_STRATEGIA/Proces_Wyboru_Produktu.md`, sekcja 4.*
 
 ### 3. Pozycja gotówkowa
 

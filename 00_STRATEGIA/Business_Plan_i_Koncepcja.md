@@ -1,6 +1,6 @@
 # Business Plan i Koncepcja — Fabryka E-commerce AI
 
-*Ostatnia aktualizacja: 2026-09-16*
+*Ostatnia aktualizacja: 2026-09-25*
 
 ## 1. Teza biznesowa
 
@@ -16,14 +16,14 @@ Grupa docelowa i rynki startowe są zależne od wybranego produktu i zostaną wy
 
 ## 3. Struktura właścicielska
 
-Dwóch wspólników (50/50 — do potwierdzenia w umowie wspólników, patrz `01_FINANSE_I_PRAWO/Rejestracja_i_Umowy/Forma_Prawna_i_Rejestracja.md`). Forma prawna: start jako spółka cywilna / 2× JDG + umowa, docelowo przekształcenie w sp. z o.o. po walidacji.
+Dwóch wspólników (50/50 — do potwierdzenia w umowie wspólników, patrz `01_FINANSE_I_PRAWO/Rejestracja_i_Umowy/Forma_Prawna_i_Rejestracja.md`). Forma prawna: start jako **spółka cywilna** (rekomendacja; 2× JDG + umowa to wariant awaryjny), docelowo sp. z o.o. po walidacji.
 
 ## 4. Jak zarabia fabryka (model biznesowy)
 
 * **Przychód:** marża na sprzedaży produktów fizycznych pod własnymi markami/domenami (D2C, ruch płatny z Meta/TikTok Ads).
 * **Struktura kosztów per produkt:** koszt towaru (COGS) + koszt dostawy + prowizja bramki płatności (ok. 1,2–1,9% + 0,30–0,50 zł) + budżet reklamowy + marginalny koszt agentów AI (patrz `Architektura_Systemu/Infrastruktura.md`, część 2).
 * **Koszty wspólne (nie rosną proporcjonalnie z liczbą produktów):** infrastruktura (VPS, baza danych, hosting frontendu), licencje, księgowość.
-* **Efekt skali:** koszt uruchomienia *kolejnego* produktu jest bliski zera (nowa domena + wygenerowane treści), bo silnik techniczny i agenci są wspólni. To jest sedno przewagi tego modelu nad klasycznym sklepem.
+* **Efekt skali:** koszt *techniczny* uruchomienia kolejnego produktu jest bliski zera (nowa domena + wygenerowane treści), bo silnik i agenci są wspólni. To jest sedno przewagi nad klasycznym sklepem. **Nie jest za darmo sprawdzenie produktu** — każdy kandydat to ok. 750–2250 zł (test reklamowy, VAT od reklam, domena, próbka), patrz `01_FINANSE_I_PRAWO/Koszty_Infrastruktura/Budzet_Startowy_i_Prognoza.md`.
 
 ## 5. Szablon jednostkowej ekonomiki (do wypełnienia per produkt)
 
@@ -31,20 +31,35 @@ Dwóch wspólników (50/50 — do potwierdzenia w umowie wspólników, patrz `01
 |---|---|
 | Cena sprzedaży (PLN) | ustalana per produkt |
 | Koszt towaru (COGS) | z karty dostawcy, patrz `02_PRODUKTY/_SZABLON_PRODUKTU/Dostawcy_Fulfillment` |
-| Koszt dostawy | zależny od modelu logistyki (patrz decyzja w `05_OPERACJE_I_ARCHIWUM/Procedury_SOP/SOP_Uruchomienie_Nowego_Produktu.md`) |
-| Prowizja płatności | ~1,5% + 0,40 zł (Stripe/BLIK, do potwierdzenia) |
-| Marża brutto | Cena − COGS − dostawa − prowizja |
-| CAC (koszt akwizycji klienta) | budżet reklamowy / liczba zamówień |
-| Próg rentowności | Marża brutto ≥ CAC → produkt się "broni"; poniżej → wygaszamy (patrz SOP wygaszania) |
+| Koszt dostawy | zależny od modelu logistyki (sekcja 5.1) |
+| Prowizja płatności | ~1,5% + 0,40 zł (Stripe/BLIK, do potwierdzenia przy aktywacji konta) |
+| Rezerwa na zwroty | domyślnie 5% ceny (korygować po danych) |
+| **M — marża jednostkowa przed reklamą** | Cena (netto przy czynnym VAT) − COGS − dostawa − prowizja − rezerwa na zwroty |
+| **CPA** (= koszt pozyskania klienta) | wydatek reklamowy / liczba zamówień |
+| Próg decyzyjny | **jedno źródło:** `Proces_Wyboru_Produktu.md`, sekcja 4 (faza testu i faza skalowania) |
+
+### 5.1 Decyzja logistyczna (model dostawy wg etapu produktu)
+
+*Progi orientacyjne — do potwierdzenia przez wspólników po pierwszych danych.*
+
+| Etap produktu | Model logistyki | Warunek przejścia na kolejny etap |
+|---|---|---|
+| Test (kandydat) | Dropshipping (CJ Dropshipping / AliExpress; **preferowane magazyny w UE**, jeśli produkt jest tam dostępny) | decyzja GO wg `Proces_Wyboru_Produktu.md` |
+| Po GO, wczesne skalowanie | Dropshipping z magazynu UE/PL lub hurtownia PL (krótsza dostawa = wyższa konwersja, prostsze zwroty) | stabilne zamówienia ≥ ~5/dzień przez 2 tygodnie przy CPA ≤ 100% M |
+| Zwycięzca | **3PL w Polsce** z własnym zapasem (zamówienie hurtowe, niższy COGS, dostawa 1–2 dni) | ≥ ~15–20 zamówień/dzień przez 2 tygodnie i zapas finansowany z marży, nie z kapitału startowego |
+
+Zwroty w każdym modelu: adres zwrotów w PL/UE (patrz `05_OPERACJE_I_ARCHIWUM/Procedury_SOP/SOP_Obsluga_Zwrotow_i_Reklamacji.md`).
 
 ## 6. Cele na pierwsze 6 i 12 miesięcy
 
-*Do wypełnienia wspólnie z drugim wspólnikiem — poniżej szkielet:*
+*PROPOZYCJA liczbowych celów (2026-09-25) — do zatwierdzenia lub korekty przez wspólników. Cele przychodowe dopisać po pierwszym teście, gdy znana będzie realna M i CPA.*
 
-* **0–1 mc:** wybór i walidacja pierwszego kandydata produktowego (proces w `Proces_Wyboru_Produktu.md`), rejestracja formy prawnej, uruchomienie stacku technicznego.
-* **1–3 mc:** pierwsza kampania testowa, pierwsze realne zamówienia, pierwsza iteracja SOP.
-* **3–6 mc:** 2–3 kolejne testy produktowe równolegle, pierwszy potwierdzony "zwycięzca" przenoszony na model logistyki 3PL/PL.
-* **6–12 mc:** portfel 5–10 aktywnych produktów, decyzja o przekształceniu w sp. z o.o.
+| Okres | Cele procesowe (mierzalne) | Cele finansowe |
+|---|---|---|
+| **0–1 mc** | ≥ 10 kandydatów ocenionych w `Shortlista_Kandydatow.md`, 3 na shortliście (≥ 45 pkt); s.c. zarejestrowana; ADR_001 zatwierdzony; stack uruchomiony (storefront + Medusa + Stripe w trybie testowym) | wydatki w granicach budżetu startowego |
+| **1–3 mc** | ≥ 3 testy reklamowe zakończone decyzją; ≥ 1 decyzja GO; pierwsze realne zamówienia i pierwsza iteracja SOP | CPA ≤ 100% M dla produktu po GO |
+| **3–6 mc** | łącznie ≥ 8 testów; 1–2 produkty w fazie skalowania; pierwszy zwycięzca na logistyce PL/3PL (sekcja 5.1) | produkt(y) po GO na plusie po kosztach reklamy; ≥ 50% kosztów stałych pokryte z marży |
+| **6–12 mc** | portfel 3–5 aktywnych produktów rentownych (z 15–25 przetestowanych); decyzja o sp. z o.o. | koszty stałe i wynagrodzenia wspólników pokryte z marży (wartość docelowa: do ustalenia) |
 
 ## 7. Kluczowe ryzyka
 
