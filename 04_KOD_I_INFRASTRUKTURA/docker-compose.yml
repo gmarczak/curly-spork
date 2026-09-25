@@ -1,0 +1,44 @@
+# Lokalne środowisko deweloperskie. Produkcja: Hetzner VPS (Medusa, agenci, LiteLLM, Redis) + Supabase + Vercel (ADR-001).
+# Start: docker compose up -d  (wcześniej uzupełnij pliki .env w podfolderach na podstawie .env.example)
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: medusa
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+
+  litellm:
+    image: ghcr.io/berriai/litellm:main-stable
+    command: ["--config", "/app/config.yaml", "--port", "4000"]
+    env_file: ai-agents-langgraph/.env.litellm   # ANTHROPIC_API_KEY, LITELLM_MASTER_KEY, LANGFUSE_* — poza repo
+    volumes: ["./ai-agents-langgraph/litellm.config.yaml:/app/config.yaml:ro"]
+    ports: ["4000:4000"]
+
+  agents-api:
+    build: ./ai-agents-langgraph
+    env_file: ai-agents-langgraph/.env
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      LITELLM_BASE_URL: http://litellm:4000
+      MEDUSA_URL: http://host.docker.internal:9000
+    ports: ["8000:8000"]
+    depends_on: [redis]
+
+  agents-worker:
+    build: ./ai-agents-langgraph
+    command: ["arq", "fabryka_agents.worker.WorkerSettings"]
+    env_file: ai-agents-langgraph/.env
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      LITELLM_BASE_URL: http://litellm:4000
+      MEDUSA_URL: http://host.docker.internal:9000
+    depends_on: [redis, litellm]
+
+volumes:
+  pgdata:

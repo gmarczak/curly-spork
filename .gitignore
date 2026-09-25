@@ -1,0 +1,48 @@
+# --- Sekrety i zmienne środowiskowe (patrz 04_KOD_I_INFRASTRUKTURA/env_backups/README.md) ---
+.env
+.env.*
+*.env
+!.env.example
+*.env.backup
+*.env.backup.*
+*.backup
+*.age
+*.pem
+*.key
+secrets/
+
+# Folder backupów env: w repo zostaje wyłącznie README z zasadami
+04_KOD_I_INFRASTRUKTURA/env_backups/*
+!04_KOD_I_INFRASTRUKTURA/env_backups/README.md
+
+# --- Dane osobowe klientów (RODO) — nie trzymamy ich w gicie ---
+05_OPERACJE_I_ARCHIWUM/Zgloszenia_i_Bledy/dane_klientow/
+
+# --- Zależności i artefakty buildów (na przyszły kod) ---
+node_modules/
+.next/
+dist/
+build/
+.turbo/
+.vercel/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+coverage/
+
+# --- System / edytory ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.log
+
+# --- Artefakty frameworków ---
+.medusa/
+next-env.d.ts
+*.tsbuildinfo

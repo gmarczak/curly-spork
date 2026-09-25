@@ -1,8 +1,11 @@
 # SOP: Wygaszanie Nierentownego Produktu
 
-## Kryteria wygaszenia (patrz też `00_STRATEGIA/Proces_Wyboru_Produktu.md`)
+## Kryteria wygaszenia
 
-- CPA > 150% zakładanej marży brutto po pełnym teście, LUB
+Progi CPA — **jedno źródło:** `00_STRATEGIA/Proces_Wyboru_Produktu.md`, sekcja 4 (M = marża jednostkowa przed reklamą):
+
+- Faza testu: CPA > 150% M, albo CPA > 100% M po jednej iteracji (WARUNKOWO → NO-GO), LUB
+- Faza skalowania: CPA > 100% M przez 14 kolejnych dni mimo optymalizacji, LUB
 - Brak zainteresowania (CTR poniżej benchmarku kanału) po 2 iteracjach kreacji, LUB
 - Wysoki wskaźnik zwrotów/reklamacji wskazujący na problem z produktem/dostawcą.
 

@@ -1,7 +1,24 @@
 # storefront-nextjs
 
-Status: scaffolding — kod jeszcze nie zainicjalizowany (do zrobienia po wyborze pierwszego produktu, patrz `00_STRATEGIA/Proces_Wyboru_Produktu.md`).
+Next.js 16 — jeden deploy obsługuje wszystkie domeny produktowe. Status: **szkielet — typecheck i `next build` przechodzą**; domena → sklep sprawdzona lokalnie (nieznana domena = 404).
 
-Rola i miejsce w architekturze: patrz `04_KOD_I_INFRASTRUKTURA/README.md` i `00_STRATEGIA/Architektura_Systemu/Infrastruktura.md`.
+## Jak działa
 
-Pamiętaj: dodać `.env*` do `.gitignore` przy inicjalizacji — zasady w `04_KOD_I_INFRASTRUKTURA/env_backups/README.md`.
+- `stores.config.json` — lista sklepów: domeny, publishable key Medusy, marka, kolory, dane sprzedawcy, dostawa.
+- `src/lib/current-store.ts` — nagłówek `host` → konfiguracja sklepu.
+- `src/lib/medusa.ts` — klient Medusy z publishable key sklepu (dane tylko z jego sales channel).
+- Stopka ze standardami zaufania z Brand Booka (sprzedawca, regulamin, 14 dni na odstąpienie).
+
+## Uruchomienie
+
+```bash
+cp .env.example .env.local
+npm install
+npm run dev      # http://localhost:3000 = sklep Demo
+```
+
+## Do zrobienia
+
+- Koszyk i checkout Stripe (na bazie Medusa Next.js Starter).
+- Omnibus (najniższa cena z 30 dni), funkcja „odstąp od umowy”, baner cookies, czat z Agentem Wsparcia.
+- Pixel Meta/TikTok + Conversions API (po zgodzie cookies).
