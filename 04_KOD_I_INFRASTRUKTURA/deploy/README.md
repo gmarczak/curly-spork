@@ -12,35 +12,32 @@ Efekt końcowy: ikona na pulpicie → panel „Biuro Agentów” (Vercel) → da
 
 - Hetzner CX22: ok. 5 €/mc.
 - Vercel Hobby: 0 zł na start ⚠️ przy komercyjnym użyciu warunki planu do sprawdzenia.
-- Domena API: subdomena istniejącej domeny — 0 zł.
+- Domena: **niepotrzebna na start.** Panel: link z Vercel. API agentów: adres `https://<IP-z-myślnikami>.sslip.io` (darmowy DNS wskazujący na IP serwera; Caddy dostaje dla niego certyfikat HTTPS).
 
 ## Krok 1 — serwer (ok. 30 min)
 
 1. Konto Hetzner Cloud → nowy serwer: Ubuntu 24.04, CX22, **klucz SSH** (bez hasła).
-2. Rekord DNS A: `agenci.twojadomena.pl` → IP serwera (w Cloudflare: tryb DNS-only na czas pierwszego certyfikatu).
+2. Adres API bez domeny: IP `1.2.3.4` → `1-2-3-4.sslip.io` (działa od razu, bez konfiguracji DNS). Z własną domeną: rekord A `agenci.twojadomena.pl` → IP serwera.
 3. Na serwerze:
    ```bash
    apt update && apt install -y docker.io docker-compose-v2 git ufw
    ufw allow OpenSSH && ufw allow 80 && ufw allow 443 && ufw enable
    git clone https://github.com/gmarczak/curly-spork.git && cd curly-spork/04_KOD_I_INFRASTRUKTURA/deploy
-   cp .env.example .env                  # AGENTS_DOMAIN
+   cp .env.example .env                  # AGENTS_DOMAIN=1-2-3-4.sslip.io (Twoje IP z myślnikami)
    ```
 4. Sekrety (wartości z menedżera haseł; pliki są w `.gitignore`):
    - `deploy/.env.agents` — na bazie `ai-agents-langgraph/.env.example`: `WEBHOOK_SECRET`, `PANEL_API_TOKEN` (losowy, 40+ znaków), klucze LiteLLM agentów.
    - `deploy/.env.litellm` — `ANTHROPIC_API_KEY`, `LITELLM_MASTER_KEY`, opcjonalnie `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY`.
 5. Start: `docker compose -f docker-compose.prod.yml up -d --build`
-6. Test: `curl https://agenci.twojadomena.pl/health` → `{"ok":true}`.
+6. Test: `curl https://1-2-3-4.sslip.io/health` → `{"ok":true}`.
 
-## Krok 2 — panel na Vercel (ok. 10 min)
+## Krok 2 — panel na Vercel (zrobione 2026-09-25)
 
-1. Vercel → „Add New Project” → repo `gmarczak/curly-spork` → **Root Directory: `04_KOD_I_INFRASTRUKTURA/panel-biuro`**.
-2. Zmienne środowiskowe:
-   - `AGENTS_API_URL=https://agenci.twojadomena.pl`
-   - `PANEL_API_TOKEN` = ten sam co na serwerze
-   - `PANEL_PASSWORD` = Twoje hasło do panelu
-   - `SESSION_SECRET` = losowe 32+ znaki
-3. Deploy → adres np. `https://biuro-xyz.vercel.app`.
-4. Test: zaloguj się → „Wyślij testowe zamówienie” → po kilku sekundach Agent Fulfillmentu prosi o decyzję.
+- Projekt Vercel `biuro-agentow` (konto gmarczak), root: `04_KOD_I_INFRASTRUKTURA/panel-biuro`.
+- Adres: `https://biuro-agentow.vercel.app`. Po scaleniu zmian do `main` Vercel wdraża panel automatycznie.
+- Zmienne ustawione: `PANEL_PASSWORD`, `SESSION_SECRET`, `PANEL_API_TOKEN` (wartości tylko w Vercel i menedżerze haseł).
+- **Po postawieniu serwera:** w Vercel → Settings → Environment Variables zmień `AGENTS_API_URL` na `https://1-2-3-4.sslip.io` i zrób Redeploy. Ten sam `PANEL_API_TOKEN` wpisz do `deploy/.env.agents`.
+- Test: zaloguj się → „Wyślij testowe zamówienie” → po kilku sekundach Agent Fulfillmentu prosi o decyzję.
 
 ## Krok 3 — ikona na pulpicie
 
