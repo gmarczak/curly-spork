@@ -51,7 +51,7 @@ Twarde zabezpieczenie niezależnie od fazy: **dzienny limit wydatków ustawiony 
 |---|---|---|
 | Pierwszy miesiąc, 1 kandydat | A + B + 1×C | **~1,8–5,0 tys. zł** |
 | Pierwszy miesiąc, 3 kandydatów równolegle | A + B + 3×C | **~3,3–9,5 tys. zł** |
-| **Rekomendowana rezerwa na pierwsze 3 miesiące** (3 testy) | A + 3×B + 3×C | **~3,5–10,0 tys. zł** |
+| **Rekomendowana rezerwa na pierwsze 3 miesiące** (3 testy) | A + 3×B + 3×C | **~3,5–10,1 tys. zł** |
 
 Po rejestracji JDG koszty stałe rosną o ~635–935 zł/mc (ZUS zdrowotny + biuro rachunkowe) — rejestrować dopiero, gdy jest pierwszy klient i produkt po GO. Testy prowadzić **po kolei albo po 2 równolegle** (ograniczeniem jest też czas właściciela na akceptacje). Każdy kolejny kandydat = ~0,7–2,2 tys. zł.
 

@@ -25,7 +25,7 @@ Szkielet kodu jest w `04_KOD_I_INFRASTRUKTURA/` (agenci, Medusa, storefront, CI)
 2. **Kontekst biznesowy:** `00_STRATEGIA/Business_Plan_i_Koncepcja.md`
 3. **Architektura techniczna:** `00_STRATEGIA/Architektura_Systemu/ADR_001_Stack_Techniczny.md` (decyzje) + `Infrastruktura.md` (tło, koszty)
 4. **Forma prawna i podatki:** `01_FINANSE_I_PRAWO/Rejestracja_i_Umowy/Forma_Prawna_i_Rejestracja.md`, `01_FINANSE_I_PRAWO/Podatki_i_Ksiegowosc/Zasady_Ksiegowe_i_VAT.md` (lista pytań do księgowego)
-5. **Budżet:** `01_FINANSE_I_PRAWO/Koszty_Infrastruktura/Budzet_Startowy_i_Prognoza.md` — rezerwa na pierwsze 3 miesiące ~3,4–10,0 tys. zł (bez rejestracji firmy do pierwszego klienta)
+5. **Budżet:** `01_FINANSE_I_PRAWO/Koszty_Infrastruktura/Budzet_Startowy_i_Prognoza.md` — rezerwa na pierwsze 3 miesiące ~3,5–10,1 tys. zł (bez rejestracji firmy do pierwszego klienta)
 6. **Jak uruchomić nowy produkt:** `05_OPERACJE_I_ARCHIWUM/Procedury_SOP/SOP_Uruchomienie_Nowego_Produktu.md`
 7. **Wzór wypełnionego produktu (DEMO):** `02_PRODUKTY/P001_Poduszka_Ergonomiczna_PRZYKLAD/`
 

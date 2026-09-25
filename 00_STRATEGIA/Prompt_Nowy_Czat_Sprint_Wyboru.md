@@ -35,7 +35,7 @@ Jesteś moim partnerem do wyboru pierwszego produktu dla mojego biznesu e-commer
 ## Budżet
 
 - Test jednego kandydata: ok. 740–2235 zł (reklamy 500–1500 zł, VAT od reklam, domena, grafiki AI, próbka towaru).
-- Rezerwa na pierwsze 3 miesiące (3 testy, bez firmy): ok. 3,4–10,0 tys. zł.
+- Rezerwa na pierwsze 3 miesiące (3 testy, bez firmy): ok. 3,5–10,1 tys. zł.
 - Testy prowadzę po kolei albo po 2 naraz. Ograniczeniem jest też mój czas na akceptacje.
 
 ## Kryteria wyboru produktu
