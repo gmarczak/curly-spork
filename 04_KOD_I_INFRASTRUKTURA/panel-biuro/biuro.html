@@ -1,0 +1,232 @@
+<title>Biuro Agentów JaGrzep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#EEF0EC; --floor:#E4E8E2; --surface:#FBFCFA; --line:#CFD5CD; --ink:#18201C; --muted:#5B665F;
+  --accent:#2F6B5A; --accent-ink:#FFFFFF; --accent-soft:#D8E6E0;
+  --ok:#2E7D5B; --ok-soft:#DCEFE5; --wait:#A8690F; --wait-soft:#F6E9D2; --run:#2563A8; --run-soft:#DCE8F6; --idle:#6B7370; --idle-soft:#E4E7E5;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --display:"Bricolage Grotesque","Instrument Sans",system-ui,sans-serif;
+  --shadow:0 1px 0 rgba(24,32,28,.04),0 8px 20px -14px rgba(24,32,28,.35);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --bg:#121715; --floor:#171D1A; --surface:#1D2420; --line:#2E3833; --ink:#E6ECE8; --muted:#9AA69F;
+  --accent:#6FB39C; --accent-ink:#0F1512; --accent-soft:#233730;
+  --ok:#5FBF8E; --ok-soft:#1E3429; --wait:#E0A547; --wait-soft:#3A2E17; --run:#7DB2EE; --run-soft:#1D2C3D; --idle:#98A19C; --idle-soft:#262D29;
+  --shadow:0 1px 0 rgba(0,0,0,.2),0 8px 20px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#121715; --floor:#171D1A; --surface:#1D2420; --line:#2E3833; --ink:#E6ECE8; --muted:#9AA69F;
+  --accent:#6FB39C; --accent-ink:#0F1512; --accent-soft:#233730;
+  --ok:#5FBF8E; --ok-soft:#1E3429; --wait:#E0A547; --wait-soft:#3A2E17; --run:#7DB2EE; --run-soft:#1D2C3D; --idle:#98A19C; --idle-soft:#262D29;
+  --shadow:0 1px 0 rgba(0,0,0,.2),0 8px 20px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{overflow-x:hidden}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.45}
+.wrap{max-width:1280px;margin:0 auto;padding-inline:16px;padding-block:20px 48px;display:flex;flex-direction:column;gap:22px}
+h1,h2{font-family:var(--display);margin:0;letter-spacing:-.01em;text-wrap:balance}
+h1{font-size:26px} h2{font-size:18px}
+.sub{color:var(--muted);margin:3px 0 0}
+.lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+header.top{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:space-between;align-items:flex-end}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;flex:1;max-width:720px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.stat b{display:block;font-family:var(--mono);font-size:18px;font-variant-numeric:tabular-nums}
+.stat.hot{border-color:var(--wait);background:var(--wait-soft)}
+.stat.hot b{color:var(--wait)}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:20px;align-items:start}
+@media (max-width:980px){.layout{grid-template-columns:minmax(0,1fr)}}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+
+.floor{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;background:var(--floor);border:1px solid var(--line);border-radius:14px;padding:12px;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:28px 28px;background-position:-1px -1px}
+.desk{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:9px;cursor:pointer;text-align:left;font:inherit;color:inherit;width:100%}
+.desk:hover{border-color:var(--accent)}
+.desk.empty{background:transparent;border-style:dashed;box-shadow:none;cursor:default;opacity:.85}
+.desk.empty:hover{border-color:var(--line)}
+.who{display:flex;gap:12px;align-items:center}
+.av{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:16px;flex:none;position:relative;background:var(--accent-soft);color:var(--accent)}
+.av::after{content:"";position:absolute;right:-3px;bottom:-3px;width:13px;height:13px;border-radius:50%;border:3px solid var(--surface);background:var(--c,var(--idle))}
+.empty .av{background:var(--idle-soft);color:var(--idle)} .empty .av::after{display:none}
+.who b{font-family:var(--display);font-size:15px;display:block;line-height:1.2}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:1px 9px;border-radius:999px;background:var(--cs,var(--idle-soft));color:var(--c,var(--idle));white-space:nowrap;margin-top:3px}
+.pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.s-run{--c:var(--run);--cs:var(--run-soft)} .s-done{--c:var(--ok);--cs:var(--ok-soft)} .s-wait{--c:var(--wait);--cs:var(--wait-soft)} .s-off{--c:var(--idle);--cs:var(--idle-soft)}
+.task{font-size:13px}
+.say{font-family:var(--mono);font-size:12px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 9px;overflow-wrap:anywhere}
+.s-run .say::after,.desk.s-run .say::after{content:"▍";animation:blink 1s steps(1) infinite;color:var(--run)}
+@keyframes blink{50%{opacity:0}}
+.meta{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+aside.inbox{position:sticky;top:calc(12px + env(safe-area-inset-top,0px));display:flex;flex-direction:column;gap:10px}
+@media (max-width:980px){aside.inbox{position:static}}
+.ask{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:4px}
+.ask .t{font-weight:600}
+.ask .m{font-size:12px;color:var(--muted)}
+.ask label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+.ask input{margin-top:3px;accent-color:var(--accent)}
+.ask.done{opacity:.55} .ask.done .t{text-decoration:line-through}
+.owner{font-size:11px;font-weight:600;padding:1px 7px;border-radius:6px;background:var(--wait-soft);color:var(--wait);align-self:flex-start}
+
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;align-items:start}
+.col{background:var(--floor);border:1px solid var(--line);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:8px}
+.col h3{margin:2px 4px 2px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:8px 10px;display:flex;flex-direction:column;gap:4px}
+.card .t{font-weight:500}
+.card .m{font-size:12px;color:var(--muted);display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.tag{font-size:11px;padding:0 6px;border-radius:5px;background:var(--accent-soft);color:var(--accent);font-weight:600}
+.col.c-done .card .t{color:var(--muted)}
+.col.c-wait{border-color:var(--wait)}
+
+.feed{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px 14px}
+.feed div{display:grid;grid-template-columns:52px 70px 1fr;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}
+.feed div:last-child{border-bottom:0}
+.feed time,.feed code{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (max-width:520px){.feed div{grid-template-columns:48px 1fr}.feed code{display:none}}
+
+.scrim{position:fixed;inset:0;background:rgba(10,14,12,.35);z-index:10}
+aside.drawer{position:fixed;top:0;right:0;bottom:0;width:min(500px,100%);background:var(--surface);border-left:1px solid var(--line);z-index:11;display:flex;flex-direction:column;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.dh{display:flex;gap:12px;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)}
+.dh .who{flex:1}
+.db{overflow-y:auto;padding:14px 16px 28px;display:flex;flex-direction:column;gap:16px}
+.db ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px}
+.kv{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.kv div{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:6px 8px}
+.kv b{display:block;font-family:var(--mono);font-variant-numeric:tabular-nums}
+button.x{font:inherit;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:5px 10px;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.foot{color:var(--muted);font-size:12px;max-width:80ch}
+@media (prefers-reduced-motion:reduce){.say::after{animation:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Biuro Agentów</h1>
+      <p class="sub">Stan na <b>25.09.2026, 12:05</b> · realni agenci tej sesji Claude Code, realny plan i decyzje</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="lbl">Agenci dziś</span><b>6</b></div>
+      <div class="stat"><span class="lbl">Zadania zrobione</span><b id="sDone">–</b></div>
+      <div class="stat"><span class="lbl">Tokeny agentów</span><b>408 285</b></div>
+      <div class="stat"><span class="lbl">Commity</span><b>10</b></div>
+      <div class="stat hot"><span class="lbl">Czeka na Ciebie</span><b id="sWait">–</b></div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <main style="display:flex;flex-direction:column;gap:22px;min-width:0">
+      <section>
+        <div class="sec-head"><h2>Zespół</h2><span class="lbl">kliknij biurko → wynik pracy</span></div>
+        <div class="floor" id="floor"></div>
+      </section>
+
+      <section>
+        <div class="sec-head"><h2>Plan pracy</h2><span class="lbl">źródło: README i PR #1</span></div>
+        <div class="board" id="board"></div>
+      </section>
+
+      <section>
+        <div class="sec-head"><h2>Dziennik</h2><span class="lbl">commity na gałęzi claude/festive-volta-205z0m</span></div>
+        <div class="feed" id="feed"></div>
+      </section>
+    </main>
+
+    <aside class="inbox" aria-labelledby="inboxH">
+      <div class="sec-head" style="margin:0"><h2 id="inboxH">Czeka na Ciebie</h2></div>
+      <div id="inbox" style="display:flex;flex-direction:column;gap:10px"></div>
+      <p class="foot" style="margin:0">Odhaczenia zapisują się tylko w tej przeglądarce.</p>
+    </aside>
+  </div>
+
+  <p class="foot">To jest zrzut stanu, nie podgląd na żywo. Aktualizuję go na prośbę. Agenci sklepu (Onboarding, Wsparcie, Marketing, Fulfillment) nie istnieją jeszcze w kodzie — ich biurka są puste do czasu wyboru produktu. Docelowo panel czyta dane na żywo z Langfuse, LangGraph i Redis (<code>04_KOD_I_INFRASTRUKTURA/panel-biuro/README.md</code>).</p>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-labelledby="dTitle"></aside>
+
+<script>
+const ST={run:["pracuje","s-run"],done:["zakończył","s-done"],off:["jeszcze nie uruchomiony","s-off"]};
+const team=[
+ {id:"main",ini:"CL",name:"Claude — koordynator",st:"run",task:"Przebudowa panelu na realny stan",say:"Układam biuro bez zakładek: zespół, plan, dziennik i decyzje na jednej stronie.",meta:["sesja główna","od 23:47"],
+  out:["Uruchomił 5 agentów i złożył ich wyniki.","Wprowadził poprawki 1–5 w dokumentacji (9 commitów).","Otworzył PR #1 i utworzył CLAUDE.md.","Zbudował panel Biuro Agentów."],next:"Czeka na Twoją decyzję: scalenie PR #1 albo kolejne zadanie."},
+ {id:"s",ini:"ST",name:"Analityk strategii",st:"done",task:"Przegląd 00_STRATEGIA i README",say:"Stack „potwierdzony”, a w dokumentach wciąż pary X/Y.",meta:["73 s","73 236 tok."],stats:["73 s","73 236","4"],
+  out:["Stack nierozstrzygnięty mimo statusu „potwierdzony”.","Sprzeczne progi wygaszania (marża < CAC vs 100–150%).","Budżet liczony na 1 kandydata zamiast 3–5.","Odsyłacze w kółko: brak tabeli decyzji logistycznej.","Nieaktualne modele AI (GPT-4o-mini, Claude 3.5)."],next:"Wszystko naprawione w commitach 6fc262b i 89dc6d3."},
+ {id:"f",ini:"FP",name:"Analityk finansów i prawa",st:"done",task:"Przegląd 01_FINANSE_I_PRAWO",say:"Limit VAT 240 tys. zł od 2026, a w dokumencie 200 tys.",meta:["115 s","78 939 tok."],stats:["115 s","78 939","6"],
+  out:["Nieaktualny limit zwolnienia z VAT.","Brak VAT-UE przy reklamach Meta/TikTok, KSeF, IOSS.","Odesłanie do zamkniętej platformy ODR.","Błędny pomysł na estoński CIT (etat wspólnika).","Suma budżetu się nie zgadzała; realnie 2,5–4,5 tys. zł/mc."],next:"Poprawione w 5bb8001. Punkty ⚠️ do weryfikacji z księgową."},
+ {id:"p",ini:"PM",name:"Analityk produktów i marketingu",st:"done",task:"Przegląd 02_PRODUKTY i 03_MARKETING",say:"ROAS w P001 policzony źle: wychodzi 3,1, nie 2,1.",meta:["62 s","71 015 tok."],stats:["62 s","71 015","5"],
+  out:["P001 tylko częściowo zgodny z szablonem.","Błędny ROAS w KPI.","Wypełniony 1 z 4 promptów.","Twierdzenia zdrowotne na granicy Brand Booka.","Szablony kampanii bez Conversions API i reguł wyłączania."],next:"P001 poprawiony w 89dc6d3. Meta CAPI — przy kodzie."},
+ {id:"i",ini:"IO",name:"Analityk infrastruktury i operacji",st:"done",task:"Przegląd 04_KOD i 05_OPERACJE",say:"Brak .gitignore — pierwsze git add . wrzuci sekrety.",meta:["56 s","73 851 tok."],stats:["56 s","73 851","4"],
+  out:["Brak kodu — tylko README.","Brak .gitignore, env_backups w repo.","Service key omija RLS i miał trafić do agentów.","Dane klientów w zgłoszeniach w gicie (RODO).","SOP bez 14-dniowego terminu reklamacji."],next:"Naprawione w 9572a1e i 5bb8001."},
+ {id:"r",ini:"RS",name:"Researcher kandydatów",st:"done",task:"12 kandydatów produktowych",say:"Na start tylko produkty bez prądu — inaczej tracimy zwolnienie z VAT.",meta:["257 s","111 244 tok."],stats:["257 s","111 244","38"],
+  out:["Top 3: ostrzałka rolkowa (54 pkt), smoker do koktajli (53), model 3D (52).","Rezerwa: mata węchowa XXL (54).","Ceny z Allegro tylko ze snippetów; koszty to szacunki.","Nie sprawdzono Meta Ads Library ani TikTok Creative Center (blokada)."],next:"Wyniki w Shortlista_Kandydatow.md. Weryfikacja ręczna w dniach 1–2 sprintu."},
+ {id:"x1",ini:"ON",name:"Agent Onboardingu",st:"off",task:"marka, landing page",empty:true},
+ {id:"x2",ini:"WS",name:"Agent Wsparcia",st:"off",task:"czat z klientami",empty:true},
+ {id:"x3",ini:"MK",name:"Agent Marketingowy",st:"off",task:"kreacje Meta i TikTok",empty:true},
+ {id:"x4",ini:"FU",name:"Agent Fulfillmentu",st:"off",task:"zamówienia do dostawcy",empty:true},
+];
+const plan={
+ done:["Przegląd dokumentacji (4 agentów)","Sekrety: .gitignore i zasady backupu","ADR-001: stack techniczny","Prawo i podatki 2026","Progi go/no-go, budżet, P001","Shortlista + research 12 kandydatów","CLAUDE.md: styl odpowiedzi","ADR i cele przyjęte (wspólnik 1)","Prototyp panelu Biuro Agentów"],
+ doing:[["Panel: realny stan biura","CL"]],
+ wait:[["Scal PR #1 na GitHubie","Ty"],["Akceptacja ADR-001 i celów","Wspólnik 2"]],
+ todo:[["Sprint dz. 1–2: ceny Allegro, CJ/AliExpress, Ads Library","Wspólnicy"],["Sprint dz. 3: punktacja osobno","Wspólnicy"],["Sprint dz. 4: 3 kandydatów, próbki","Wspólnicy"],["Sprint dz. 5: kandydat nr 1","Wspólnicy"],["Księgowa: VAT, VAT-UE, PKWiU","Ty"],["Prawnik: regulamin, GPSR, zwroty","Ty"],["Umowa wspólników, s.c., PCC-3","Wspólnicy"],["Konto firmowe i Stripe","Ty"],["Szkielet kodu: Medusa, Next.js, agenci","CL"]],
+};
+const inbox=[
+ {id:"pr",t:"Scal PR #1",m:"10 commitów z dzisiejszą pracą",o:"Ty",link:"https://github.com/gmarczak/curly-spork/pull/1"},
+ {id:"w2",t:"Akceptacja ADR-001 i celów",m:"Pola wspólnika 2 w ADR i Business Planie",o:"Wspólnik 2"},
+ {id:"sp",t:"Start sprintu wyboru produktu",m:"Dni 1–2: ręczna weryfikacja 12 kandydatów",o:"Wspólnicy"},
+ {id:"ks",t:"Umówić księgową",m:"Lista pytań: Zasady_Ksiegowe_i_VAT.md, sekcja 6",o:"Ty"},
+ {id:"pw",t:"Umówić prawnika",m:"Lista pytań: Wzorce_Regulaminow_i_Polityk.md, sekcja 6",o:"Ty"},
+];
+const feed=[["12:05","—","Panel: realny stan biura (w toku)"],["11:59","4e3ab6b","Prototyp panelu Biuro Agentów"],["09:33","7113659","ADR-001 i cele przyjęte (wspólnik 1)"],["09:29","0d08d67","Shortlista: wyniki researchu"],["09:27","242fa77","CLAUDE.md"],["09:18","ccb2573","Arkusz shortlisty, README"],["09:17","89dc6d3","Progi go/no-go, budżet, P001"],["09:14","5bb8001","Prawo i podatki 2026"],["09:13","6fc262b","ADR-001: stack"],["09:11","9572a1e",".gitignore i sekrety"],["23:47","511d389","Dokumentacja startowa (24.09)"]];
+
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let checked={}; try{checked=JSON.parse(localStorage.getItem("biuro-inbox")||"{}")}catch(e){}
+
+function render(){
+  const f=document.getElementById("floor");
+  f.innerHTML=team.map(a=>{const [l,c]=ST[a.st];
+    return `<${a.empty?"div":"button"} class="desk ${c} ${a.empty?"empty":""}" data-id="${a.id}">
+      <div class="who"><div class="av ${c}">${a.ini}</div><div><b>${esc(a.name)}</b><span class="pill ${c}">${l}</span></div></div>
+      <div class="task">${esc(a.task)}</div>
+      ${a.empty?`<div class="meta"><span>biurko czeka na kod</span></div>`:`<div class="say">${esc(a.say)}</div><div class="meta"><span>${esc(a.meta[0])}</span><span>${esc(a.meta[1])}</span></div>`}
+    </${a.empty?"div":"button"}>`}).join("");
+  f.querySelectorAll("button.desk").forEach(b=>b.onclick=()=>open(b.dataset.id));
+
+  const col=(k,title,items,cls)=>`<div class="col ${cls}"><h3><span>${title}</span><span>${items.length}</span></h3>${items.map(x=>{const [t,o]=Array.isArray(x)?x:[x,""];return `<div class="card"><div class="t">${esc(t)}</div>${o?`<div class="m"><span class="tag">${esc(o)}</span></div>`:""}</div>`}).join("")}</div>`;
+  document.getElementById("board").innerHTML=col("todo","Do zrobienia",plan.todo,"")+col("doing","W trakcie",plan.doing,"")+col("wait","Czeka na decyzję",plan.wait,"c-wait")+col("done","Zrobione",plan.done,"c-done");
+
+  document.getElementById("inbox").innerHTML=inbox.map(x=>`<div class="ask ${checked[x.id]?"done":""}"><label><input type="checkbox" data-k="${x.id}" ${checked[x.id]?"checked":""}><span><span class="t">${esc(x.t)}</span><br><span class="m">${esc(x.m)}</span></span></label>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="owner">${esc(x.o)}</span>${x.link?`<a href="${x.link}" target="_blank" rel="noopener" style="font-size:12px;color:var(--accent);font-weight:600">Otwórz PR →</a>`:""}</div></div>`).join("");
+  document.querySelectorAll("#inbox input").forEach(i=>i.onchange=()=>{checked[i.dataset.k]=i.checked;try{localStorage.setItem("biuro-inbox",JSON.stringify(checked))}catch(e){};render()});
+
+  document.getElementById("feed").innerHTML=feed.map(r=>`<div><time>${r[0]}</time><code>${r[1]}</code><span>${esc(r[2])}</span></div>`).join("");
+  document.getElementById("sDone").textContent=plan.done.length;
+  document.getElementById("sWait").textContent=inbox.filter(x=>!checked[x.id]).length;
+}
+function open(id){
+  const a=team.find(x=>x.id===id),[l,c]=ST[a.st],d=document.getElementById("drawer");
+  d.innerHTML=`<div class="dh"><div class="who"><div class="av ${c}">${a.ini}</div><div><b id="dTitle">${esc(a.name)}</b><span class="pill ${c}">${l}</span></div></div><button class="x" id="dx" aria-label="Zamknij">✕</button></div>
+   <div class="db">
+    <div><div class="lbl">Zadanie</div><div style="font-weight:600;margin-top:3px">${esc(a.task)}</div></div>
+    ${a.stats?`<div class="kv"><div><span class="lbl">Czas</span><b>${a.stats[0]}</b></div><div><span class="lbl">Tokeny</span><b>${a.stats[1]}</b></div><div><span class="lbl">Narzędzia</span><b>${a.stats[2]}</b></div></div>`:""}
+    <div><div class="lbl" style="margin-bottom:6px">Co ustalił</div><ul>${a.out.map(o=>`<li>${esc(o)}</li>`).join("")}</ul></div>
+    <div><div class="lbl">Co dalej</div><div style="margin-top:3px">${esc(a.next)}</div></div>
+   </div>`;
+  d.hidden=false;document.getElementById("scrim").hidden=false;document.getElementById("dx").focus();
+  document.getElementById("dx").onclick=close;
+}
+function close(){document.getElementById("drawer").hidden=true;document.getElementById("scrim").hidden=true}
+document.getElementById("scrim").onclick=close;
+document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+render();
+</script>

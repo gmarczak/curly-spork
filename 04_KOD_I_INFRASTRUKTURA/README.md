@@ -7,7 +7,7 @@ Ten folder zawiera trzy współpracujące komponenty kodu wspólnego silnika —
 | `medusa-backend/` | Silnik e-commerce: katalog, zamówienia, płatności (Stripe), integracja z kurierami/dostawcami | MedusaJS (Node.js/TypeScript) | Hetzner VPS |
 | `storefront-nextjs/` | Frontend wielodomenowy — rozpoznaje domenę klienta i renderuje odpowiedni sklep | Next.js | Vercel |
 | `ai-agents-langgraph/` | Zespół agentów AI (Onboarding/Branding, Support, Marketing, Fulfillment) | LangGraph (Python) + kolejka Redis/`arq` + LiteLLM | Hetzner VPS (osobny proces/worker) |
-| `panel-biuro/` | Biuro Agentów: podgląd myśli i planu agentów, sterowanie, akceptacje (prototyp: `prototyp.html`) | Next.js | Vercel (dostęp tylko dla wspólników) |
+| `panel-biuro/` | Biuro Agentów: podgląd myśli i planu agentów, sterowanie, akceptacje (obecnie: `biuro.html`) | Next.js | Vercel (dostęp tylko dla wspólników) |
 | `env_backups/` | Tylko README z zasadami — same backupy trzymamy w menedżerze haseł, poza repo (blokuje to root `.gitignore`) | — | menedżer haseł / szyfrowany backup poza repo |
 
 ## Jak te repozytoria się łączą

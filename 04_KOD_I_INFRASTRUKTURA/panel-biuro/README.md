@@ -1,6 +1,6 @@
 # panel-biuro — Biuro Agentów
 
-Panel do podglądu i sterowania agentami AI. Status: **prototyp na danych przykładowych** (`prototyp.html`, otwórz w przeglądarce).
+Panel do podglądu i sterowania agentami AI. Status: **prototyp na danych przykładowych** (`biuro.html` — stan na dziś: realni agenci tej sesji Claude Code, realny plan i decyzje).
 
 ## Co ma robić
 
