@@ -13,7 +13,7 @@
 
 ## 2. Szczegóły — "Pierwszy Biznes – Wsparcie w Starcie" (najbardziej praktyczna opcja na sprzęt)
 
-- **Kwota:** do 183 955,80 zł (20× przeciętne wynagrodzenie, marzec 2026).
+- **Kwota:** do 183 955,80 zł (20× przeciętne wynagrodzenie, marzec 2026). ⚠️ Kwotę, umorzenie i nabór sprawdzić na stronie operatora przed wnioskiem.
 - **Oprocentowanie:** 0,25% rocznie, stałe — praktycznie darmowy kredyt.
 - **Spłata:** do 7 lat, z karencją na spłatę kapitału do 12 miesięcy.
 - **Umorzenie:** do 50% pożyczki (maks. 6× śr. wynagrodzenia) przy utrzymaniu działalności zgodnie z warunkami programu.
@@ -30,7 +30,7 @@
 
 ## 4. Platformy Startowe i FENG (dla większej skali)
 
-- **Platformy Startowe:** realnie duża kwota (do 600 000 zł), ale **tylko dla firm z woj. Polska Wschodnia** i wymaga formy **sp. z o.o.** zarejestrowanej nie dawniej niż 24 miesiące. To jest bezpośrednio powiązane z decyzją o formie prawnej (patrz `Rejestracja_i_Umowy/Forma_Prawna_i_Rejestracja.md`) — jeśli jesteście w tym regionie i chcecie sięgnąć po ten grant, może to być argument za rejestracją sp. z o.o. od razu, a nie po walidacji.
+- **Platformy Startowe:** realnie duża kwota (do 600 000 zł — ⚠️ kwotę i otwarty nabór sprawdzić na stronie PARP), ale **tylko dla firm z woj. Polska Wschodnia** i wymaga formy **sp. z o.o.** zarejestrowanej nie dawniej niż 24 miesiące. To jest bezpośrednio powiązane z decyzją o formie prawnej (patrz `Rejestracja_i_Umowy/Forma_Prawna_i_Rejestracja.md`) — jeśli jesteście w tym regionie i chcecie sięgnąć po ten grant, może to być argument za rejestracją sp. z o.o. od razu, a nie po walidacji.
 - **FENG Ścieżka SMART:** dostępna w całej Polsce, ale wymaga wykazania elementu B+R/innowacji — dla tego projektu realną kartą do zagrania jest warstwa agentów AI (nie standardowy e-commerce), ale to wymaga solidnego wniosku i zwykle wsparcia doradcy dotacyjnego.
 
 ## 5. Ulga na Start i Preferencyjny ZUS — interakcja z formą prawną
@@ -47,7 +47,7 @@ W `Rejestracja_i_Umowy/Forma_Prawna_i_Rejestracja.md` zapisano, że sp. z o.o. w
 - **Stawki:** 10% (mały podatnik) / 20% (inni) estońskiego CIT — płacone tylko od **wypłaconej** dywidendy, nie od zysku zatrzymanego w spółce.
 - **Ulga dla wspólnika:** przy wypłacie dywidendy wspólnik dostaje odliczenie w PIT — 90% (mały podatnik) / 70% (inni) — co daje **efektywne łączne opodatkowanie ok. 20–25%**, wyraźnie mniej niż klasyczne CIT+PIT (~26–34%).
 - **Warunki dla Was (wstępnie spełnione):** wspólnikami mogą być tylko osoby fizyczne (macie dwóch wspólników-osoby fizyczne — OK); spółka nie może mieć udziałów w innych podmiotach; przychody pasywne (odsetki, licencje, transakcje z podmiotami powiązanymi) poniżej 50% przychodu.
-- **Warunek wymagający uwagi:** minimalne zatrudnienie — standardowo min. 3 etaty (300+ dni/rok) lub **1 etat dla małego podatnika**. Przy 2-osobowym zespole bez pracowników trzeba to zaplanować (np. jeden ze wspólników zatrudniony na etacie w spółce) — do przemyślenia razem z księgowym przy przekształceniu.
+- **Warunek wymagający uwagi — zatrudnienie:** min. **3 osoby zatrudnione na umowę o pracę, niebędące udziałowcami** (albo wariant alternatywny oparty na poziomie wydatków na wynagrodzenia, też wymagający min. 3 osób). **Zatrudnienie jednego ze wspólników na etacie w spółce NIE spełnia tego warunku** (poprawka 2026-09-25 — wcześniejsza wersja sugerowała to rozwiązanie). Istnieją złagodzenia dla spółek w pierwszych latach działalności. ⚠️ Szczegóły warunku i złagodzeń potwierdzić z księgowym — przy 2 wspólnikach bez pracowników estoński CIT może być realny dopiero przy zatrudnieniu zespołu.
 
 ## 7. Zakup sprzętu na firmę — zasady podatkowe
 

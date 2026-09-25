@@ -13,12 +13,13 @@ Dwóch wspólników, brak zarejestrowanej działalności na dzień 2026-09-16, f
 | **2× JDG + umowa o współpracy** | każdy wspólnik całym majątkiem, tylko za swoją część | najniższa — CEIDG, książka przychodów/rozchodów lub ryczałt | PIT indywidualnie dla każdego | najszybszy start, ale brak jednego wspólnego podmiotu — trudniej podpisywać jedną umowę z dostawcą/bramką płatności |
 | **Spółka cywilna** | obaj wspólnicy całym majątkiem, solidarnie | niska — jeden NIP/REGON spółki, księgowość może być uproszczona | PIT proporcjonalnie do udziałów | **rekomendowana na fazę walidacji** — jeden podmiot, niski koszt, łatwe do przekształcenia później |
 | **Spółka jawna** | całym majątkiem (subsydiarnie, po spółce) | wpis do KRS wymagany, więcej formalności niż cywilna | PIT | rzadko uzasadniona przewaga nad cywilną na tym etapie |
-| **Sp. z o.o.** | ograniczona do wniesionego kapitału (chroni majątek prywatny) | wyższa — pełna księgowość, KRS, rejestracja przez system S24 może być szybka i niedroga | CIT 9% (mały podatnik, do limitu) + PIT 19% od wypłaconej dywidendy | **rekomendowana po walidacji** — gdy jest realna sprzedaż, wiele domen/sklepów, kontrakty z bramkami płatności, ryzyko związane z RODO/reklamacjami |
+| **Sp. z o.o.** | ograniczona do wniesionego kapitału (chroni majątek prywatny) | wyższa — pełna księgowość, KRS, rejestracja przez system S24 może być szybka i niedroga | CIT 9% (mały podatnik, do limitu) + PIT 19% od wypłaconej dywidendy — **uwaga: spółka powstała z przekształcenia (np. s.c.) nie może stosować 9% w roku rozpoczęcia działalności i w roku następnym** (art. 19 ust. 1a ustawy o CIT) ⚠️ | **rekomendowana po walidacji** — gdy jest realna sprzedaż, wiele domen/sklepów, kontrakty z bramkami płatności, ryzyko związane z RODO/reklamacjami |
 
 ## 3. Rekomendowana ścieżka
 
 1. **Faza 0 (teraz — walidacja pierwszego produktu):** spółka cywilna (albo 2× JDG, jeśli chcecie maksymalnie odroczyć formalności) — minimalny koszt, szybki start, wystarczające do podpisania umowy z dostawcą dropshipping i otwarcia konta Stripe.
-2. **Faza 1 (po potwierdzeniu, że model działa — realna sprzedaż, plan skalowania na kilka produktów):** przekształcenie w sp. z o.o. — ochrona majątku prywatnego wspólników, większa wiarygodność dla partnerów B2B (bramki płatności, hurtownicy).
+2. **Faza 1 (po potwierdzeniu, że model działa — realna sprzedaż, plan skalowania na kilka produktów; orientacyjnie 6.–12. miesiąc, patrz `00_STRATEGIA/Business_Plan_i_Koncepcja.md`):** sp. z o.o. — ochrona majątku prywatnego wspólników, większa wiarygodność dla partnerów B2B (bramki płatności, hurtownicy).
+   * **Dwie ścieżki do porównania z księgowym:** (a) przekształcenie s.c. w sp. z o.o. — ciągłość umów i NIP, ale **bez CIT 9% przez pierwsze 2 lata podatkowe**; (b) założenie nowej sp. z o.o. i przeniesienie działalności (marki, domeny, umowy) — CIT 9% dostępny od startu, ale więcej pracy przy przenoszeniu umów i ryzyko zarzutu obejścia przepisów. ⚠️
 
 ## 4. Elementy umowy wspólników do ustalenia (przed rejestracją)
 
@@ -31,12 +32,14 @@ Dwóch wspólników, brak zarejestrowanej działalności na dzień 2026-09-16, f
 
 ## 5. Checklist rejestracji (spółka cywilna, wariant startowy)
 
-- [ ] Umowa spółki cywilnej (forma pisemna)
+- [ ] Umowa spółki cywilnej (forma pisemna; notariusz niepotrzebny)
+- [ ] **PCC-3** — podatek od czynności cywilnoprawnych **0,5% od wartości wkładów**, deklaracja i zapłata w ciągu **14 dni** od zawarcia umowy spółki (np. wkłady 10 000 zł → 50 zł)
 - [ ] Wpis obu wspólników do CEIDG
 - [ ] Wspólny NIP i REGON spółki
 - [ ] Zgłoszenie do ZUS (składki obu wspólników)
 - [ ] Wybór formy opodatkowania (skala/ryczałt/liniowy) — konsultacja z księgowym
 - [ ] Otwarcie konta firmowego
+- [ ] Rejestracja VAT-R (co najmniej VAT-UE — przed pierwszą fakturą za reklamy Meta/TikTok, patrz `01_FINANSE_I_PRAWO/Podatki_i_Ksiegowosc/Zasady_Ksiegowe_i_VAT.md`)
 
 ---
 
