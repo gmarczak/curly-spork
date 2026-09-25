@@ -5,18 +5,21 @@ Checkpointer: w pamięci na start. Produkcja: langgraph-checkpoint-postgres (Sup
 przetrwała restart workera.
 """
 
+import asyncio
 from typing import Any
 
+from arq import Retry
 from arq.connections import RedisSettings
 from langgraph.checkpoint.memory import InMemorySaver
 
+from . import narration
+from .activity import RedisPanel
 from .clients.medusa import MedusaHttp
 from .clients.supplier import SupplierError, SupplierOrderResult
 from .config import Settings, get_settings
 from .graphs import draft_approve, fulfillment, runner, support
 from .llm import LiteLLMClient
 from .permissions import Agent
-from .store import Approvals
 
 
 class SupplierNotConfigured:
@@ -55,11 +58,37 @@ def route_event(event: dict) -> tuple[str, str, dict] | None:
     return None
 
 
-def _track(approvals: Approvals, graph: str, result: runner.RunResult) -> dict:
+PAUSE_RETRY_S = 60
+
+
+def _observer(ctx: dict, graph: str, thread_id: str):
+    panel = ctx["panel"]
+
+    def observe(node: str, update: Any) -> None:
+        text = narration.describe(graph, node, update)
+        if text:
+            panel.log(graph, "step", text, thread_id)
+
+    return observe
+
+
+def _run_tracked(ctx: dict, graph: str, thread_id: str, task: str, run) -> dict:
+    panel = ctx["panel"]
+    panel.set_status(graph, "working", task, thread_id)
+    try:
+        result: runner.RunResult = run(_observer(ctx, graph, thread_id))
+    except Exception as exc:
+        panel.set_status(graph, "error", task, thread_id)
+        panel.log(graph, "error", f"Błąd: {exc}", thread_id)
+        raise
     if result.waiting:
-        approvals.add(result.thread_id, graph, result.payload)
-        return {"status": "waiting", "thread_id": result.thread_id}
-    return {"status": "done", "thread_id": result.thread_id}
+        ctx["approvals"].add(thread_id, graph, result.payload)
+        panel.set_status(graph, "waiting", task, thread_id)
+        panel.log(graph, "ask", f"Czekam na Twoją decyzję: {result.payload.get('title', '')}", thread_id)
+        return {"status": "waiting", "thread_id": thread_id}
+    panel.set_status(graph, "idle", "", "")
+    panel.log(graph, "done", f"Zakończone: {task}", thread_id)
+    return {"status": "done", "thread_id": thread_id}
 
 
 async def handle_event(ctx: dict, event: dict) -> dict:
@@ -67,11 +96,18 @@ async def handle_event(ctx: dict, event: dict) -> dict:
     if routed is None:
         return {"status": "ignored", "event": event["name"]}
     graph, thread_id, state = routed
-    return _track(ctx["approvals"], graph, runner.start(ctx["graphs"][graph], thread_id, state))
+    if ctx["panel"].is_paused(graph):
+        raise Retry(defer=PAUSE_RETRY_S)
+    task = narration.task_title(graph, state)
+    run = lambda obs: runner.start(ctx["graphs"][graph], thread_id, state, obs)  # noqa: E731
+    return await asyncio.to_thread(_run_tracked, ctx, graph, thread_id, task, run)
 
 
 async def resume_graph(ctx: dict, thread_id: str, graph: str, decision: Any) -> dict:
-    return _track(ctx["approvals"], graph, runner.resume(ctx["graphs"][graph], thread_id, decision))
+    task = ctx["panel"].statuses().get(graph, {}).get("task", thread_id)
+    ctx["panel"].log(graph, "info", "Otrzymałem decyzję właściciela.", thread_id)
+    run = lambda obs: runner.resume(ctx["graphs"][graph], thread_id, decision, obs)  # noqa: E731
+    return await asyncio.to_thread(_run_tracked, ctx, graph, thread_id, task, run)
 
 
 async def startup(ctx: dict) -> None:
@@ -81,7 +117,9 @@ async def startup(ctx: dict) -> None:
 
     settings = get_settings()
     ctx["graphs"] = build_graphs(settings)
-    ctx["approvals"] = RedisApprovals(redis.Redis.from_url(settings.redis_url))
+    r = redis.Redis.from_url(settings.redis_url)
+    ctx["approvals"] = RedisApprovals(r)
+    ctx["panel"] = RedisPanel(r)
 
 
 class WorkerSettings:

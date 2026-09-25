@@ -1,0 +1,5 @@
+# Automatyczny certyfikat HTTPS dla domeny API agentów.
+{$AGENTS_DOMAIN} {
+	encode gzip
+	reverse_proxy agents-api:8000
+}
