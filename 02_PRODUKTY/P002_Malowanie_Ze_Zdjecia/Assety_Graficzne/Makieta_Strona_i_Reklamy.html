@@ -1,0 +1,363 @@
+<title>Podgląd Z Kadru</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#EEF0EC; --ink:#1F2421; --muted:#5B635E; --line:#D3D8D2; --panel:#FFFFFF; --note:#FFF3C4; --note-ink:#5A4700;
+  /* marka Z Kadru (stała, niezależna od motywu) */
+  --z-cream:#F6EFE4; --z-ink:#2F2B28; --z-terra:#B4472F; --z-sage:#5E6E52; --z-soft:#E9DFCF; --z-muted:#6E655C;
+  --serif:"DM Serif Display", Georgia, "Times New Roman", serif;
+  --sans:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --bg:#161917; --ink:#E7EBE8; --muted:#A3ABA6; --line:#2F3531; --panel:#1F2421; --note:#3D3413; --note-ink:#F5E2A0; color-scheme:dark; }
+}
+:root[data-theme="dark"]{ --bg:#161917; --ink:#E7EBE8; --muted:#A3ABA6; --line:#2F3531; --panel:#1F2421; --note:#3D3413; --note-ink:#F5E2A0; color-scheme:dark; }
+
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--ink); font:15px/1.55 var(--sans); padding-inline:16px; padding-block:24px 64px}
+.wrap{max-width:1120px; margin:0 auto; display:grid; gap:40px}
+h1,h2,h3{text-wrap:balance; margin:0}
+.intro h1{font:400 clamp(28px,4vw,40px)/1.1 var(--serif)}
+.intro p{margin:8px 0 0; color:var(--muted); max-width:68ch}
+.legend{display:flex; flex-wrap:wrap; gap:8px 16px; margin-top:12px; font-size:13px; color:var(--muted)}
+.todo{background:var(--z-note,#FFE9A8); color:#5A4700; padding:0 4px; border-radius:3px; font-weight:600; font-size:.92em; white-space:normal}
+.sec-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; border-bottom:1px solid var(--line); padding-bottom:8px}
+.sec-head h2{font:400 26px/1.2 var(--serif)}
+.sec-head span{color:var(--muted); font-size:13px}
+.tabs{display:flex; gap:6px}
+.tabs button{font:600 13px var(--sans); border:1px solid var(--line); background:var(--panel); color:var(--ink); padding:6px 12px; border-radius:999px; cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--ink); color:var(--bg); border-color:var(--ink)}
+button:focus-visible, summary:focus-visible, a:focus-visible{outline:2px solid var(--z-terra); outline-offset:2px}
+
+/* ---------- ramka przeglądarki ---------- */
+.browser{background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden; margin-inline:auto; width:100%; transition:max-width .3s}
+.browser.mobile{max-width:400px}
+.bar{display:flex; align-items:center; gap:8px; padding:10px 12px; border-bottom:1px solid var(--line); font-size:12px; color:var(--muted)}
+.dots{display:flex; gap:5px}.dots i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
+.url{flex:1; background:var(--bg); border-radius:6px; padding:4px 10px; font-variant-numeric:tabular-nums; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+/* ---------- strona marki ---------- */
+.site{background:var(--z-cream); color:var(--z-ink); font-family:var(--sans); container-type:inline-size}
+.site .in{padding-inline:clamp(16px,5cqw,56px)}
+.nav{display:flex; justify-content:space-between; align-items:center; padding-block:18px}
+.nav nav{display:flex; gap:20px; font-size:14px; color:var(--z-muted)}
+@container (max-width:560px){ .nav nav{display:none} }
+
+.logo{font:400 24px/1 var(--serif); letter-spacing:.01em; display:inline-flex; align-items:baseline; gap:.28em; color:var(--z-ink)}
+.logo .k{position:relative; padding:.12em .22em}
+.logo .k::before,.logo .k::after,.logo .k b::before,.logo .k b::after{content:""; position:absolute; width:.32em; height:.32em; border:2px solid var(--z-ink)}
+.logo .k::before{left:0; top:0; border-right:0; border-bottom:0}
+.logo .k::after{right:0; top:0; border-left:0; border-bottom:0}
+.logo .k b::before{left:0; bottom:0; border-right:0; border-top:0}
+.logo .k b::after{right:0; bottom:0; border-left:0; border-top:0; border-color:var(--z-terra); border-width:3px}
+.logo .k b{font-weight:400}
+
+.hero{display:grid; grid-template-columns:1.05fr 1fr; gap:clamp(20px,4cqw,48px); align-items:center; padding-block:clamp(16px,4cqw,48px) clamp(32px,6cqw,64px)}
+@container (max-width:760px){ .hero{grid-template-columns:1fr} }
+.eyebrow{font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--z-sage); font-weight:700}
+.hero h1{font:400 clamp(32px,5.2cqw,54px)/1.04 var(--serif); margin-top:10px}
+.hero h1 em{font-style:italic; color:var(--z-terra)}
+.hero p.sub{font-size:17px; color:var(--z-muted); margin:14px 0 0; max-width:44ch}
+.buy{display:flex; flex-wrap:wrap; align-items:center; gap:12px 18px; margin-top:22px}
+.price{font:400 30px/1 var(--serif)}
+.price small{font:500 13px var(--sans); color:var(--z-muted); display:block; margin-top:4px}
+.cta{background:var(--z-terra); color:#fff; border:0; font:700 16px var(--sans); padding:14px 22px; border-radius:8px; cursor:pointer}
+.fine{font-size:13px; color:var(--z-muted); margin-top:10px}
+
+.transform{display:grid; grid-template-columns:auto auto 1fr; align-items:center; gap:14px}
+.phone{width:clamp(96px,17cqw,150px); aspect-ratio:9/18; background:#1D1B1A; border-radius:18px; padding:6px; box-shadow:0 10px 24px rgb(0 0 0 / .18)}
+.phone .scr{width:100%; height:100%; border-radius:13px; overflow:hidden; background:#222; display:grid; place-items:center}
+.phone svg{width:100%; height:auto}
+.arrow{font:400 28px var(--serif); color:var(--z-terra)}
+.canvas-frame{background:#8A6A4A; padding:8px; border-radius:2px; box-shadow:0 18px 30px rgb(60 40 20 / .25), inset 0 0 0 2px #6E5238; max-width:100%}
+.canvas-frame svg{display:block; width:100%; height:auto; background:#fff}
+.caption{font-size:12px; color:var(--z-muted); margin-top:8px; text-align:center}
+
+.band{background:var(--z-soft); padding-block:clamp(28px,5cqw,56px)}
+.band h2,.plain h2{font:400 clamp(24px,3.6cqw,34px)/1.15 var(--serif)}
+.steps{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:22px}
+@container (max-width:680px){ .steps{grid-template-columns:1fr} }
+.step{display:grid; gap:10px}
+.step .num{font:400 20px/1 var(--serif); color:var(--z-terra)}
+.step .pic{background:var(--z-cream); border-radius:6px; padding:10px; aspect-ratio:4/3; display:grid; place-items:center; overflow:hidden}
+.step .pic svg{height:100%; width:auto; max-width:100%}
+.step h3{font:700 16px var(--sans)}
+.step p{margin:0; color:var(--z-muted); font-size:14px}
+
+.plain{padding-block:clamp(28px,5cqw,56px)}
+.two{display:grid; grid-template-columns:1fr 1fr; gap:clamp(20px,4cqw,48px); align-items:start}
+@container (max-width:680px){ .two{grid-template-columns:1fr} }
+ul.check{list-style:none; padding:0; margin:16px 0 0; display:grid; gap:10px}
+ul.check li{display:grid; grid-template-columns:18px 1fr; gap:10px; font-size:15px}
+ul.check li::before{content:""; width:10px; height:10px; margin-top:6px; background:var(--z-terra); border-radius:2px}
+.xmas{background:var(--z-ink); color:var(--z-cream); border-radius:8px; padding:20px 22px}
+.xmas h3{font:400 22px/1.2 var(--serif)}
+.xmas p{margin:8px 0 0; color:#D8CFC2; font-size:14px}
+.faq details{border-bottom:1px solid #DDD1BF; padding-block:12px}
+.faq summary{cursor:pointer; font-weight:600; list-style:none; display:flex; justify-content:space-between; gap:12px}
+.faq summary::after{content:"+"; color:var(--z-terra); font-weight:700}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:8px 0 0; color:var(--z-muted); font-size:14px}
+.foot{border-top:1px solid #DDD1BF; padding-block:22px; font-size:13px; color:var(--z-muted); display:flex; flex-wrap:wrap; gap:8px 20px}
+
+/* ---------- reklamy ---------- */
+.ads{display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:24px; align-items:start}
+.ad-label{font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:8px}
+.fb{background:#fff; color:#1c1e21; border:1px solid var(--line); border-radius:10px; overflow:hidden; font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.fb .h{display:flex; gap:10px; align-items:center; padding:12px}
+.fb .av{width:38px; height:38px; border-radius:50%; background:var(--z-cream); display:grid; place-items:center; border:1px solid #e4e6eb}
+.fb .av .logo{font-size:10px}
+.fb .nm{font-weight:600; font-size:14px}.fb .sp{font-size:12px; color:#65676b}
+.fb .t{padding:0 12px 10px; font-size:14px; line-height:1.4}
+.fb .img{aspect-ratio:1/1; background:var(--z-cream); display:grid; grid-template-columns:auto auto 1fr; align-items:center; gap:10px; padding:18px}
+.fb .img .phone{width:92px}
+.fb .img .g-title{grid-column:1/-1; font:400 22px/1.1 var(--serif); color:var(--z-ink); text-align:center}
+.fb .foot2{display:flex; justify-content:space-between; align-items:center; gap:10px; background:#f0f2f5; padding:10px 12px}
+.fb .dom{font-size:12px; color:#65676b; text-transform:uppercase}
+.fb .hl{font-weight:600; font-size:15px}
+.fb .btn{background:#e4e6eb; border:0; border-radius:6px; padding:8px 12px; font-weight:600; font-size:14px; white-space:nowrap}
+
+.reel{width:min(100%,300px); margin-inline:auto; aspect-ratio:9/16; border-radius:18px; overflow:hidden; position:relative; background:#111; color:#fff}
+.reel .frame{position:absolute; inset:0; display:grid; place-items:center; opacity:0; transition:opacity .45s}
+.reel .frame.on{opacity:1}
+.reel .frame .scene{width:100%; height:100%; display:grid; place-items:center}
+.reel .ovl{position:absolute; left:14px; right:14px; top:14%; text-align:center; font:700 19px/1.25 var(--sans); text-shadow:0 2px 8px rgb(0 0 0 / .55)}
+.reel .ovl span{background:rgb(0 0 0 / .35); padding:2px 8px; border-radius:4px; box-decoration-break:clone; -webkit-box-decoration-break:clone}
+.reel .ui{position:absolute; left:12px; right:12px; bottom:12px; display:grid; gap:6px; font-size:12px}
+.reel .ui .who{display:flex; align-items:center; gap:8px; font-weight:700}
+.reel .ui .who i{width:26px; height:26px; border-radius:50%; background:var(--z-cream); display:block}
+.reel .ui .shop{background:var(--z-terra); border-radius:6px; padding:8px; text-align:center; font-weight:700; font-size:13px}
+.reel .time{position:absolute; top:10px; right:10px; font-size:11px; background:rgb(0 0 0 / .5); padding:2px 7px; border-radius:99px; font-variant-numeric:tabular-nums}
+.reel .prog{position:absolute; top:4px; left:8px; right:8px; display:flex; gap:3px}
+.reel .prog b{flex:1; height:3px; background:rgb(255 255 255 / .3); border-radius:2px}
+.reel .prog b.done{background:#fff}
+.reel-ctrl{display:flex; justify-content:center; gap:8px; margin-top:10px}
+.reel-ctrl button{font:600 13px var(--sans); border:1px solid var(--line); background:var(--panel); color:var(--ink); padding:6px 12px; border-radius:999px; cursor:pointer}
+.scripts{margin-top:10px; font-size:13px; color:var(--muted); display:grid; gap:4px}
+.scripts b{color:var(--ink); font-variant-numeric:tabular-nums}
+
+.statics{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px}
+.g{aspect-ratio:4/5; background:var(--z-cream); color:var(--z-ink); border-radius:6px; overflow:hidden; display:grid; grid-template-rows:1fr auto; border:1px solid var(--line)}
+.g .v{display:grid; place-items:center; padding:14px; overflow:hidden}
+.g .v > svg{max-height:100%; width:auto; max-width:100%}
+.g .tx{padding:12px 14px 14px; font:400 20px/1.15 var(--serif)}
+.g .tx small{display:block; font:600 11px var(--sans); letter-spacing:.08em; text-transform:uppercase; color:var(--z-sage); margin-bottom:4px}
+.copy{display:grid; grid-template-columns:1fr 1fr; gap:24px}
+@media (max-width:700px){ .copy{grid-template-columns:1fr} }
+.copy ol{margin:8px 0 0; padding-left:22px; display:grid; gap:6px}
+.copy h3{font:700 15px var(--sans)}
+.copy .n{color:var(--muted); font-size:12px; font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion: reduce){ .reel .frame{transition:none} .browser{transition:none} }
+</style>
+
+<div class="wrap">
+  <header class="intro">
+    <h1>Podgląd Z Kadru</h1>
+    <p>Tak mniej więcej będą wyglądać strona zkadru.pl i reklamy. To makiety: pies to ilustracja zastępcza, którą podmienimy na zdjęcia z próbki. Teksty są z plików <code>Landing_Tresc.md</code> i <code>Kreacje_Reklamowe.md</code>.</p>
+    <div class="legend"><span><span class="todo">[DO UZUPEŁNIENIA]</span> = brakuje danych od dostawcy albo prawnika</span></div>
+  </header>
+
+  <!-- ================= STRONA ================= -->
+  <section>
+    <div class="sec-head">
+      <h2>1. Strona zkadru.pl</h2>
+      <div class="tabs" role="group" aria-label="Szerokość podglądu">
+        <button type="button" id="w-desk" aria-pressed="true">Komputer</button>
+        <button type="button" id="w-mob" aria-pressed="false">Telefon</button>
+      </div>
+    </div>
+    <div class="browser" id="browser" style="margin-top:16px">
+      <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">https://zkadru.pl</div></div>
+      <div class="site">
+        <div class="in nav">
+          <span class="logo">z <span class="k"><b>kadru</b></span></span>
+          <nav><span>Jak to działa</span><span>Zestaw</span><span>FAQ</span></nav>
+        </div>
+
+        <div class="in hero">
+          <div>
+            <div class="eyebrow">Malowanie po numerach ze zdjęcia</div>
+            <h1>Twoje zdjęcie. Twój obraz. <em>Namalowany własnoręcznie.</em></h1>
+            <p class="sub">Prześlij zdjęcie, zatwierdź podgląd, a my wyślemy płótno 40×50 na ramie, farby i pędzle.</p>
+            <div class="buy">
+              <div class="price">159 zł<small>darmowa dostawa</small></div>
+              <button class="cta" type="button">Prześlij zdjęcie</button>
+            </div>
+            <div class="fine">Najpierw zobaczysz podgląd. Produkcja rusza dopiero po Twojej akceptacji.</div>
+          </div>
+          <div>
+            <div class="transform">
+              <div class="phone"><div class="scr" data-dog="photo" data-w="140"></div></div>
+              <div class="arrow" aria-hidden="true">→</div>
+              <div class="canvas-frame" data-dog="painted"></div>
+            </div>
+            <div class="caption">Zdjęcie z telefonu → gotowy obraz 40×50 cm (ilustracja)</div>
+          </div>
+        </div>
+
+        <div class="band"><div class="in">
+          <h2>Jak to działa</h2>
+          <div class="steps">
+            <div class="step"><span class="num">1</span><div class="pic" data-dog="photo"></div><h3>Prześlij zdjęcie</h3><p>Pies, bliscy, miejsce z wakacji. Ważne, żeby było ostre, a główny motyw duży.</p></div>
+            <div class="step"><span class="num">2</span><div class="pic" data-dog="template"></div><h3>Zatwierdź podgląd</h3><p>Pokażemy, jak będzie wyglądał obraz. Coś nie pasuje? Zmienisz zdjęcie przed produkcją.</p></div>
+            <div class="step"><span class="num">3</span><div class="pic" data-dog="half"></div><h3>Maluj</h3><p>Każde pole ma numer, każda farba też. Pole po polu, wieczór po wieczorze.</p></div>
+          </div>
+        </div></div>
+
+        <div class="in plain">
+          <div class="two">
+            <div>
+              <h2>Co jest w zestawie</h2>
+              <ul class="check">
+                <li>Płótno 40×50 cm z ponumerowanym szablonem, na drewnianej ramie, gotowe do powieszenia</li>
+                <li><span>Ponumerowane farby akrylowe: <span class="todo">[DO UZUPEŁNIENIA: 24/36/48 kolorów]</span></span></li>
+                <li>3 pędzle w różnych rozmiarach</li>
+                <li>Kolorowy wydruk podglądu</li>
+                <li>Instrukcja po polsku</li>
+              </ul>
+              <h2 style="margin-top:32px">Jakie zdjęcie wybrać</h2>
+              <ul class="check">
+                <li>Ostre, nie z zoomu</li>
+                <li>Dobrze oświetlone, najlepiej w dziennym świetle</li>
+                <li>Twarz lub zwierzę zajmuje co najmniej jedną trzecią kadru</li>
+                <li>Najlepiej 1–3 osoby lub zwierzęta</li>
+              </ul>
+            </div>
+            <div style="display:grid; gap:24px">
+              <div class="xmas">
+                <h3>Prezent przed Wigilią?</h3>
+                <p>Zamów do <span class="todo">[DO UZUPEŁNIENIA: data]</span>. Czas realizacji: <span class="todo">[DO UZUPEŁNIENIA]</span> od akceptacji podglądu.</p>
+              </div>
+              <div class="faq">
+                <h2>Pytania</h2>
+                <details open><summary>Nie umiem malować. Dam radę?</summary><p>Tak. Każde pole ma numer, każda farba też. Nie trzeba mieszać kolorów ani rysować.</p></details>
+                <details><summary>Czy zobaczę obraz przed produkcją?</summary><p>Tak. Wysyłamy podgląd e-mailem. Produkcja rusza dopiero po Twojej akceptacji.</p></details>
+                <details><summary>Ile trwa realizacja?</summary><p><span class="todo">[DO UZUPEŁNIENIA: X dni produkcji + Y dni dostawy]</span>. Liczymy od akceptacji podglądu.</p></details>
+                <details><summary>Czy mogę zwrócić zestaw?</summary><p><span class="todo">[DO UZUPEŁNIENIA po prawniku]</span> Uszkodzenie w transporcie zgłoś ze zdjęciem, a wymienimy zestaw.</p></details>
+                <details><summary>Co dzieje się z moim zdjęciem?</summary><p><span class="todo">[DO UZUPEŁNIENIA po prawniku]</span></p></details>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="in foot">
+          <span>Regulamin</span><span>Polityka prywatności</span><span>Kontakt: <span class="todo">[e-mail]</span></span><span>Sprzedawca: <span class="todo">[imię i nazwisko, adres]</span></span><span>Dla osób od 14 lat</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= REKLAMY ================= -->
+  <section>
+    <div class="sec-head"><h2>2. Reklamy</h2><span>Meta (Facebook/Instagram) i TikTok</span></div>
+    <div class="ads" style="margin-top:16px">
+      <div>
+        <div class="ad-label">Post w aktualnościach (1:1)</div>
+        <div class="fb">
+          <div class="h"><div class="av"><span class="logo">z <span class="k"><b>k</b></span></span></div><div><div class="nm">Z Kadru</div><div class="sp">Sponsorowane</div></div></div>
+          <div class="t">Zdjęcie psa z telefonu → obraz nad kanapą. Namalowany Twoją ręką. Prześlij zdjęcie, resztę przygotujemy.</div>
+          <div class="img">
+            <div class="phone"><div class="scr" data-dog="photo"></div></div>
+            <div class="arrow" aria-hidden="true">→</div>
+            <div class="canvas-frame" data-dog="painted"></div>
+            <div class="g-title">Z Twojego zdjęcia → obraz do malowania</div>
+          </div>
+          <div class="foot2"><div><div class="dom">zkadru.pl</div><div class="hl">Twoje zdjęcie jako obraz do malowania</div></div><button class="btn" type="button">Dowiedz się więcej</button></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="ad-label">Wideo Reels / TikTok (9:16) — scenariusz W1, 20 s</div>
+        <div class="reel" id="reel" aria-live="polite">
+          <div class="prog" id="prog"></div>
+          <div class="time" id="rtime">0–2 s</div>
+          <div class="ui"><div class="who"><i></i>zkadru.pl · Sponsorowane</div><div class="shop">Zamów teraz</div></div>
+        </div>
+        <div class="reel-ctrl"><button type="button" id="r-prev">◀</button><button type="button" id="r-play">Pauza</button><button type="button" id="r-next">▶</button></div>
+        <div class="scripts" id="scripts"></div>
+      </div>
+    </div>
+
+    <div class="ad-label" style="margin-top:28px">Grafiki statyczne (4:5)</div>
+    <div class="statics">
+      <div class="g"><div class="v" data-dog="photo-vs"></div><div class="tx"><small>G1</small>Z Twojego zdjęcia → obraz do malowania</div></div>
+      <div class="g"><div class="v" data-dog="half"></div><div class="tx"><small>G2</small>Każde pole ma numer</div></div>
+      <div class="g"><div class="v" data-dog="kit"></div><div class="tx"><small>G3</small>Wszystko w zestawie · 159 zł</div></div>
+    </div>
+
+    <div class="copy" style="margin-top:28px">
+      <div><h3>Nagłówki (max 40 znaków)</h3><ol>
+        <li>Twoje zdjęcie jako obraz do malowania <span class="n">37</span></li>
+        <li>Prezent ze zdjęcia, który się maluje <span class="n">36</span></li>
+        <li>Pies na ścianie. Namalowany przez Ciebie <span class="n">40</span></li>
+        <li>Nie umiesz malować? Tu nie trzeba <span class="n">33</span></li>
+        <li>Zdjęcie z wakacji → obraz w salonie <span class="n">35</span></li></ol></div>
+      <div><h3>Teksty główne (max 125 znaków)</h3><ol>
+        <li>Zdjęcie psa z telefonu → obraz nad kanapą. Namalowany Twoją ręką. Prześlij zdjęcie, resztę przygotujemy. <span class="n">104</span></li>
+        <li>Szukasz prezentu, którego nikt inny nie da? Zamień wspólne zdjęcie w obraz do malowania po numerach. <span class="n">100</span></li>
+        <li>Płótno 40×50 na ramie, farby i pędzle. Numerki prowadzą krok po kroku. Doświadczenie niepotrzebne. <span class="n">98</span></li>
+        <li>Zamiast kolejnego wieczoru z telefonem: pędzel, farby i Wasze zdjęcie. 159 zł, darmowa dostawa. <span class="n">95</span></li>
+        <li>Najpierw widzisz podgląd obrazu. Dopiero po Twojej akceptacji ruszamy z produkcją. <span class="n">82</span></li></ol></div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  // Ilustracja zastępcza: pies złożony z pól (jak w malowaniu po numerach)
+  const C={1:"#C98B4E",2:"#7A4A2A",3:"#EAD2AE",4:"#2A2320",5:"#9DB7C2",6:"#6F8F5E",7:"#D9837F",8:"#F1E6D6"};
+  const R=[
+    [5,"0,0 200,0 200,150 0,150"],[6,"0,150 200,150 200,200 0,200"],
+    [8,"70,150 130,150 150,200 50,200"],
+    [2,"52,58 80,48 78,120 50,135 40,100"],[2,"148,58 120,48 122,120 150,135 160,100"],
+    [1,"80,48 120,48 128,80 100,88 72,80"],[1,"72,80 100,88 98,130 78,120"],[1,"128,80 100,88 102,130 122,120"],
+    [3,"86,118 114,118 118,150 100,160 82,150"],[7,"94,150 106,150 107,163 100,168 93,163"],
+    [4,"92,122 108,122 104,133 96,133"],[4,"83,92 92,89 95,98 86,101"],[4,"117,92 108,89 105,98 114,101"]
+  ];
+  const cen=p=>{const a=p.split(" ").map(s=>s.split(",").map(Number));return a.reduce((m,[x,y])=>[m[0]+x/a.length,m[1]+y/a.length],[0,0]);};
+  let uid=0;
+  function dog(mode){
+    const id="d"+(uid++);
+    const poly=(fill,stroke,sw)=>R.map(([n,p])=>`<polygon points="${p}" fill="${fill(n)}" stroke="${stroke}" stroke-width="${sw}" stroke-linejoin="round"/>`).join("");
+    const nums=R.filter(([n,p])=>{const [x,y]=cen(p);return !(n===4&&y<110);}).map(([n,p])=>{const [x,y]=cen(p);return `<text x="${x}" y="${y+3}" font-size="8" text-anchor="middle" fill="#8C8279" font-family="Figtree,sans-serif">${n}</text>`}).join("");
+    const tmpl=poly(()=>"#FFFFFF","#B9AFA4",.8)+nums;
+    const flat=poly(n=>C[n],"rgba(0,0,0,.18)",.6);
+    if(mode==="photo") return `<svg viewBox="0 0 200 200" role="img" aria-label="Zdjęcie psa (ilustracja)"><defs><filter id="${id}b"><feGaussianBlur stdDeviation="2.2"/></filter><radialGradient id="${id}g" cx=".5" cy=".35" r=".7"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></radialGradient></defs><g filter="url(#${id}b)">${poly(n=>C[n],"none",0)}</g><rect width="200" height="200" fill="url(#${id}g)"/></svg>`;
+    if(mode==="template") return `<svg viewBox="0 0 200 200" role="img" aria-label="Szablon z numerami">${tmpl}</svg>`;
+    if(mode==="painted") return `<svg viewBox="0 0 200 200" role="img" aria-label="Gotowy obraz">${flat}</svg>`;
+    if(mode==="half") return `<svg viewBox="0 0 200 200" role="img" aria-label="Obraz w połowie zamalowany"><defs><clipPath id="${id}c"><rect width="100" height="200"/></clipPath></defs>${tmpl}<g clip-path="url(#${id}c)">${flat}</g><line x1="100" y1="0" x2="100" y2="200" stroke="#B4472F" stroke-width="1" stroke-dasharray="3 3"/></svg>`;
+    if(mode==="photo-vs") return `<svg viewBox="0 0 330 220" role="img" aria-label="Telefon ze zdjęciem i gotowy obraz"><rect x="5" y="10" width="110" height="200" rx="14" fill="#1D1B1A"/><svg x="11" y="55" width="98" height="98" viewBox="0 0 200 200">${poly(n=>C[n],"none",0)}</svg><text x="140" y="118" font-size="30" fill="#B4472F" font-family="serif">→</text><rect x="175" y="30" width="150" height="160" fill="#8A6A4A"/><svg x="182" y="37" width="136" height="146" viewBox="0 0 200 200" preserveAspectRatio="none">${flat}</svg></svg>`;
+    if(mode==="kit") return `<svg viewBox="0 0 240 240" role="img" aria-label="Zawartość zestawu"><rect x="20" y="20" width="130" height="130" fill="#8A6A4A"/><svg x="26" y="26" width="118" height="118" viewBox="0 0 200 200">${tmpl}</svg>${[0,1,2,3,4,5].map(i=>`<g transform="translate(${165+(i%2)*32},${26+Math.floor(i/2)*40})"><rect width="24" height="30" rx="4" fill="${C[[1,2,3,5,6,7][i]]}" stroke="#2F2B28" stroke-width=".8"/><rect y="-6" width="24" height="8" rx="2" fill="#2F2B28"/><text x="12" y="20" font-size="10" text-anchor="middle" fill="#fff" font-family="Figtree,sans-serif">${[1,2,3,5,6,7][i]}</text></g>`).join("")}${[0,1,2].map(i=>`<g transform="translate(${30+i*40},175) rotate(-8)"><rect width="6" height="50" rx="2" fill="#B4472F"/><rect y="-10" width="6" height="12" fill="#C9C2B8"/><path d="M0,-10 L3,${-20-i*3} L6,-10Z" fill="#2F2B28"/></g>`).join("")}</svg>`;
+  }
+  document.querySelectorAll("[data-dog]").forEach(el=>{el.innerHTML=dog(el.dataset.dog)});
+
+  // przełącznik szerokości
+  const b=document.getElementById("browser"), d=document.getElementById("w-desk"), m=document.getElementById("w-mob");
+  d.onclick=()=>{b.classList.remove("mobile");d.setAttribute("aria-pressed","true");m.setAttribute("aria-pressed","false")};
+  m.onclick=()=>{b.classList.add("mobile");m.setAttribute("aria-pressed","true");d.setAttribute("aria-pressed","false")};
+
+  // wideo W1
+  const F=[
+    {t:"0–2 s",txt:"To zdjęcie psa…",note:"Kciuk przewija galerię, zatrzymuje się na psie.",scene:`<div class="phone" style="width:62%"><div class="scr">${dog("photo")}</div></div>`},
+    {t:"2–4 s",txt:"…stało się tym.",note:"Cięcie: to samo ujęcie jako puste płótno z numerami.",scene:`<div style="width:78%;background:#fff;padding:6px">${dog("template")}</div>`},
+    {t:"4–12 s",txt:"Każde pole ma numer. Każda farba też.",note:"Timelapse: pędzel wypełnia pola.",scene:`<div style="width:78%;background:#fff;padding:6px">${dog("half")}</div>`},
+    {t:"12–16 s",txt:"Namalowany Twoją ręką.",note:"Gotowy obraz zawieszany nad kanapą.",scene:`<div style="width:100%;height:100%;background:linear-gradient(#D9CBB6 0 72%,#8C6F55 72%);display:grid;place-items:center"><div class="canvas-frame" style="width:62%">${dog("painted")}</div></div>`},
+    {t:"16–20 s",txt:"Z Kadru · 159 zł · zkadru.pl",note:"Zestaw na stole + logo.",scene:`<div style="width:100%;height:100%;background:#F6EFE4;display:grid;place-items:center;align-content:center;gap:10px"><div style="width:74%">${dog("kit")}</div><span class="logo" style="font-size:30px">z <span class="k"><b>kadru</b></span></span></div>`}
+  ];
+  const reel=document.getElementById("reel"), prog=document.getElementById("prog"), rt=document.getElementById("rtime"), sc=document.getElementById("scripts");
+  F.forEach((f,i)=>{const el=document.createElement("div");el.className="frame";el.innerHTML=`<div class="scene">${f.scene}</div><div class="ovl"><span>${f.txt}</span></div>`;reel.insertBefore(el,rt);prog.insertAdjacentHTML("beforeend","<b></b>");sc.insertAdjacentHTML("beforeend",`<div><b>${f.t}</b> — ${f.note}</div>`)});
+  const frames=[...reel.querySelectorAll(".frame")], bars=[...prog.children];
+  let cur=0, timer=null;
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function show(i){cur=(i+F.length)%F.length;frames.forEach((f,j)=>f.classList.toggle("on",j===cur));bars.forEach((x,j)=>x.classList.toggle("done",j<=cur));rt.textContent=F[cur].t;}
+  const pb=document.getElementById("r-play");
+  function play(){stop();timer=setInterval(()=>show(cur+1),2600);pb.textContent="Pauza"}
+  function stop(){clearInterval(timer);timer=null;pb.textContent="Odtwórz"}
+  pb.onclick=()=>timer?stop():play();
+  document.getElementById("r-next").onclick=()=>{stop();show(cur+1)};
+  document.getElementById("r-prev").onclick=()=>{stop();show(cur-1)};
+  show(0); reduce?stop():play();
+})();
+</script>
