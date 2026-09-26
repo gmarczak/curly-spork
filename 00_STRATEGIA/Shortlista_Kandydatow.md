@@ -29,6 +29,55 @@ Rezerwa: mata węchowa XXL (najbezpieczniejsza regulacyjnie, niższa M).
 
 **Przed dniem 3 sprintu:** ręcznie sprawdzić ceny i liczbę ofert na Allegro; ceny i magazyn UE w CJ/AliExpress; nasycenie w Meta Ads Library; kody PKWiU dla #1, #6, #9 z księgową.
 
+## Weryfikacja rynku — top 5 (agent AI, 2026-09-25, dane z sieci)
+
+*Top 5 z sesji rankingowej (spoza tego arkusza): malowanie po numerach ze zdjęcia, ostrzałka rolkowa, mata węchowa XXL, punch needle, kalimba 17.*
+
+**Dostęp do źródeł:**
+- **Allegro:** listing blokowany (DataDome, 403 z IP chmury). Liczby ofert i min/typowa/max z top 10 **nie zebrane**. Ceny i „X osób kupiło” tylko ze snippetów wyszukiwarki.
+- **AliExpress:** strony wyników OK (ceny PLN dla PL, z VAT). Strony produktów blokowane (captcha) — czasu dostawy z Chin nie odczytano; tam gdzie brak, szacunek 7–14 dni.
+- **Meta Ads Library (PL, aktywne, wszystkie reklamy):** OK. „Najstarsza” = najstarsza wśród pierwszych 30 wyników.
+- **Google Trends (PL, 12 mc):** OK.
+
+### Dane zebrane
+
+| Kandydat | Allegro (snippety) | AliExpress (cena PLN, sprzedane) | Magazyn UE | Meta Ads PL | Google Trends PL 12 mc |
+|---|---|---|---|---|---|
+| Malowanie po numerach ze zdjęcia | 30×40: 149–174,89 zł; 40×50: 45–204,90 zł; „na ramie” od 209 zł (8 sprzedawców); kupiło: 2–8 os. na ofertę | 23,59–42,59 zł najmniejszy wariant (1–3 tys.+); 129,59 zł wariant premium (5 tys.+); wysyłka od 40 zł darmowa | brak | fraza ogólna: 80 reklam, najstarsza 2024-10-30 (IPicasso), 6+ reklamodawców; „ze zdjęcia”: 11 reklam, 1 reklamodawca (Wymalujtosam.pl, od 2026-08-09) | najwyższy wolumen z 5 (śr. 52); r/r −21%; szczyt XII (2,5× lato) |
+| Ostrzałka rolkowa + magnes | cylindryczna z magnesem 79 zł; zestawy 69,90–79 zł; kupiło: do 58 os. | 61,99 zł bestseller (10 tys.+); 24,39 zł wariant podstawowy (5 tys.+); 78,39 zł 4 kąty drewno (5 tys.+) | DE: 112,99 zł, dostawa 3–7 dni | „ostrzałka rolkowa”: 27 reklam, **wszystkie od IX 2026** (Morvix 21, NaOstro 6); EN: 70 (Hatori, HORL) | „ostrzałka do noży” śr. 28,5; r/r −26%; szczyt XII (1,5×); „ostrzałka rolkowa” ≈ 0 wyszukiwań |
+| Mata węchowa XXL | XXL 40,01–54,99 zł; 49 zł supercena; kupiło: 3–41 os. | 62,59 zł duża (800+); 27–30 zł małe; 166,99 zł filcowa składana (4 tys.+) | PL: 58,79–89,79 zł, dostawa 3–7 dni (nowe oferty, 1–5 sprzedanych) | 3 reklamy (od 2026-07-14) | niski wolumen (śr. 4,2); stabilnie; szczyt XII |
+| Punch needle | 58,90–89,99 zł; 79,99 zł — kupiło 83 os. | 32,79–34,69 zł zestawy 20×20 (1 tys.+) | brak (filtr PL zwraca inne produkty) | 47 reklam, najstarsza 2025-11-26, lider Miicreative (13) | najniższy wolumen (śr. 3,1); tygodnie z zerem III–VIII; szczyt II |
+| Kalimba 17 | od 58,99 zł (model: 257 os. w 30 dni); drewniane do 119 zł; kupiło: 11–39 os. na ofertę | 52,57 zł Hluru (2 tys.+); 56,59 zł Lydesy; 75–81 zł mahoń | PL: 68,81–73,99 zł (Zenwire), dostawa 2–4 dni | 14 reklam, najstarsza 2026-08-12 | śr. 13,6; r/r ≈ 0%; szczyt XII (2×) |
+
+### Realne M (przy zwolnieniu z VAT)
+
+M = 0,935 × cena − COGS − 0,40 zł. COGS = cena detaliczna AliExpress z VAT i dostawą (górna granica; oferta CJ/hurt zwykle niższa — do sprawdzenia).
+
+| Kandydat | Cena | COGS przyjęty | Udział | M (zł) | M wcześniej | Uwaga |
+|---|---|---|---|---|---|---|
+| Malowanie ze zdjęcia | 159 | 60 (szac.: 40×50 z ramą, wariant nieodczytany) | 38% | 88,3 | 98,3 | przy COGS 45 zł: M 103 |
+| Ostrzałka rolkowa | 119 | 40 (szac.: środek 24–62) | 34% | 70,9 | 70,9–90,5 | przy COGS 62 zł: M 48,9, udział 52% → eliminacja |
+| Mata węchowa XXL | 79 | 62,59 | 79% | 10,9 | 48,5 | Allegro 40–55 zł — cena 79 nie do obrony |
+| Punch needle | 89 | 34,50 | 39% | 48,3 | 60,8 | |
+| Kalimba 17 | 79 | 56,59 (CN) / 68,81 (PL) | 72–87% | 16,9 / 4,7 | 51,5 | Allegro od 58,99 zł |
+
+### Punktacja po weryfikacji
+
+| Kandydat | Cena ×2 | Marża ×2 | Wow ×2 | Dostawca ×2 | Nasycenie ×1 | Sezonowość ×1 | Zwroty ×1 | Zgodność PL ×2 | **Suma** |
+|---|---|---|---|---|---|---|---|---|---|
+| Ostrzałka rolkowa (119 zł) | 4 | 4 | 4 | 4 | 3 | 4 | 5 | 4 | **52** |
+| Malowanie ze zdjęcia (159 zł) | 5 | 3 | 5 | 3 | 3 | 3 | 4 | 4 | **50** |
+| Punch needle (89 zł) | 4 | 3 | 4 | 3 | 4 | 2 | 4 | 4 | **46** |
+| Mata węchowa XXL (79 zł) | 2 | 1 | 3 | 3 | 5 | 4 | 5 | 5 | 42 ✗ |
+| Kalimba 17 (79 zł) | 3 | 1 | 4 | 4 | 5 | 3 | 4 | 3 | 42 ✗ |
+
+✗ = eliminacja (Marża < 3).
+
+**Najważniejsze ryzyka:**
+- Ostrzałka: 2 polskie marki (Morvix, NaOstro) testują ten sam produkt od IX 2026. Allegro kotwiczy cenę na 79 zł. Wynik zależy od COGS — zapytać CJ o wariant z magnetyczną podstawą.
+- Malowanie ze zdjęcia: brak magazynu UE; personalizacja wydłuża dostawę. Personalizacja może wyłączać prawo odstąpienia ⚠️ do weryfikacji z prawnikiem. Nie kierować do dzieci (EN71).
+- Punch needle: bardzo mały wolumen wyszukiwań i martwy sezon III–VIII.
+
 ## Lejek (surowe pomysły)
 
 | # | Pomysł | Kto znalazł | Źródło (link) | Kryterium eliminujące? | Dalej? |
@@ -84,13 +133,68 @@ M = cena − COGS − dostawa − prowizja (~1,5% + 0,40 zł) − rezerwa na zwr
 
 *W komórkach wpisuj ocenę 1–5; suma = Σ ocena × waga. Przykład wypełnienia: `02_PRODUKTY/P001_Poduszka_Ergonomiczna_PRZYKLAD/Specyfikacja.md`, sekcja 5 (54/65).*
 
+## Dzień 5 — porównanie finalistów (agent AI, 2026-09-25)
+
+| Kryterium | P002 Malowanie ze zdjęcia | P003 Punch needle |
+|---|---|---|
+| M (= maks. CPA) | 88,3 zł (szac., COGS 60 zł) | 48,3 zł |
+| Punkty | 50 | 46 |
+| Popyt (Google Trends, śr. 12 mc) | 52 — najwyższy z top 5 | 3,1 — najniższy |
+| Siła hooka | bardzo wysoka (zdjęcie → obraz) | wysoka (ASMR), węższa grupa |
+| Ryzyko prawne | średnie: RODO (zdjęcia do Chin) ⚠️, zwroty personalizacji ⚠️ | niskie |
+| Czas dostawy | 12–20 dni (szac.) | 7–14 dni (szac.) |
+| Okno sezonu | IX–XII, szczyt XII | X–II |
+
+**Rekomendacja agenta:** P002 jako nr 1. Wyższa M daje 1,8× więcej miejsca na CPA. Popyt jest ok. 17× większy. Szczyt przypada na XII — test musi ruszyć do końca X.
+P003 jako nr 2, zaraz po decyzji dla P002. Sezon trwa do II, więc start w XI nic nie traci.
+
+**Warunki przed startem P002:**
+- Realny COGS z wyceny ≤ 63 zł. Przeliczyć M i wpisać próg GO w sekcji 6 `02_PRODUKTY/P002_Malowanie_Ze_Zdjecia/Specyfikacja.md` **przed** startem.
+- Rozwiązana kwestia RODO (patrz lista niżej).
+
+### Lista przed pierwszą kampanią
+
+- [ ] Konsultacja z księgową: PKWiU P002/P003, VAT-UE i 23% VAT od reklam Meta, limit działalności nierejestrowanej ⚠️.
+- [ ] Konsultacja z prawnikiem: przekazanie zdjęć klientów do dostawcy w Chinach (albo własny szablon), wyłączenie zwrotu dla personalizacji ⚠️.
+- [ ] Regulamin i polityka prywatności z danymi osoby fizycznej.
+- [ ] Konto Stripe jako osoba fizyczna (karty, BLIK).
+- [ ] Arkusz ewidencji sprzedaży z alarmem przy 70% limitu kwartalnego.
+- [ ] Próbka P002 odebrana: zdjęcia i wideo do kreacji.
+- [ ] Domena, landing, piksel Meta + Conversions API.
+- [ ] Na stronie: czas realizacji i ostatni dzień zamówień z dostawą przed świętami, dane GPSR.
+
 ## Decyzja
 
 | Pole | Wartość |
 |---|---|
-| Data decyzji | |
-| Shortlista (3 kandydatów, ID folderów) | |
-| Kandydat nr 1 do testu | |
-| Tryb testów (po kolei / 2 równolegle) | |
-| Budżet testu kandydata nr 1 | 500–1500 zł |
-| Akceptacja właściciela | |
+| Data decyzji | 2026-09-26 |
+| Shortlista (3 kandydatów, ID folderów) | P002 Malowanie ze zdjęcia, P003 Punch needle; ostrzałka rolkowa czeka na wycenę CJ (warunek: COGS ≤ 45 zł) |
+| Kandydat nr 1 do testu | P002 Malowanie ze zdjęcia (warunek: koszt towaru z wyceny ≤ 63 zł; inaczej nr 1 = P003) |
+| Tryb testów (po kolei / 2 równolegle) | po kolei: P002 → P003 |
+| Budżet testu kandydata nr 1 | 1000 zł reklam + VAT 23% = 1230 zł; 5 dni × 200 zł |
+| Próg GO | CPA ≤ M P002 po realnej wycenie (dziś 88,3 zł, szac.); progi: `Proces_Wyboru_Produktu.md`, sekcja 4 |
+| Akceptacja właściciela | zaakceptowano 2026-09-26 |
+
+## Po sprincie — gotowe teksty do wysłania
+
+**Wiadomość do dostawcy P002 (AliExpress czat / CJ Sourcing Request):**
+
+> Hello, I am interested in your custom paint-by-numbers from photo. Please quote:
+> 1) price for 40×50 cm canvas WITH wooden frame, shipped to Poland (and 30×40 for comparison);
+> 2) production time after receiving the photo + delivery time to Poland;
+> 3) do you send a preview before production? How many colours (24/36/48)? What master palette do you pick paints from (number of colours, list of codes/HEX)?
+> 4) can you accept a ready template file instead of the customer photo?
+> 5) replacement policy for frames damaged in transit;
+> 6) manufacturer details for EU GPSR and safety data sheet for the paints;
+> 7) neutral packaging without logo or price invoice.
+> I plan to dropship 30–100 units/month. Thank you.
+
+**Pytania do księgowej ⚠️:**
+1. Kod PKWiU dla zestawu do malowania (płótno + farby akrylowe) i zestawu punch needle — czy nie wypadają ze zwolnienia (art. 113 ust. 13)?
+2. Reklamy Meta przy działalności nierejestrowanej: czy potrzebna rejestracja VAT-UE i rozliczenie 23% VAT od importu usług?
+3. Limit działalności nierejestrowanej w 2026 r. i ewidencja sprzedaży — co musi zawierać?
+
+**Pytania do prawnika ⚠️:**
+1. Przekazanie zdjęć klientów (wizerunek) do dostawcy w Chinach: jakie zapisy w polityce prywatności i jaka umowa (SCC / powierzenie)? Czy zamiana zdjęcia na szablon po naszej stronie rozwiązuje problem?
+2. Czy zestaw malowany wg zdjęcia klienta jest wyłączony z prawa odstąpienia (art. 38 ustawy o prawach konsumenta)?
+3. Minimalny regulamin sklepu prowadzonego przez osobę fizyczną bez firmy.

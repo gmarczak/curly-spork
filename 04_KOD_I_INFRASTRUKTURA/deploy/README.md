@@ -1,4 +1,4 @@
-# Wdrożenie: agenci na serwerze + panel na żywo
+# Wdrożenie: agenci i sklep na serwerze + panel i storefront na Vercel
 
 Efekt końcowy: ikona na pulpicie → panel „Biuro Agentów” (Vercel) → dane na żywo z agentów na serwerze (Hetzner).
 
@@ -49,6 +49,30 @@ Skrypt instaluje Dockera i zaporę, pobiera kod, pyta o `PANEL_API_TOKEN` (i opc
 - **Po postawieniu serwera:** w Vercel → Settings → Environment Variables zmień `AGENTS_API_URL` na `https://1-2-3-4.sslip.io` i zrób Redeploy. Ten sam `PANEL_API_TOKEN` wpisz do `deploy/.env.agents`.
 - Test: zaloguj się → „Wyślij testowe zamówienie” → po kilku sekundach Agent Fulfillmentu prosi o decyzję.
 
+## Krok 2a — sklep (Medusa) na tym samym serwerze
+
+Uruchamia go ten sam `bootstrap.sh` (także ponownie na serwerze, który ma już agentów):
+
+- pyta o klucze Stripe (Secret key i Webhook secret; Enter = później — wtedy płatności nie działają),
+- stawia Postgres + Medusę pod `https://sklep.<IP-z-myślnikami>.sslip.io` (panel admina: `/app`),
+- tworzy sklep P002 Z Kadru (seed) i konto admina — na końcu wypisuje **login, hasło, publishable key i adres API sklepu**.
+
+Sekrety: `deploy/.env.medusa`, `deploy/.env.postgres` (tylko na serwerze). Zdjęcia klientów:
+- bez bucketu — prywatny wolumen Dockera `medusa_uploads` (niedostępny z internetu),
+- docelowo — prywatny bucket S3 w UE (np. Supabase Storage): uzupełnij `FILE_S3_*` w `.env.medusa` i `docker compose -f docker-compose.prod.yml up -d`.
+
+Webhook Stripe (po założeniu konta): Stripe → Developers → Webhooks → `https://sklep.<IP>.sslip.io/hooks/payment/stripe_stripe`, zdarzenia `payment_intent.*`; sekret `whsec_…` do `STRIPE_WEBHOOK_SECRET`.
+
+Pamięć: CX22 (4 GB) mieści agentów + Medusę na test (szacunek); przy skalowaniu — większy serwer.
+
+## Krok 2b — storefront (sklepy) na Vercel
+
+1. Nowy projekt Vercel z tego repo, root: `04_KOD_I_INFRASTRUKTURA/storefront-nextjs`.
+2. Zmienne: `MEDUSA_BACKEND_URL=https://sklep.<IP>.sslip.io`, `STRIPE_PUBLISHABLE_KEY=pk_live_…` (albo `pk_test_…` na próbę). **Nie** ustawiaj `CHECKOUT_TEST_MODE`.
+3. Publishable key z bootstrapu → `stores.config.json` (pozycja P002) — podaj go Claude.
+4. Domena: Vercel → Settings → Domains → `zkadru.pl` i `www.zkadru.pl`; u rejestratora rekordy DNS, które pokaże Vercel.
+5. Test: `https://zkadru.pl` → „Prześlij zdjęcie” → zamówienie kartą testową Stripe `4242 4242 4242 4242`.
+
 ## Krok 3 — ikona na pulpicie
 
 - Chrome: otwórz panel → ⋮ → „Przesyłaj, zapisuj i udostępniaj” → „Utwórz skrót…” → „Otwórz jako okno”.
@@ -74,4 +98,5 @@ Panel na Vercel aktualizuje się sam po scaleniu do `main`.
 - API agentów: webhook tylko z podpisem HMAC, endpointy panelu tylko z tokenem; token zna wyłącznie serwer Vercel.
 - Panel: hasło + podpisana sesja (httpOnly, SameSite=Strict); strona niewidoczna dla wyszukiwarek.
 - Serwer: tylko porty 22/80/443, logowanie kluczem SSH.
+- Sklep: Postgres i Medusa bez portów na zewnątrz — ruch tylko przez Caddy (HTTPS). Zdjęcia klientów nie są serwowane publicznie; upload tylko do koszyka z kanału danego klucza, max 15 MB.
 - Znane ograniczenie: stan grafów w pamięci workera — restart workera gubi zadania czekające na decyzję. Przed pierwszym realnym produktem: checkpointer Postgres (`ai-agents-langgraph/README.md`).

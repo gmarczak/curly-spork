@@ -2,19 +2,132 @@
   "_opis": "Jedna pozycja = jeden sklep jednoproduktowy. Dodanie produktu = nowa domena + wpis tutaj + sales channel w Medusie.",
   "stores": [
     {
-      "hosts": ["localhost:3000", "demo.localhost:3000"],
+      "hosts": [
+        "localhost:3000",
+        "demo.localhost:3000"
+      ],
       "productId": "P000_DEMO",
       "brand": "Demo",
       "headline": "Sklep demonstracyjny fabryki",
       "publishableKey": "pk_ustaw_w_medusa_admin",
       "productHandle": "demo",
-      "theme": { "accent": "#2F6B5A", "background": "#F4F5F2", "ink": "#18201C" },
+      "theme": {
+        "accent": "#2F6B5A",
+        "background": "#F4F5F2",
+        "ink": "#18201C"
+      },
       "operator": {
         "name": "Imię Nazwisko (osoba fizyczna — do rejestracji JDG po pierwszym kliencie)",
         "address": "adres do korespondencji",
         "email": "kontakt@example.com"
       },
-      "delivery": { "days": "10–14 dni roboczych", "costPln": 0 }
+      "delivery": {
+        "days": "10–14 dni roboczych",
+        "costPln": 0
+      }
+    },
+    {
+      "hosts": [
+        "zkadru.pl",
+        "zkadru.localhost:3000"
+      ],
+      "productId": "P002",
+      "brand": "Z Kadru",
+      "headline": "Twoje zdjęcie. Twój obraz. Namalowany własnoręcznie.",
+      "publishableKey": "pk_ustaw_w_medusa_admin",
+      "productHandle": "malowanie-ze-zdjecia",
+      "theme": {
+        "accent": "#B4472F",
+        "background": "#F6EFE4",
+        "ink": "#2F2B28"
+      },
+      "operator": {
+        "name": "[DO UZUPEŁNIENIA: imię i nazwisko]",
+        "address": "[DO UZUPEŁNIENIA: adres do korespondencji]",
+        "email": "[DO UZUPEŁNIENIA: kontakt@zkadru.pl]"
+      },
+      "delivery": {
+        "days": "[DO UZUPEŁNIENIA: produkcja + dostawa]",
+        "costPln": 0
+      },
+      "draft": true,
+      "withdrawal": "Zwroty: [DO UZUPEŁNIENIA po konsultacji z prawnikiem — zestaw wykonywany według zdjęcia klienta]",
+      "landing": {
+        "eyebrow": "Malowanie po numerach ze zdjęcia",
+        "sub": "Prześlij zdjęcie, zatwierdź podgląd, a my wyślemy płótno 40×50 na ramie, farby i pędzle.",
+        "pricePln": 159,
+        "cta": "Prześlij zdjęcie",
+        "fineprint": "Najpierw zobaczysz podgląd. Produkcja rusza dopiero po Twojej akceptacji.",
+        "heroImage": {
+          "src": "/zkadru/painted.jpg",
+          "alt": "Gotowy obraz namalowany po numerach"
+        },
+        "steps": [
+          {
+            "title": "Prześlij zdjęcie",
+            "text": "Pies, bliscy, miejsce z wakacji. Ważne, żeby było ostre, a główny motyw duży.",
+            "image": "/zkadru/photo.jpg"
+          },
+          {
+            "title": "Zatwierdź podgląd",
+            "text": "Pokażemy, jak będzie wyglądał obraz. Coś nie pasuje? Zmienisz zdjęcie przed produkcją.",
+            "image": "/zkadru/template.png"
+          },
+          {
+            "title": "Maluj",
+            "text": "Każde pole ma numer, każda farba też. Pole po polu, wieczór po wieczorze.",
+            "image": "/zkadru/half.jpg"
+          }
+        ],
+        "kit": [
+          "Płótno 40×50 cm z ponumerowanym szablonem, na drewnianej ramie, gotowe do powieszenia",
+          "Ponumerowane farby akrylowe: [DO UZUPEŁNIENIA: liczba kolorów]",
+          "3 pędzle w różnych rozmiarach",
+          "Kolorowy wydruk podglądu",
+          "Instrukcja po polsku"
+        ],
+        "photoTips": [
+          "Ostre, nie z zoomu",
+          "Dobrze oświetlone, najlepiej w dziennym świetle",
+          "Twarz lub zwierzę zajmuje co najmniej jedną trzecią kadru",
+          "Najlepiej 1–3 osoby lub zwierzęta"
+        ],
+        "notice": {
+          "title": "Prezent przed Wigilią?",
+          "text": "Zamów do [DO UZUPEŁNIENIA: data]. Czas realizacji: [DO UZUPEŁNIENIA] od akceptacji podglądu."
+        },
+        "faq": [
+          {
+            "q": "Nie umiem malować. Dam radę?",
+            "a": "Tak. Każde pole ma numer, każda farba też. Nie trzeba mieszać kolorów ani rysować."
+          },
+          {
+            "q": "Czy zobaczę obraz przed produkcją?",
+            "a": "Tak. Wysyłamy podgląd e-mailem. Produkcja rusza dopiero po Twojej akceptacji."
+          },
+          {
+            "q": "Ile trwa realizacja?",
+            "a": "[DO UZUPEŁNIENIA: X dni produkcji + Y dni dostawy]. Liczymy od akceptacji podglądu."
+          },
+          {
+            "q": "Ile czasu zajmuje malowanie?",
+            "a": "To zależy od zdjęcia i tempa. Zwykle kilka wieczorów. Nie trzeba kończyć za jednym razem."
+          },
+          {
+            "q": "Czy mogę zwrócić zestaw?",
+            "a": "[DO UZUPEŁNIENIA po konsultacji z prawnikiem]. Uszkodzenie w transporcie zgłoś ze zdjęciem — wymienimy zestaw."
+          },
+          {
+            "q": "Co dzieje się z moim zdjęciem?",
+            "a": "[DO UZUPEŁNIENIA po konsultacji z prawnikiem]"
+          },
+          {
+            "q": "Jak mogę zapłacić?",
+            "a": "Kartą lub BLIKIEM."
+          }
+        ],
+        "ageNote": "Zestaw dla osób od 14 lat."
+      }
     }
   ]
 }

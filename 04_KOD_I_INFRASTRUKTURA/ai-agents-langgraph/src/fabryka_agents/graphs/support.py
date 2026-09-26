@@ -9,6 +9,7 @@ from langgraph.types import interrupt
 from ..llm import LLM
 
 LEGAL = ("uokik", "prawnik", "adwokat", "sąd", "pozew", "rzecznik", "media", "dziennikarz")
+PRIVACY = ("rodo", "dane osobowe", "moich danych", "moje dane", "usuń", "usun", "wymaż", "wymaz", "zapomnian")
 SAFETY = ("uraz", "skalecz", "zrani", "poparz", "krwaw", "alergi", "niebezpiecz", "zdrowi", "lekarz", "szpital")
 
 SYSTEM = """Jesteś asystentem AI obsługi klienta sklepu {brand}. Przedstaw się jako asystent AI.
@@ -36,6 +37,8 @@ def escalation_reason(message: str, refund_amount_pln: float | None, threshold_p
         return f"zwrot/rekompensata {refund_amount_pln:.2f} zł > {threshold_pln:.0f} zł"
     if any(k in text for k in LEGAL):
         return "groźba działań prawnych lub publicznych"
+    if any(k in text for k in PRIVACY):
+        return "żądanie dotyczące danych osobowych (RODO)"
     if any(k in text for k in SAFETY):
         return "możliwy problem zdrowia lub bezpieczeństwa"
     return None

@@ -3,3 +3,12 @@
 	encode gzip
 	reverse_proxy agents-api:8000
 }
+
+# Medusa: Store API dla storefrontów (Vercel) + panel admina pod /app.
+{$SHOP_API_DOMAIN} {
+	encode gzip
+	request_body {
+		max_size 20MB
+	}
+	reverse_proxy medusa:9000
+}
