@@ -1,10 +1,14 @@
 import { currentStore } from "@/lib/current-store"
 import { getProduct } from "@/lib/medusa"
+import { Landing } from "./landing"
 
 export default async function Home() {
   const store = await currentStore()
   const product = await getProduct(store)
   const price = product?.variants?.[0]?.calculated_price?.calculated_amount
+
+  // Cena z Medusy; z konfiguracji tylko gdy backend niedostępny (podgląd lokalny).
+  if (store.landing) return <Landing store={store} landing={store.landing} price={price ?? store.landing.pricePln} />
 
   return (
     <article>

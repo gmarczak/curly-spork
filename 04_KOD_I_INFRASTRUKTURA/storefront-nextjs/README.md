@@ -4,7 +4,7 @@ Next.js 16 — jeden deploy obsługuje wszystkie domeny produktowe. Status: **sz
 
 ## Jak działa
 
-- `stores.config.json` — lista sklepów: domeny, publishable key Medusy, marka, kolory, dane sprzedawcy, dostawa.
+- `stores.config.json` — lista sklepów: domeny, publishable key Medusy, marka, kolory, dane sprzedawcy, dostawa; opcjonalnie `landing` (treść strony produktu), `draft` (baner „nie publikować”) i `withdrawal` (tekst o zwrotach w stopce).
 - `src/lib/current-store.ts` — nagłówek `host` → konfiguracja sklepu.
 - `src/lib/medusa.ts` — klient Medusy z publishable key sklepu (dane tylko z jego sales channel).
 - Stopka ze standardami zaufania z Brand Booka (sprzedawca, regulamin, 14 dni na odstąpienie).
@@ -19,6 +19,6 @@ npm run dev      # http://localhost:3000 = sklep Demo
 
 ## Do zrobienia
 
-- Koszyk i checkout Stripe (na bazie Medusa Next.js Starter).
+- Koszyk i checkout Stripe (na bazie Medusa Next.js Starter); dla P002 (Z Kadru) także upload zdjęcia klienta przy zamówieniu.
 - Omnibus (najniższa cena z 30 dni), funkcja „odstąp od umowy”, baner cookies, czat z Agentem Wsparcia.
 - Pixel Meta/TikTok + Conversions API (po zgodzie cookies).
