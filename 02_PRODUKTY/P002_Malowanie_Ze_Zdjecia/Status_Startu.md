@@ -22,6 +22,7 @@
 | Zamówienie ze zdjęciem: formularz, kontrola zdjęcia, Stripe, potwierdzenie | `storefront-nextjs/src/app/zamow/`, `medusa-backend/src/api/store/carts/[id]/photo/` |
 | Baner cookies + piksel Meta po zgodzie | `storefront-nextjs/src/app/consent.tsx` |
 | Konfiguracja P002 w Medusie (kanał, region, produkt, dostawa, klucz) | `medusa-backend/src/scripts/seed-p002.ts` |
+| Pobieranie i usuwanie zdjęcia klienta w panelu admina Medusy (przy zamówieniu) | `medusa-backend/src/admin/widgets/order-photo.tsx` |
 | Wdrożenie sklepu na serwer Hetzner (Medusa + Postgres + Caddy) jednym skryptem | `04_KOD_I_INFRASTRUKTURA/deploy/` (README, krok 2a–2b) |
 
 ## Do zrobienia — właściciel (blokuje start)

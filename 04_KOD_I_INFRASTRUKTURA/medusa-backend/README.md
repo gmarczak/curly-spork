@@ -9,6 +9,7 @@ Medusa v2 (2.21.1). Status: **szkielet — typecheck i `medusa build` przechodz�
 - `src/lib/agent-webhook.ts` — podpis HMAC zgodny z `ai-agents-langgraph` (test: `npm run test:webhook`).
 
 - `src/api/store/carts/[id]/photo/route.ts` + `src/api/middlewares.ts` — zdjęcie klienta do koszyka (JPG/PNG/WEBP, do 15 MB, tylko koszyk z kanału danego klucza); plik prywatny, `file_id` trafia do metadanych pozycji zamówienia.
+- `src/api/admin/orders/[id]/photo/route.ts` + widżet `src/admin/widgets/order-photo.tsx` — w panelu admina przy zamówieniu: „Pobierz zdjęcie” (do wysłania dostawcy) i „Usuń zdjęcie” (plik znika z magazynu, w zamówieniu zostaje data usunięcia). Tylko dla zalogowanego admina.
 - Pliki: produkcja — prywatny bucket S3 (`FILE_S3_*`, np. Supabase Storage w UE); lokalnie — `FILE_LOCAL_PRIVATE_DIR`. Lokalny dostawca serwuje `static/` publicznie, dlatego zdjęcia nigdy tam nie trafiają.
 - `src/scripts/seed-p002.ts` — P002 Z Kadru: kanał sprzedaży, region Polska (Stripe; lokalnie też płatność testowa), darmowa dostawa, produkt 159 zł, publishable key (`npx medusa exec ./src/scripts/seed-p002.ts`).
 

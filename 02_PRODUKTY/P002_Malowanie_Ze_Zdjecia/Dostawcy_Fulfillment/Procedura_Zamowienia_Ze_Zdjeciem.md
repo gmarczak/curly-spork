@@ -8,13 +8,13 @@
 |---|---|---|---|---|
 | 1 | Klient | Płaci i przesyła zdjęcie na zkadru.pl | — | — |
 | 2 | Agent Fulfillmentu | Kontrola zdjęcia: min. [DO UZUPEŁNIENIA, np. 1500 px] krótszy bok, ostrość, motyw ≥ 1/3 kadru | do 12 h | słabe → makro M1 (Wsparcie), czekamy na nowe |
-| 3 | Agent Fulfillmentu | Przekazuje dostawcy [DO UZUPEŁNIENIA po prawniku: zdjęcie ALBO nasz szablon] + wariant 40×50, rama, [liczba] kolorów | do 24 h od kroku 2 | błąd dostawcy 2× → eskalacja (jak dziś w kodzie) |
+| 3 | Agent Fulfillmentu (na teście: właściciel — panel Medusy → zamówienie → „Pobierz zdjęcie”) | Przekazuje dostawcy [DO UZUPEŁNIENIA po prawniku: zdjęcie ALBO nasz szablon] + wariant 40×50, rama, [liczba] kolorów | do 24 h od kroku 2 | błąd dostawcy 2× → eskalacja (jak dziś w kodzie) |
 | 4 | Dostawca | Przysyła podgląd szablonu | [DO UZUPEŁNIENIA] | brak 48 h → eskalacja |
 | 5 | Agent Fulfillmentu | Kontrola podglądu (czy twarze/zwierzę czytelne) i wysyłka klientowi — makro M2 | do 12 h | wyraźnie zły → eskalacja przed wysyłką |
 | 6 | Klient | Akceptuje lub zmienia zdjęcie | 48 h → makro M3; 5 dni → eskalacja | zmiana → wracamy do kroku 2 |
 | 7 | Agent Fulfillmentu | Potwierdza produkcję u dostawcy, zapisuje nr referencyjny w Medusie | do 12 h | — |
 | 8 | Agent Fulfillmentu | Monitoruje wysyłkę, wysyła nr śledzenia — makro M4 | codziennie | status bez zmian > 5 dni → eskalacja |
-| 9 | Agent Fulfillmentu | Usuwa zdjęcie z naszych systemów i prosi dostawcę o usunięcie | [DO UZUPEŁNIENIA po prawniku] dni po doręczeniu | brak potwierdzenia dostawcy → notatka dla właściciela |
+| 9 | Agent Fulfillmentu (na teście: właściciel — „Usuń zdjęcie” w panelu) | Usuwa zdjęcie z naszych systemów i prosi dostawcę o usunięcie | [DO UZUPEŁNIENIA po prawniku] dni po doręczeniu | brak potwierdzenia dostawcy → notatka dla właściciela |
 
 **Termin świąteczny:** zamówienia bez akceptacji podglądu na [DO UZUPEŁNIENIA: data − czas produkcji − dostawa] dostają makro M3 z datą. Nie obiecujemy dostawy przed Wigilią po tej dacie.
 

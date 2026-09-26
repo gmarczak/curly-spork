@@ -9,6 +9,14 @@
     "outDir": ".medusa/server",
     "rootDir": "."
   },
-  "include": ["src", "medusa-config.ts"],
-  "exclude": ["node_modules", ".medusa", "src/**/*.check.ts"]
+  "include": [
+    "src",
+    "medusa-config.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".medusa",
+    "src/**/*.check.ts",
+    "src/admin"
+  ]
 }
