@@ -87,7 +87,7 @@ def _run_tracked(ctx: dict, graph: str, thread_id: str, task: str, run) -> dict:
         panel.log(graph, "ask", f"Czekam na Twoją decyzję: {result.payload.get('title', '')}", thread_id)
         return {"status": "waiting", "thread_id": thread_id}
     panel.set_status(graph, "idle", "", "")
-    panel.log(graph, "done", f"Zakończone: {task}", thread_id)
+    panel.log(graph, "done", narration.done_text(graph, task, result.payload or {}), thread_id)
     return {"status": "done", "thread_id": thread_id}
 
 

@@ -32,7 +32,7 @@ Skrypt instaluje Dockera i zaporę, pobiera kod, pyta o `PANEL_API_TOKEN` (i opc
    ```bash
    apt update && apt install -y docker.io docker-compose-v2 git ufw
    ufw allow OpenSSH && ufw allow 80 && ufw allow 443 && ufw enable
-   git clone https://github.com/gmarczak/curly-spork.git && cd curly-spork/04_KOD_I_INFRASTRUKTURA/deploy
+   git clone https://github.com/gmarczak/curly-spork.git /opt/curly-spork && cd /opt/curly-spork/04_KOD_I_INFRASTRUKTURA/deploy
    cp .env.example .env                  # AGENTS_DOMAIN=1-2-3-4.sslip.io (Twoje IP z myślnikami)
    ```
 4. Sekrety (wartości z menedżera haseł; pliki są w `.gitignore`):
@@ -80,10 +80,16 @@ Pamięć: CX22 (4 GB) mieści agentów + Medusę na test (szacunek); przy skalow
 
 ## Aktualizacja po zmianach w repo
 
+Kod na serwerze leży w `/opt/curly-spork` (tam instaluje go `bootstrap.sh`).
+
 ```bash
-cd curly-spork && git pull && cd 04_KOD_I_INFRASTRUKTURA/deploy
+cd /opt/curly-spork && git pull && cd 04_KOD_I_INFRASTRUKTURA/deploy
 docker compose -f docker-compose.prod.yml up -d --build
+docker compose -f docker-compose.prod.yml ps   # wszystkie usługi: Up
+curl https://1-2-3-4.sslip.io/health           # {"ok":true}
 ```
+
+- Przed restartem sprawdź w panelu „Czeka na Ciebie: 0” — restart workera gubi zadania czekające na decyzję.
 
 Panel na Vercel aktualizuje się sam po scaleniu do `main`.
 

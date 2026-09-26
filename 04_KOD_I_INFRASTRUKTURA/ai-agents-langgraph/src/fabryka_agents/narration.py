@@ -55,3 +55,11 @@ def task_title(graph: str, state: dict) -> str:
     if graph == "marketing":
         return "Kreacje reklamowe"
     return graph
+
+
+def done_text(graph: str, task: str, final: dict) -> str:
+    """Wpis „Zakończone” opisuje wynik, nie tylko nazwę zadania."""
+    if graph == "fulfillment" and final.get("status") == "manual":
+        order_id = final.get("order", {}).get("id", "?")
+        return f"Zakończone: zamówienie {order_id} — obsługa ręczna (NIE trafiło do dostawcy)."
+    return f"Zakończone: {task}"
