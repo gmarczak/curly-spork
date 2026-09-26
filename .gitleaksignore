@@ -1,0 +1,3 @@
+# Fałszywe alarmy gitleaks (jeden wpis = jeden odcisk). Nie dodawaj tu prawdziwych sekretów — zrotuj je.
+# Przykładowa domena API sklepu (sslip.io), nie klucz: SHOP_API_DOMAIN w deploy/.env.example.
+8c1f2a3909bd5ccab88051c1b623f648758dd77c:04_KOD_I_INFRASTRUKTURA/deploy/.env.example:generic-api-key:4
