@@ -54,3 +54,4 @@ next-env.d.ts
 04_KOD_I_INFRASTRUKTURA/medusa-backend/uploads-private/
 04_KOD_I_INFRASTRUKTURA/medusa-backend/.medusa/
 04_KOD_I_INFRASTRUKTURA/medusa-backend/dump.rdb
+04_KOD_I_INFRASTRUKTURA/deploy/.p002-seeded

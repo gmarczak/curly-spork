@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Jednorazowa instalacja agentów na świeżym serwerze Ubuntu 24.04 (Hetzner).
+# Jednorazowa instalacja agentów i sklepu (Medusa) na świeżym serwerze Ubuntu 24.04 (Hetzner).
+# Ponowne uruchomienie jest bezpieczne: istniejące sekrety i dane zostają.
 # Użycie (jako root na serwerze):
 #   curl -fsSL https://raw.githubusercontent.com/gmarczak/curly-spork/main/04_KOD_I_INFRASTRUKTURA/deploy/bootstrap.sh | bash
 # Skrypt pyta o PANEL_API_TOKEN (ten sam co w Vercel) i opcjonalnie o klucz Anthropic.
@@ -28,7 +29,8 @@ cd "$DIR/04_KOD_I_INFRASTRUKTURA/deploy"
 
 IP="$(curl -fsS4 https://api.ipify.org)"
 DOMAIN="${AGENTS_DOMAIN:-${IP//./-}.sslip.io}"
-echo "AGENTS_DOMAIN=$DOMAIN" > .env
+SHOP="${SHOP_API_DOMAIN:-sklep.${IP//./-}.sslip.io}"
+printf 'AGENTS_DOMAIN=%s\nSHOP_API_DOMAIN=%s\n' "$DOMAIN" "$SHOP" > .env
 
 if [ ! -f .env.agents ]; then
   echo "==> Sekrety"
@@ -51,8 +53,60 @@ LITELLM_MASTER_KEY=$MASTER
 EOF
 fi
 
-echo "==> Start usług (pierwszy raz ok. 3–5 min)"
+if [ ! -f .env.postgres ]; then
+  umask 077
+  echo "POSTGRES_PASSWORD=$(openssl rand -hex 24)" > .env.postgres
+fi
+
+if [ ! -f .env.medusa ]; then
+  echo "==> Sekrety sklepu (Medusa)"
+  read -rsp "Stripe Secret key sk_… (Enter = pomiń na razie): " STRIPE_SK </dev/tty; echo
+  read -rsp "Stripe Webhook secret whsec_… (Enter = pomiń na razie): " STRIPE_WH </dev/tty; echo
+  PG_PASS="$(sed -n 's/^POSTGRES_PASSWORD=//p' .env.postgres)"
+  AGENTS_SECRET="$(sed -n 's/^WEBHOOK_SECRET=//p' .env.agents)"
+  SHOPS="${STORE_CORS:-https://zkadru.pl,https://www.zkadru.pl}"
+  umask 077
+  cat > .env.medusa <<EOF
+DATABASE_URL=postgres://postgres:$PG_PASS@postgres:5432/medusa
+JWT_SECRET=$(openssl rand -hex 32)
+COOKIE_SECRET=$(openssl rand -hex 32)
+STORE_CORS=$SHOPS
+ADMIN_CORS=https://$SHOP
+AUTH_CORS=https://$SHOP,$SHOPS
+STRIPE_API_KEY=$STRIPE_SK
+STRIPE_WEBHOOK_SECRET=$STRIPE_WH
+AGENTS_WEBHOOK_SECRET=$AGENTS_SECRET
+FILE_S3_BUCKET=
+FILE_S3_URL=
+FILE_S3_REGION=
+FILE_S3_ENDPOINT=
+FILE_S3_ACCESS_KEY_ID=
+FILE_S3_SECRET_ACCESS_KEY=
+EOF
+fi
+
+echo "==> Start usług (pierwszy raz ok. 5–10 min)"
 docker compose -f docker-compose.prod.yml up -d --build
+
+echo "==> Czekam na sklep (Medusa) pod https://$SHOP"
+for _ in $(seq 1 60); do
+  curl -fsS "https://$SHOP/health" >/dev/null 2>&1 && break
+  sleep 5
+done
+
+if [ ! -f .p002-seeded ] && curl -fsS "https://$SHOP/health" >/dev/null 2>&1; then
+  echo "==> Konfiguracja sklepu P002 Z Kadru i konto admina"
+  KEY="$(docker compose -f docker-compose.prod.yml exec -T medusa npx medusa exec ./src/scripts/seed-p002.js 2>&1 | grep -o 'pk_[0-9a-f]*' | head -1 || true)"
+  read -rp "E-mail do panelu admina sklepu: " ADMIN_EMAIL </dev/tty
+  ADMIN_PASS="$(openssl rand -base64 18)"
+  docker compose -f docker-compose.prod.yml exec -T medusa npx medusa user -e "$ADMIN_EMAIL" -p "$ADMIN_PASS" >/dev/null
+  touch .p002-seeded
+  echo
+  echo "SKLEP GOTOWY. Panel admina: https://$SHOP/app"
+  echo "  login: $ADMIN_EMAIL   hasło: $ADMIN_PASS   (zapisz w menedżerze haseł — nie pokażę go ponownie)"
+  echo "  Publishable key P002 (podaj Claude do stores.config.json): $KEY"
+  echo "  Adres API sklepu (Vercel → MEDUSA_BACKEND_URL): https://$SHOP"
+fi
 
 echo "==> Czekam na HTTPS dla $DOMAIN"
 for _ in $(seq 1 30); do
