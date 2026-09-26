@@ -30,6 +30,8 @@ export type StoreConfig = {
   // Tekst o odstąpieniu od umowy w stopce; domyślnie 14 dni (Brand Book Globalny, sekcja 2).
   withdrawal?: string
   landing?: Landing
+  // ID piksela Meta; ładowany tylko po zgodzie marketingowej.
+  metaPixelId?: string
 }
 
 const stores = config.stores as StoreConfig[]

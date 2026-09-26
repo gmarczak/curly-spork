@@ -1,5 +1,6 @@
 import type { ReactNode } from "react"
 import { maybeStore } from "@/lib/current-store"
+import { Consent, CookieSettingsLink } from "./consent"
 
 export async function generateMetadata() {
   const store = await maybeStore()
@@ -32,9 +33,10 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           </p>
           <p>
             <a href="/regulamin">Regulamin</a> · <a href="/regulamin#prywatnosc">Polityka prywatności</a> ·{" "}
-            {store.withdrawal ?? "Prawo odstąpienia od umowy: 14 dni"}
+            {store.withdrawal ?? "Prawo odstąpienia od umowy: 14 dni"} · <CookieSettingsLink />
           </p>
         </footer>
+        <Consent pixelId={store.metaPixelId} accent={t.accent} />
       </body>
     </html>
   )

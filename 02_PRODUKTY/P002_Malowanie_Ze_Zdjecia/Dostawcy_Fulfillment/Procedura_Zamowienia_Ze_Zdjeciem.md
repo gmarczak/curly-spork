@@ -29,7 +29,7 @@
 
 ## 3. Dane osobowe (RODO) ⚠️ do weryfikacji z prawnikiem
 
-- Zdjęcie przechowywane tylko w storage sklepu (Medusa), nie w repo i nie w logach agentów.
+- Zdjęcie przechowywane tylko w prywatnym storage sklepu (Medusa File Module → bucket S3), nie w repo i nie w logach agentów. Identyfikator pliku: `metadata.photo_file_id` pozycji zamówienia.
 - Do dostawcy trafia tylko to, co zatwierdzi prawnik (zdjęcie lub anonimowy szablon).
 - Po kroku 9 zdjęcie usunięte; w zamówieniu zostaje tylko informacja „zdjęcie usunięte [data]”.
 - Żądanie usunięcia od klienta → eskalacja do właściciela (patrz `../Wiedza_Wsparcia.md`, sekcja D).

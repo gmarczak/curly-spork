@@ -24,13 +24,12 @@ export function Landing({ store, landing, price }: { store: StoreConfig; landing
                 {store.delivery.costPln === 0 ? "darmowa dostawa" : `dostawa ${store.delivery.costPln} zł`}
               </span>
             </p>
-            {/* Upload zdjęcia + checkout Stripe — do zrobienia (README, „Do zrobienia”). */}
-            <button
-              type="button"
-              style={{ background: t.accent, color: "#fff", border: 0, borderRadius: 8, padding: "14px 22px", fontSize: 16, fontWeight: 700 }}
+            <a
+              href="/zamow"
+              style={{ background: t.accent, color: "#fff", borderRadius: 8, padding: "14px 22px", fontSize: 16, fontWeight: 700, textDecoration: "none" }}
             >
               {landing.cta}
-            </button>
+            </a>
           </div>
           <p style={{ fontSize: 13, ...muted }}>{landing.fineprint}</p>
         </div>

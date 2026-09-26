@@ -48,3 +48,9 @@ Thumbs.db
 .medusa/
 next-env.d.ts
 *.tsbuildinfo
+
+# Medusa: pliki wgrane lokalnie (zdjęcia klientów = dane osobowe) i build
+04_KOD_I_INFRASTRUKTURA/medusa-backend/static/
+04_KOD_I_INFRASTRUKTURA/medusa-backend/uploads-private/
+04_KOD_I_INFRASTRUKTURA/medusa-backend/.medusa/
+04_KOD_I_INFRASTRUKTURA/medusa-backend/dump.rdb
