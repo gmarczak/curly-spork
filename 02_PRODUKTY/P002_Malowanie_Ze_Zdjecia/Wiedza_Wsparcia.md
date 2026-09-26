@@ -63,7 +63,7 @@ Zgodnie z `05_OPERACJE_I_ARCHIWUM/Procedury_SOP/SOP_Obsluga_Zwrotow_i_Reklamacji
 - brak doręczenia w terminie + 5 dni,
 - każda reklamacja: zapisać datę wpływu (14 dni ustawowo na odpowiedź).
 
-**Uwaga do kodu:** `escalation_reason()` w `support.py` nie wykrywa dziś żądań RODO (słowa „usuń”, „RODO”, „dane osobowe”, „moje zdjęcie”). Dla P002 zdjęcia klientów to dane osobowe — dodać zestaw słów przed startem.
+**Kod:** `escalation_reason()` w `support.py` eskaluje żądania RODO (słowa: RODO, dane osobowe, usuń/usunąć, wymaż) — test `test_privacy_requests_escalate`.
 
 ## E. Zakazy
 

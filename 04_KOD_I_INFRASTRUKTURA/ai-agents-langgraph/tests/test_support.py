@@ -31,3 +31,11 @@ def test_legal_threat_and_safety_escalate():
     assert support.escalation_reason("Skaleczyłem się przy ostrzeniu", None, 100)
     assert support.escalation_reason("Zraniłam palec, krwawi", None, 100)
     assert support.escalation_reason("Jaki jest czas dostawy?", 50, 100) is None
+
+
+def test_privacy_requests_escalate():
+    assert support.escalation_reason("Proszę usuń moje zdjęcie z waszych serwerów", None, 100)
+    assert support.escalation_reason("Chcę usunąć swoje dane", None, 100)
+    assert support.escalation_reason("Żądam wglądu w moje dane na podstawie RODO", None, 100)
+    assert support.escalation_reason("Wymaż moje dane osobowe", None, 100)
+    assert support.escalation_reason("Czy mogę zmienić zdjęcie przed produkcją?", None, 100) is None
