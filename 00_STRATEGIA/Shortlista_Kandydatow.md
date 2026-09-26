@@ -182,7 +182,7 @@ P003 jako nr 2, zaraz po decyzji dla P002. Sezon trwa do II, więc start w XI ni
 > Hello, I am interested in your custom paint-by-numbers from photo. Please quote:
 > 1) price for 40×50 cm canvas WITH wooden frame, shipped to Poland (and 30×40 for comparison);
 > 2) production time after receiving the photo + delivery time to Poland;
-> 3) do you send a preview before production? How many colours (24/36/48)?
+> 3) do you send a preview before production? How many colours (24/36/48)? What master palette do you pick paints from (number of colours, list of codes/HEX)?
 > 4) can you accept a ready template file instead of the customer photo?
 > 5) replacement policy for frames damaged in transit;
 > 6) manufacturer details for EU GPSR and safety data sheet for the paints;

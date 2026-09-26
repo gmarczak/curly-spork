@@ -20,6 +20,7 @@
 1. Cena wariantu 40×50 cm na ramie, z wysyłką do PL (i 30×40 dla porównania).
 2. Czas produkcji od otrzymania zdjęcia + czas dostawy do PL.
 3. Czy wysyłacie podgląd szablonu przed produkcją? Ile kolorów (24/36/48)?
+3a. Z jakiej palety bazowej dobieracie farby (ile kolorów, lista kodów/HEX)? Potrzebne, gdyby szablon robił nasz skrypt.
 4. Czy przyjmujecie gotowy plik szablonu zamiast zdjęcia (RODO)?
 5. Co z uszkodzeniem ramy w transporcie — wymiana na wasz koszt?
 6. Dane producenta do GPSR i karta charakterystyki farb (CLP).
