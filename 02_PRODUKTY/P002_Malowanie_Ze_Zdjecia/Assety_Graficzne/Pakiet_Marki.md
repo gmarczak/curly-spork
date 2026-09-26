@@ -1,6 +1,6 @@
 # Pakiet marki — P002 (zadanie 1, Agent Onboardingu/Brandingu)
 
-*Wygenerowano 2026-09-26 wg `../Prompty_dla_Agentow/Prompty_Systemowe.md`, sekcja 1, zadanie A. Status: **czeka na wybór właściciela** (nazwa + domena).*
+*Wygenerowano 2026-09-26 wg `../Prompty_dla_Agentow/Prompty_Systemowe.md`, sekcja 1, zadanie A. Status: **zaakceptowano 2026-09-26** — Z Kadru, zkadru.pl, logo A.*
 
 ## 1. Propozycje nazwy
 
@@ -59,7 +59,7 @@ Wszystkie pary spełniają WCAG AA dla zwykłego tekstu (≥ 4,5:1).
 
 | Pole | Wartość |
 |---|---|
-| Wybrana nazwa | |
-| Wybrana domena | |
-| Wariant logo (A/B) | |
-| Data akceptacji | |
+| Wybrana nazwa | Z Kadru |
+| Wybrana domena | zkadru.pl (do kupienia po sprawdzeniu znaków towarowych ⚠️) |
+| Wariant logo (A/B) | A — wordmark z narożnikami kadru |
+| Data akceptacji | 2026-09-26 |

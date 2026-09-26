@@ -56,7 +56,7 @@ Kryteria eliminujące (sekcja 1a procesu wyboru): brak (warunkowo: COGS ≤ 63 z
 
 ## 5a. Hook wideo (pierwsze 3 sekundy)
 
-0–3 s: zdjęcie psa na ekranie telefonu → cięcie na puste płótno z numerami → timelapse malowania → gotowy obraz na ścianie. Tekst: „Wysłała zdjęcie psa. Tydzień później wisiało na ścianie.”
+0–3 s: zdjęcie psa na ekranie telefonu → cięcie na puste płótno z numerami → timelapse malowania → gotowy obraz na ścianie. Tekst: „Zdjęcie psa z telefonu → obraz nad kanapą. Namalowany Twoją ręką.”
 
 ## 5b. Ryzyka
 
@@ -91,7 +91,7 @@ Kryteria eliminujące (sekcja 1a procesu wyboru): brak (warunkowo: COGS ≤ 63 z
 
 | Pole | Wartość |
 |---|---|
-| Domena | |
-| Marka / ton głosu | *(wynik Agenta Onboardingu/Brandingu)* |
+| Domena | zkadru.pl |
+| Marka / ton głosu | Z Kadru — ciepło, prosto, z lekkim humorem (`Assety_Graficzne/Pakiet_Marki.md`) |
 | Link do assetów graficznych | `Assety_Graficzne/README_Checklista_Grafik.md` |
 | Link do promptów agentów | `Prompty_dla_Agentow/Prompty_Systemowe.md` |

@@ -111,7 +111,7 @@ Grupa docelowa i ton: jak w sekcji 1 (kupujący prezent, 25–55, ciepło, prost
 Główny hook (pierwsze 3 s):
 zdjęcie psa na ekranie telefonu → cięcie na puste płótno z numerami →
 timelapse malowania → gotowy obraz na ścianie.
-Tekst na ekranie: „Wysłała zdjęcie psa. Tydzień później wisiało na ścianie.”
+Tekst na ekranie: „Zdjęcie psa z telefonu → obraz nad kanapą. Namalowany Twoją ręką.”
 
 Wygeneruj:
 - 5 nagłówków (max 40 znaków),
