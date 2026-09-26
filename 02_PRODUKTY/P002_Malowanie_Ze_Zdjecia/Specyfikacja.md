@@ -10,7 +10,7 @@
 | Nazwa robocza | Malowanie po numerach ze zdjęcia klienta |
 | Kategoria | Hobby / prezent personalizowany |
 | Data utworzenia karty | 2026-09-25 |
-| Status | kandydat (shortlista) |
+| Status | wybrany do testu nr 1 (2026-09-26) |
 
 ## 2. Produkt
 

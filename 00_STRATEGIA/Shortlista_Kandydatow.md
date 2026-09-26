@@ -167,10 +167,34 @@ P003 jako nr 2, zaraz po decyzji dla P002. Sezon trwa do II, więc start w XI ni
 
 | Pole | Wartość |
 |---|---|
-| Data decyzji | *(rekomendacja agenta 2026-09-25 — czeka na akceptację)* |
+| Data decyzji | 2026-09-26 |
 | Shortlista (3 kandydatów, ID folderów) | P002 Malowanie ze zdjęcia, P003 Punch needle; ostrzałka rolkowa czeka na wycenę CJ (warunek: COGS ≤ 45 zł) |
-| Kandydat nr 1 do testu | P002 Malowanie ze zdjęcia (rekomendacja) |
-| Tryb testów (po kolei / 2 równolegle) | po kolei: P002 → P003 (rekomendacja) |
-| Budżet testu kandydata nr 1 | 1000 zł reklam + VAT 23% = 1230 zł; 5 dni × 200 zł (rekomendacja) |
+| Kandydat nr 1 do testu | P002 Malowanie ze zdjęcia (warunek: koszt towaru z wyceny ≤ 63 zł; inaczej nr 1 = P003) |
+| Tryb testów (po kolei / 2 równolegle) | po kolei: P002 → P003 |
+| Budżet testu kandydata nr 1 | 1000 zł reklam + VAT 23% = 1230 zł; 5 dni × 200 zł |
 | Próg GO | CPA ≤ M P002 po realnej wycenie (dziś 88,3 zł, szac.); progi: `Proces_Wyboru_Produktu.md`, sekcja 4 |
-| Akceptacja właściciela | |
+| Akceptacja właściciela | zaakceptowano 2026-09-26 |
+
+## Po sprincie — gotowe teksty do wysłania
+
+**Wiadomość do dostawcy P002 (AliExpress czat / CJ Sourcing Request):**
+
+> Hello, I am interested in your custom paint-by-numbers from photo. Please quote:
+> 1) price for 40×50 cm canvas WITH wooden frame, shipped to Poland (and 30×40 for comparison);
+> 2) production time after receiving the photo + delivery time to Poland;
+> 3) do you send a preview before production? How many colours (24/36/48)?
+> 4) can you accept a ready template file instead of the customer photo?
+> 5) replacement policy for frames damaged in transit;
+> 6) manufacturer details for EU GPSR and safety data sheet for the paints;
+> 7) neutral packaging without logo or price invoice.
+> I plan to dropship 30–100 units/month. Thank you.
+
+**Pytania do księgowej ⚠️:**
+1. Kod PKWiU dla zestawu do malowania (płótno + farby akrylowe) i zestawu punch needle — czy nie wypadają ze zwolnienia (art. 113 ust. 13)?
+2. Reklamy Meta przy działalności nierejestrowanej: czy potrzebna rejestracja VAT-UE i rozliczenie 23% VAT od importu usług?
+3. Limit działalności nierejestrowanej w 2026 r. i ewidencja sprzedaży — co musi zawierać?
+
+**Pytania do prawnika ⚠️:**
+1. Przekazanie zdjęć klientów (wizerunek) do dostawcy w Chinach: jakie zapisy w polityce prywatności i jaka umowa (SCC / powierzenie)? Czy zamiana zdjęcia na szablon po naszej stronie rozwiązuje problem?
+2. Czy zestaw malowany wg zdjęcia klienta jest wyłączony z prawa odstąpienia (art. 38 ustawy o prawach konsumenta)?
+3. Minimalny regulamin sklepu prowadzonego przez osobę fizyczną bez firmy.
